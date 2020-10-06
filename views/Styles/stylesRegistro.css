@@ -1,6 +1,6 @@
 
 /* BASIC */
-    body {
+body {
     font-family: "Open Sans";
     /*height: 80vh;*/
   }
@@ -18,7 +18,17 @@
     font-weight: 600;
     text-transform: uppercase;
     display:inline-block;
-    margin: 40px 8px 10px 8px; 
+    margin: 20px 8px 20px 8px; 
+    color: white;
+  }
+
+  h3 {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+    text-transform: uppercase;
+    display:inline-block;
+    margin: 1px 8px 1px 8px; 
     color: white;
   }
   
@@ -33,7 +43,7 @@
     justify-content: center;
     width: 100%;
     min-height: 100%;
-    margin-top: 135px;
+    margin-top: 80px;
     /*padding: 100px;*/
   }
   
@@ -43,8 +53,8 @@
     background: #1C2331;
     padding: 30px;
     width: 80%;
-    max-width: 550px;
-    /*height: 482px;*/
+    max-width: 1000px;
+    height: 450px;
     position: relative;
     padding: 0px;
     -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
@@ -65,7 +75,7 @@
   
   /* TABS */
   
-  h2.inactive {
+  /*h2.inactive {
     color: #cccccc;
   }
   
@@ -73,7 +83,7 @@
     color: #0d0d0d;
     border-bottom: 2px solid #5fbae9;
   }
-  
+  */
   
   
   /* FORM TYPOGRAPHY*/
@@ -111,17 +121,40 @@
     transform: scale(0.95);
   }
   
-  .fadeIn.second, .fadeIn.third {
+  .fadeIn.second {
     background-color: white;
     border: none;
     color: black;
-    padding: 15px 32px;
+    padding: 8px 15px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     margin: 15px;
     width: 70%;
+    border: 2px solid #f6f6f6;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+  }
+
+  .fadeIn.third {
+    background-color: white;
+    border: none;
+    color: black;
+    padding: 8px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 15px;
+    width: 70%;
+    width: 158px;
+    height: 20px;
     border: 2px solid #f6f6f6;
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
@@ -141,7 +174,21 @@
     color: #cccccc;
   }
   
-  
+  .contenedorIzq{
+    width: 550px;
+    /*width: 50%;*/
+    margin-top: 50px;
+    display: table-cell;;
+    flex-direction: column;
+  }
+
+  .contenedorDer{
+    width: 550px;
+    /*width: 50%;*/
+    /*margin: 1% 1%;*/
+    display: table-cell;;
+    flex-direction: column;
+  }
   
   /* ANIMATIONS */
   
@@ -245,15 +292,4 @@
     width: 100%;
   }
   
-  
-  
-  /* OTHERS */
-  
-  /**:focus {
-      outline: none;
-  } 
-  
-  #icon {
-    width:60%;
-  }*/
   
