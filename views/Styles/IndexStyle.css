@@ -1,0 +1,48 @@
+
+body
+{
+    font-family: sans-serif;
+}
+.nav-link
+{
+    font-weight: 600;
+    font-size: medium;
+}
+.navbar-brand 
+{
+    font-weight: 600;
+    font-size: 30px;
+    text-align: center;
+}  
+.navbar .img-right
+{
+    float: right;
+}
+.navbar
+{
+    border-style: dashed 2px grey;
+    width: 100%;
+}
+.fa-shopping-cart
+{
+    font-size: 25px !important;
+}
+.fa-user-circle-o
+{
+    font-size: 25px !important;
+}
+.fa-bars
+{
+    font-size: 30px !important;
+}
+.navbar-button
+{
+    width: 100%;
+    padding-right: 25px;
+    background-color: white;
+    border: none;
+}
+.border-bottom
+{
+    border-width: 2px   !important;
+}
