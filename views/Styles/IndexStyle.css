@@ -1,0 +1,40 @@
+
+body
+{
+    font-family: sans-serif;
+}
+
+.navbar-brand 
+{
+    font-weight: 600;
+    font-size: x-large;
+    text-align: center;
+}  
+.navbar .img-right
+{
+    float: right;
+}
+.navbar
+{
+    border-style: dashed 2px grey;
+    width: 100%;
+}
+.fa-shopping-cart
+{
+    font-size: 20px !important;
+}
+.fa-user-circle-o
+{
+    font-size: 20px !important;
+}
+.navbar-button
+{
+    width: 100%;
+    padding-right: 25px;
+    background-color: white;
+    border: none;
+}
+.border-bottom
+{
+    border-width: 2px   !important;
+}
