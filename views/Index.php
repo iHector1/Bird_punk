@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BIRD PUNK</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"></script>
-
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>
@@ -37,9 +36,10 @@
                     <i class="fa fa-bars" aria-hidden="true"></i>
                 </button>
             </div>
+            <!--User/Carrito-->
             <div class="navbar w-100 order-3 ">
                 <ul class="navbar-nav mx-auto">
-                    <a href="IniciarSesion.html" class="navbar-button">
+                    <a href="IniciarSesion.php" class="navbar-button">
                         <i class="fa fa-user-circle-o"></i>
                     </a>
                        <a href="carrito.php" class="navbar-button"> <i href class="fa fa-shopping-cart"></i></a>
