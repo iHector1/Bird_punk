@@ -26,7 +26,7 @@
                         <div class="m-2">
                             <text class="lightText mr-5">Genero</text>
                             <!-- Genero -->
-                            <label class="m-2 mr-5 radio_inline"><input type="radio" id="gender" name="gender" value="0"><text class="darkText" required> Mujer</text></label>
+                            <label class="m-2 mr-5 radio_inline"><input type="radio" id="gender" name="gender" value="0" required><text class="darkText"> Mujer</text></label>
                             <label class="m-2 mr-5 radio_inline"><input type="radio" id="gender" name="gender" value="1"><text class="darkText"> Hombre</text></label>
                             <label class="m-2 radio_inline"><input type="radio" id="gender" name="gender" value="2"><text class="darkText"> Otro</text></label>
                         </div>
