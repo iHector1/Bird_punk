@@ -1,0 +1,80 @@
+.contenedorEdi{
+    background-color: darkgrey;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    padding-top: 0.5cm;
+    padding-bottom: 8cm;
+    border-radius: 33px 33px 33px 33px;
+    -moz-border-radius: 33px 33px 33px 33px;
+    -webkit-border-radius: 33px 33px 33px 33px;
+    border: 0px solid #000000;
+}
+.contenedorAlmacenista{
+    background-color: darkgrey;
+    position: relative;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    padding-top: 0.5cm;
+    padding-bottom: 0.5cm;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-bottom: 1cm;
+    border-radius: 33px 33px 33px 33px;
+    -moz-border-radius: 33px 33px 33px 33px;
+    -webkit-border-radius: 33px 33px 33px 33px;
+    border: 0px solid #000000;
+}
+.padre{
+    padding: 3cm;
+    padding-left: 14cm;
+    padding-right: 14cm;
+    align-items: center;
+    align-content: center;
+}
+aside{
+    float: right;
+    padding-top: 3cm;
+    padding-right: 3cm;
+}
+.container{
+    float: right;
+    width: 50%
+}
+picture{
+    image-resolution: 20px 20px;
+}
+.buttonEd{
+    text-align: right;
+    padding-right: 1cm;
+    padding-bottom: 0.5cm;
+    padding-top: 1.5cm;
+}
+.izq{
+    
+    float: left;
+    padding-left: 0.5cm;
+    text-align: left;
+}
+.der{
+    float: right;
+    padding-top: 2cm;
+}
+header{
+    text-align: center;
+}
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+}
+th, td{
+    padding-left: 0.5cm;
+    padding-bottom: 0.5cm;
+}
+
