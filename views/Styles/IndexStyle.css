@@ -50,8 +50,14 @@ body
     border: none;
 }
 .border-bottom
-{
+{ 
     border-width: 2px   !important;
+}
+
+.footer
+{
+  background-color: black;
+
 }
 .fadeInDown {
     -webkit-animation-name: fadeInDown;
