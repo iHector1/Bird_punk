@@ -8,6 +8,8 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
         <link rel="stylesheet" href="Styles/IndexStyle.css"/>
         <link rel="stylesheet" href="Styles/stylesAnadirProducto.css" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="Styles/IndexStyle.css" />
     </head>
     <body>
         <div class="navbar border-bottom navbar-expand-md navbar-light navbar-fixed-top">
@@ -52,7 +54,7 @@
                 <h2 class="col-11 m-3 mb-5 ">Datos del producto</h2>
                 <div class="col-5 ml-4">
                     <!-- Obtención de datos de producto existente -->
-                    <form method="POST" action="./Index.php">
+                    <form method="POST" action="IndexAlmacenista.php">
                         <!-- NombreProducto | No se puede editar -->
                         <input class="m-2 form-control float-right" type="text" id="name" name="name" placeholder="SustituirNombreProducto" disabled></input>
                         <text class="m-2 mt-4 lightText">$</text>

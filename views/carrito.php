@@ -12,14 +12,15 @@
     <script scr="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/motion-ui.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="Styles/carrito.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="https://allyoucan.cloud/cdn/icofont/1.0.1/icofont.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="Styles/IndexStyle.css" />
 </head>
 
 <body>
-    <section id="Nav-bar">
+<section id="Nav-bar">
         <div class="navbar border-bottom navbar-expand-md navbar-light navbar-fixed-top">
         </div>
         <nav class="navbar border-bottom navbar-expand-md navbar-light">
@@ -34,9 +35,9 @@
                 </ul>
             </div>
             <div class="navbar w-100 order-2  mx-auto">
-                <img class="mx-auto" src="imagenes/logo.PNG" width="100%">
+                <a href="Index.php"><img src="imagenes/logo.PNG" width="60%" style="margin-left:150px;"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
-                    <i class="fa fa-bars" aria-hidden="true">hola</i>
+                    <i class="fa fa-bars" aria-hidden="true"></i>
                 </button>
             </div>
             <!--User/Carrito-->
@@ -45,62 +46,72 @@
                     <a href="IniciarSesion.php" class="navbar-button">
                         <i class="fa fa-user-circle-o"></i>
                     </a>
-                    <a href="carrito.php" class="navbar-button"> <i href class="fa fa-shopping-cart"></i></a>
-
+                       <a href="carrito.php" class="navbar-button"> <i href class="fa fa-shopping-cart"></i></a>
+                 
                 </ul>
             </div>
         </nav>
+        <div class="navbar navbar-expand-md navbar-light"> </div>
+
+    </section>
 
         <!-- Cariito de compras cool-->
-        <div class="navbar navbar-expand-md navbar-light"> </div>
-        <div class="contenedor">
-            <h1 class="text-center mr-5 mt-5">Carrito de Compras</h1>
-            <h4 class="float-right">Precio</h4>
-            <hr class="col-md-10">
+    <div class="navbar navbar-expand-md navbar-light"> </div>
+    <div class="contenedor">
+        <h1 class="text-center mr-5 mt-5">Carrito de Compras</h1>
+        <h4 class="float-right">Precio</h4>
+        <hr class="col-md-10">
 
-            <br>
-            <section class="fadeInDown mr-5 ml-5" #scroll>
-                <div class="mx-auto col-md-12">
-                    <div class="osahan-account-page-right shadow-sm   h-100">
-                        <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane  active show" id="orders" role="tabpanel" aria-labelledby="orders-tab">
-                                <div class=" mb-4 order-list shadow-sm">
-                                    <div class=" p-4">
+        <br>
+        <section class="fadeInDown mr-5 ml-5" #scroll>
+            <div class="mx-auto col-md-12">
+                <div class="osahan-account-page-right shadow-sm   h-100">
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane  active show" id="orders" role="tabpanel" aria-labelledby="orders-tab">
+                            <div class=" mb-4 order-list shadow-sm">
+                                <div class=" p-4">
+                                    <a href="#">
+                                    </a>
+                                    <div class="media">
                                         <a href="#">
+                                            <img class="rounded d-block mr-4" src="tenis.jpg" alt="">
                                         </a>
-                                        <div class="media">
-                                            <a href="#">
-                                                <img class="rounded d-block mr-4" src="tenis.jpg" alt="">
+                                        <div class="media-body">
+                                            <!--Precio del producto-->
+                                            <a>
+                                                <span class="float-right text-info">$13,000 MNX</span>
                                             </a>
-                                            <div class="media-body">
-                                                <!--Precio del producto-->
-                                                <a>
-                                                    <span class="float-right text-info">$13,000 MNX</span>
-                                                </a>
-                                                <!--Precio del articulo-->
-                                                <h6 class="mb-2">
-                                                    <a href="#"></a>
-                                                    <a href="#" class="text-black">NOMBRE DEL ARTICULO</a>
-                                                </h6>
-                                                <!--DIRECCION DEL ENVIO-->
-                                                <p class="text-white mb-1"> Talla
-                                                </p>
-                                                <!--Datos del producto-->
-                                                <p class="text-white mb-3">Cantidad : 1 | <i class="icofont-trash text-danger"></i>Eliminar</p>
-                                                </p>
-                                               
-                                            </div>
+                                            <!--Precio del articulo-->
+                                            <h6 class="mb-2">
+                                                <a href="#"></a>
+                                                <a href="#" class="text-black">NOMBRE DEL ARTICULO</a>
+                                            </h6>
+                                            <!--DIRECCION DEL ENVIO-->
+                                            <p class="text-white mb-1"> Talla
+                                            </p>
+                                            <!--Datos del producto-->
+                                            <p class="text-white mb-3">Cantidad : 1 | <a href="eliminar.php"><i class="icofont-trash text-danger"></i></a>Eliminar</p>
+                                            </p>
+                                            
                                         </div>
-                                        <hr>
-                                        <div class="text-right">
-                                        <p class="mb-0 text-white pt-2"><span class="font-weight-bold"> Total de Compra:</span> CANTIDAD TOTAL
-                                        </p>
                                     </div>
+                                    <div>
+                                        <form action="Pago.php">
+                                            <input class="btn btn-primary" type="submit" value="PAGAR" 
+                                            style="outline:none;margin-top:60px;position:absolute;border:none;font-size:25px;text-align:left;">
+                                        </form>
                                     </div>
-                                </div>
 
-            </section>
-        </div>
+                                    <hr>
+                                    <div class="text-right">
+                                    <p class="mb-0 text-white pt-2"><span class="font-weight-bold"> Total de Compra:</span> $13,000.00 MXN
+                                    </p>
+                    </div>
+                </div>
+            </div>
+
+        
+    </div>
 
 </body>
 

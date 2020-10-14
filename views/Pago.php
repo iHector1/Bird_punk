@@ -4,11 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pago</title>
-    
-
     <link rel="stylesheet" href="Styles/stylesPago.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="Styles/IndexStyle.css" />
+
 </head>
 <body>
+    <section id="Nav-bar">
+        <div class="navbar border-bottom navbar-expand-md navbar-light navbar-fixed-top">
+        </div>
+        <nav class="navbar border-bottom navbar-expand-md navbar-light">
+            <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link border-right" href="#">HOMBRES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">MUJERES</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar w-100 order-2  mx-auto">
+                <a href="Index.php"><img src="imagenes/logo.PNG" width="60%" style="margin-left:150px;"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </button>
+            </div>
+            <!--User/Carrito-->
+            <div class="navbar w-100 order-3 ">
+                <ul class="navbar-nav mx-auto">
+                    <a href="IniciarSesion.php" class="navbar-button">
+                        <i class="fa fa-user-circle-o"></i>
+                    </a>
+                       <a href="carrito.php" class="navbar-button"> <i href class="fa fa-shopping-cart"></i></a>
+                 
+                </ul>
+            </div>
+        </nav>
+        <div class="navbar navbar-expand-md navbar-light"> </div>
+
+    </section>
+
     <div>
         <h1>Finalizar la compra</h1>
     </div>
@@ -36,7 +72,7 @@
             <input type="number" id="number" class="InfoUsuario" name="number" placeholder="Número" disabled>
             <input type="text" class="InfoUsuario" id="colonia" name="colonia" placeholder="Colonia" disabled>
             <input type="number" id="cp" class="InfoUsuario" name="cp" placeholder="C.P." disabled>
-            <a href="EditarDomicilio.html" target="_blank">Editar</a>
+            <a href="EditarDomicilio.php" target="_blank">Editar</a>
         </div>
         
     </div>
@@ -46,11 +82,11 @@
         <hr color=#1C2331 size=1 width= 100%>
         <h3>BearPay</h3>
 
-        <form method="POST" action="./Index.php">
-        <input type="email" id="user" class="fadeIn second" name="email" placeholder="Correo electrónico" required>
-        <input type="password" id="password" class="fadeIn second" name="password" placeholder="Contraseña" required>
-        <input type="submit" class="btt" value="COMPRAR AHORA">
-    </form>
+        <form method="POST" action="BearPay_Login.php">
+            <input type="email" id="user" class="fadeIn second" name="email" placeholder="Correo electrónico" required>
+            <input type="password" id="password" class="fadeIn second" name="password" placeholder="Contraseña" required>
+            <input type="submit" class="btt" value="COMPRAR AHORA">
+        </form>
     </div>
     
     <div class="contenedor3">
