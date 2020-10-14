@@ -1,5 +1,5 @@
 body {
-    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Open Sans';
   }
 
   h1 {
@@ -84,7 +84,7 @@ body {
     float: right;
 }
   
-  .prueba{
+  /*.prueba{
       background-color: blue;
   }
 
@@ -96,7 +96,7 @@ body {
     background-color: #1C2331;
     margin: 5px;
     display: inline-block;
-  }
+  }*/
 
   .Resumen{
     border-radius: 5px;
@@ -146,7 +146,7 @@ body {
   }
   
   input[type=button], input[type=submit], input[type=reset]  {
-    background-color: #434343;
+    background-color: #1C2331;
     border: none;
     color: white;
     padding: 10px 20px;

@@ -1,6 +1,7 @@
-body {
-    font-family: "Open Sans";
-  }
+body
+{
+    font-family: 'Open Sans';
+}
 
   h1 {
     text-align: left;
@@ -59,7 +60,7 @@ body {
   }
 
   .contenedor1{
-      width: 30%;
+      width: 45%;
       display: inline-block;
       margin: 5px;
       float: left;
@@ -75,27 +76,27 @@ body {
     height: 50%;
 }
 
-  .contenedor2{
+ /* .contenedor2{
     width: 30%;
     display: inline-block;
     margin: 5px;
     margin-left: 50px;
-}
+}*/
 
   .contenedor3{
     border-radius: 5px;
-    width: 30%;
+    width: 45%;
     background-color: #1C2331;
     display: inline-block;
     margin: 3px;
     float: right;
 }
   
-  .prueba{
+  /*.prueba{
       background-color: blue;
-  }
+  }*/
 
-  a{
+  .Editar{
     border-radius: 5px;
     padding: 10px 7px;
     text-decoration: none;
@@ -137,13 +138,14 @@ body {
     border-radius: 5px;
     padding: 10px 7px;
     text-decoration: none;
-    color: #fff;
-    background-color: #1C2331;
+    color:black;
+    background-color: white;
     margin: 5px;
     display: inline-block;
-    margin-left: 150px;
+    margin-left: 220px;
     margin-bottom: 15px;
     cursor: pointer;
+    font-size: 20px;
   }
 
  .InfoUsuario{

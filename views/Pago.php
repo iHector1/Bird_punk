@@ -4,9 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pago</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>
+    <script scr="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/motion-ui.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
     <link rel="stylesheet" href="Styles/stylesPago.css" />
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="Styles/IndexStyle.css" />
+
 
 </head>
 <body>
@@ -72,12 +83,13 @@
             <input type="number" id="number" class="InfoUsuario" name="number" placeholder="Número" disabled>
             <input type="text" class="InfoUsuario" id="colonia" name="colonia" placeholder="Colonia" disabled>
             <input type="number" id="cp" class="InfoUsuario" name="cp" placeholder="C.P." disabled>
-            <a href="EditarDomicilio.php" target="_blank">Editar</a>
+            <a class= "Editar" href="EditarDomicilio.php" target="_blank">Editar</a>
+            </form>
         </div>
         
     </div>
 
-    <div class="contenedor2">
+    <!--<div class="contenedor2">
         <h2>PAGO</h2>
         <hr color=#1C2331 size=1 width= 100%>
         <h3>BearPay</h3>
@@ -87,7 +99,7 @@
             <input type="password" id="password" class="fadeIn second" name="password" placeholder="Contraseña" required>
             <input type="submit" class="btt" value="COMPRAR AHORA">
         </form>
-    </div>
+    </div>-->
     
     <div class="contenedor3">
         <h4>RESUMEN DE LA COMPRA</h4>
@@ -105,6 +117,10 @@
         <p>SUBTOTAL: </p>
         <p>COSTO DE ENVÍO: </p>
         <p>TOTAL: </p>
+
+        <form method="POST" action="BearPay_Login.php">
+            <input type="submit" class="btt" value="Comprar ahora">
+        </form>
     </div>
 
     
