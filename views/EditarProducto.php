@@ -5,11 +5,45 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Editar Producto</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="Styles/IndexStyle.css"/>
         <link rel="stylesheet" href="Styles/stylesAnadirProducto.css" />
     </head>
     <body>
+        <div class="navbar border-bottom navbar-expand-md navbar-light navbar-fixed-top">
+        </div>
+        <nav class="navbar border-bottom navbar-expand-md navbar-light">
+            <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link border-right" href="verProducto.php">HOMBRES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="verProducto.php">MUJERES</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar w-100 order-2  mx-auto">
+                <a class="navbar-brand mx-auto" href="Index.php"><img src="imagenes/logo.PNG" width="60%"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </button>
+            </div>
+            <!--User/Carrito-->
+            <div class="navbar w-100 order-3 ">
+                <ul class="navbar-nav mx-auto">
+                    <a href="IniciarSesion.php" class="navbar-button">
+                        <i class="fa fa-user-circle-o"></i>
+                    </a>
+                       <a href="carrito.php" class="navbar-button"> <i href class="fa fa-shopping-cart"></i></a>
+                 
+                </ul>
+            </div>
+        </nav>
+        <div class="navbar navbar-expand-md navbar-light"> </div>
+
         <div class="container">
-            <div class="row mt-5">
+            <div class="row mt-2">
                 <div class="col">
                     <h1>Editar Producto</h1>
                 </div>
