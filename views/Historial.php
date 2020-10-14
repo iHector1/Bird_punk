@@ -87,7 +87,7 @@
                                         <hr>
                                         <!--REORDENAR-->
                                         <div class="float-right">
-                                            <a class="btn btn-sm btn-primary" href="#"><i class="icofont-refresh"></i> Comprar Nuevamente</a>
+                                            <a class="btn btn-sm btn-primary" href="carrito.php"><i class="icofont-refresh"></i> Comprar Nuevamente</a>
                                         </div>
                                         <!--PRECIO TOTAL DE COMPRA-->
                                         <p class="mb-0 text-black text-primary pt-2"><span class="text-black font-weight-bold"> Total de Compra:</span> CANTIDAD TOTAL

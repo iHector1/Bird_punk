@@ -26,12 +26,16 @@
                         <a class="nav-link border-right" href="#">HOMBRES</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">MUJERES</a>
+                        <a class="nav-link border-right" href="#">MUJERES</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="agregarAlmacenista.php">ALMACENISTAS</a>
+                    </li>
+                    
                 </ul>
             </div>
             <div class="navbar w-100 order-2  mx-auto">
-                <a href="Index.php"><img src="imagenes/logo.PNG" width="60%" style="margin-left:150px;"></a>
+                <a href="IndexAdministrador.php"><img src="imagenes/logo.PNG" width="60%" style="margin-left:150px;"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
                     <i class="fa fa-bars" aria-hidden="true"></i>
                 </button>
@@ -42,7 +46,7 @@
                     <a href="IniciarSesion.php" class="navbar-button">
                         <i class="fa fa-user-circle-o"></i>
                     </a>
-                       <a href="carrito.php" class="navbar-button"> <i href class="fa fa-shopping-cart"></i></a>
+                      
                  
                 </ul>
             </div>
