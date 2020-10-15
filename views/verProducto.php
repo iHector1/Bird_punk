@@ -15,7 +15,9 @@
     <link rel="stylesheet" href="Styles/IndexStyle.css" />
     <link rel="stylesheet" href="Styles/styleVerProducto.css">
 </head>
+
 <body>
+
     <!--Barra de navegación-->
     <section id="Nav-bar">
         <div class="navbar border-bottom navbar-expand-md navbar-light navbar-fixed-top">
@@ -32,7 +34,7 @@
                 </ul>
             </div>
             <div class="navbar w-100 order-2  mx-auto">
-                <img class="mx-auto" src="imagenes/logo.PNG" width="60%">
+                <a href="Index.php"><img src="imagenes/logo.PNG" width="60%" style="margin-left:150px;"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
                     <i class="fa fa-bars" aria-hidden="true"></i>
                 </button>
@@ -51,11 +53,12 @@
         <div class="navbar navbar-expand-md navbar-light"> </div>
 
     </section>
+
     <!-------articulo------->
 <div class="articulos">
     <div class="articulo" >
         <div>
-            <img src="tenis.jpg" class="uno">
+            <a href="verUnProducto.php"> <img src="tenis.jpg" class="uno"> </a>
         </div>
         <div class="desc">
             <h5>Nombre</h5>
@@ -71,7 +74,7 @@
 
     <div class="articulo">
         <div>
-            <img src="tenis.jpg" class="uno">
+        <a href="verUnProducto.php"> <img src="tenis.jpg" class="uno"> </a>
         </div>
         <div class="desc">
             <h5>Nombre</h5>
@@ -87,7 +90,7 @@
     
     <div class="articulo">
         <div>
-            <img src="tenis.jpg" class="uno">
+        <a href="verUnProducto.php"> <img src="tenis.jpg" class="uno"> </a>
         </div>
         <div class="desc">
             <h5>Nombre</h5>
@@ -106,7 +109,7 @@
 <div class="articulos">
     <div class="articulo" >
         <div>
-            <img src="tenis.jpg" class="uno">
+        <a href="verUnProducto.php"> <img src="tenis.jpg" class="uno"> </a>
         </div>
         <div class="desc">
             <h5>Nombre</h5>
@@ -122,7 +125,7 @@
 
     <div class="articulo">
         <div>
-            <img src="tenis.jpg" class="uno">
+        <a href="verUnProducto.php"> <img src="tenis.jpg" class="uno"> </a>
         </div>
         <div class="desc">
             <h5>Nombre</h5>
@@ -138,7 +141,7 @@
 
     <div class="articulo">
         <div>
-            <img src="tenis.jpg" class="uno">
+        <a href="verUnProducto.php"> <img src="tenis.jpg" class="uno"> </a>
         </div>
         <div class="desc">
             <h5>Nombre</h5>
@@ -156,7 +159,7 @@
 <div class="articulos">
     <div class="articulo" >
         <div>
-            <img src="tenis.jpg" class="uno">
+        <a href="verUnProducto.php"> <img src="tenis.jpg" class="uno"> </a>
         </div>
         <div class="desc">
             <h5>Nombre</h5>
@@ -172,7 +175,7 @@
 
     <div class="articulo">
         <div>
-            <img src="tenis.jpg" class="uno">
+        <a href="verUnProducto.php"> <img src="tenis.jpg" class="uno"> </a>
         </div>
         <div class="desc">
             <h5>Nombre</h5>
@@ -188,7 +191,7 @@
 
     <div class="articulo">
         <div>
-            <img src="tenis.jpg" class="uno">
+        <a href="verUnProducto.php"> <img src="tenis.jpg" class="uno"> </a>
         </div>
         <div class="desc">
             <h5>Nombre</h5>
