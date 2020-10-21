@@ -9,7 +9,7 @@
 ?>
 <?php
     $sql = "SELECT articulo_carrito.ID_Articulo, Precio, Cantidad_Articulo FROM articulo 
-    INNER JOIN articulo_carrito ON articulo_carrito.ID_Articulo = articulo.ID_Articulo WHERE ID_Carrito = $_GET[id];";
+    INNER JOIN articulo_carrito ON articulo_carrito.ID_Articulo = articulo.ID_Articulo WHERE ID_Carrito = $_GET[id]";
     $stmt = sqlsrv_query($conn, $sql);
 
     if( $stmt === false ) {

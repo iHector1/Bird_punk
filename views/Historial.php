@@ -1,6 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+    $serverName = "LAPTOP-BH1NLJJ4"; //serverName
+    $connectionInfo = array( "Database"=>"bearpay");
+    $conn = sqlsrv_connect($serverName, $connectionInfo);
+
+    $sql = "SELECT Detalle_Compra.ID_Articulo, Info_Cliente.Calle, Compra.No_Orden, Fecha_Compra,  
+    Cantidad_Articulos, Compra.ID_Usuario, Precio_Total FROM Compra INNER JOIN Detalle_Compra 
+    ON Detalle_Compra.No_Orden = Compra.No_Orden INNER JOIN Info_Cliente 
+    ON Info_Cliente.ID_Usuario = Compra.ID_Usuario";
+    //WHERE Info_Cliente.ID_Usuario ='".$_GET['id']."'
+    $stmt = sqlsrv_query($conn, $sql);
+
+    if( $stmt === false ) {
+        die( print_r( sqlsrv_errors(), true));
+        
+    }
+?>
+
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -67,21 +87,44 @@
                                     <a href="#">
                                         <img class="rounded d-block mr-4" src="tenis.jpg" alt="">
                                     </a>
+
+                                    <?php 
+                                        while($fila = sqlsrv_fetch_array($stmt)){
+                                    ?>
+
                                     <div class="media-body">
                                         <!--FECHA DEL PEDIDO-->
                                         <a href="#">
-                                            <span class="float-right text-info">FECHA DE ENTREGA<i class="icofont-check-circled text-success"></i></span>
+                                            <span class="float-right text-info">FECHA DE ENTREGA
+                                            <i class="icofont-check-circled text-success">    
+                                            </i>
+                                            </span>
                                         </a>
                                         <!--NOMBRE DEL ARTICULO-->
                                         <h6 class="mb-2">
                                             <a href="#"></a>
                                             <a href="#" class="text-black">NOMBRE DEL ARTICULO</a>
+                                            <?php
+                                                echo $fila['ID_Articulo'];
+                                            ?> 
                                         </h6>
                                         <!--DIRECCION DEL ENVIO-->
-                                        <p class="text-gray mb-1"><i class="icofont-location-arrow"></i> DOMICILIO 
+                                        <p class="text-gray mb-1"><i class="icofont-location-arrow"></i> DOMICILIO
+                                            <?php
+                                                echo $fila['Calle'];
+                                            ?>  
                                         </p>
                                         <!--ID ORDEN DESCRIPCIÓN-->
-                                        <p class="text-gray mb-3"><i class="icofont-list"></i> NUMERO DE ORDEN <i class="icofont-clock-time ml-2"></i> FECHA DEL PEDIDO</p>
+                                        <p class="text-gray mb-3">
+                                        <i class="icofont-list"></i> 
+                                            <?php
+                                                echo $fila['No_Orden'];
+                                            ?>  
+                                        <i class="icofont-clock-time ml-2"></i>
+                                            <?php
+                                            echo $fila['Fecha_Compra'];
+                                            ?> 
+                                        </p>
                                         <p class="text-dark">DESCRIPCION
                                         </p>
                                         <hr>
@@ -90,9 +133,17 @@
                                             <a class="btn btn-sm btn-primary" href="carrito.php"><i class="icofont-refresh"></i> Comprar Nuevamente</a>
                                         </div>
                                         <!--PRECIO TOTAL DE COMPRA-->
-                                        <p class="mb-0 text-black text-primary pt-2"><span class="text-black font-weight-bold"> Total de Compra:</span> CANTIDAD TOTAL
-                                        </p>
+                                        <p class="mb-0 text-black text-primary pt-2"><span class="text-black font-weight-bold"> Total de Compra:</span> 
+                                            <?php
+                                                    echo $fila['Precio_Total'];
+                                                    ?> 
+                                            </p>
                                     </div>
+
+                                    <?php 
+                                        }
+                                    ?>
+
                                 </div>
 
                             </div>

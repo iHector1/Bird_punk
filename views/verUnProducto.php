@@ -1,5 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<?php
+    $serverName = "LAPTOP-BH1NLJJ4"; //serverName
+    $connectionInfo = array( "Database"=>"bearpay");
+    $conn = sqlsrv_connect($serverName, $connectionInfo);
+
+    $sql = "SELECT Stock FROM articulo";
+    //WHERE Info_Cliente.ID_Usuario ='".$_GET['id']."'
+    $stmt = sqlsrv_query($conn, $sql);
+
+    if( $stmt === false ) {
+        die( print_r( sqlsrv_errors(), true));
+        
+    }
+?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -58,6 +74,9 @@
         <!-- columna derecha -->
         <div id="first"> 
             <div>
+            <?php
+                $sql2 = "SELECT Stock FROM articulo";
+            ?>
                 <div class="galeria">
                     <input type="radio" name="navegacion" id="_1" checked>
                     <input type="radio" name="navegacion" id="_2">
@@ -92,10 +111,20 @@
             <br><br>
             <form name="cantidad" method="POST">
                 <h5>Cantidad</h5> 
-                    <input type="number" name="edad">
+                    <input type="number" name="cantidad1">
             </form>
             <br><br>
             <input type="submit" value="Añadir al carrito">
+                <?php 
+                    /* LEER VARIABLES DE $_GET */
+                    $cantidad = intval($_GET['cantidad']);
+                    $fila = sqlsrv_fetch_array($stmt);
+
+                    if ($cantidad <= $fila ){
+                        //Se agrega un el producto al carrito
+                    }else
+                        //No se tiene esa cantidad de productos
+                    ?>
         </div>  
     </div>
 </div> 
