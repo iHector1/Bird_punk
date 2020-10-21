@@ -6,8 +6,50 @@
         <title>Añadir Producto</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <link rel="stylesheet" href="Styles/stylesAnadirProducto.css" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="Styles/IndexStyle.css" />
     </head>
     <body>
+    <section id="Nav-bar">
+        <div class="navbar border-bottom navbar-expand-md navbar-light navbar-fixed-top">
+        </div>
+        <nav class="navbar border-bottom navbar-expand-md navbar-light">
+            <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link border-right" href="#">HOMBRES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link border-right" href="#">MUJERES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link border-right" href="AnadirProducto.php">AGREGAR PRODUCTO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="EditarProducto.php">EDITAR PRODUCTO</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar w-100 order-2  mx-auto">
+                <a href="IndexAlmacenista.php"><img src="imagenes/logo.PNG" width="60%" style="margin-left:150px;"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </button>
+            </div>
+            <!--User/Carrito-->
+            <div class="navbar w-100 order-3 ">
+                <ul class="navbar-nav mx-auto">
+                    <a href="IniciarSesion.php" class="navbar-button">
+                        <i class="fa fa-user-circle-o"></i>
+                    </a>
+                       
+                 
+                </ul>
+            </div>
+        </nav>
+        <div class="navbar navbar-expand-md navbar-light"> </div>
+
+    </section>
         <div class="container">
             <div class="row mt-5">
                 <div class="col">
@@ -17,7 +59,7 @@
             <div class="row mt-3 p-2 rectangle">
                 <h2 class="col-11 m-3 mb-5 ">Datos del producto</h2>
                 <div class="col-5 ml-4">
-                    <form method="POST" action="./Index.php">
+                    <form method="POST" action="IndexAlmacenista.php">
                         <!-- Nombre -->
                         <input class="m-2 form-control float-right" type="text" id="name" name="name" placeholder="Nombre" required>
                         <text class="m-2 mt-4 lightText">$</text>
