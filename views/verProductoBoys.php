@@ -23,13 +23,13 @@
     $serverName = "ALVAROCD-PC";            //Aqui solo se tiene que cambiar por el nombre del servidor que va a alojar la BD
     $connectionInfo = array( "Database"=>"birdpunk");
     $conn = sqlsrv_connect( $serverName, $connectionInfo);
-if ($conn == TRUE) {
-    echo("Conexion exitosa");
-    echo("<br>"); 
-}
-else{
-    echo("Error en la conexion");
-}
+// if ($conn == TRUE) {
+//     echo("Conexion exitosa");
+//     echo("<br>"); 
+// }
+// else{
+//     echo("Error en la conexion");
+// }
 ?>
 
 
@@ -79,15 +79,21 @@ while ($row = sqlsrv_fetch_array($res)) {
 <div class="articulos">
     <div class="articulo" >
         <div>
-        <a href="verUnProducto.php"> <img src="tenis.jpg" class="uno"> </a>
+        <a href="verUnProducto.php"> <img src="tenis.jpg" class="uno" method = "POST"> </a>
         </div>
         <div class="desc">
+        <form action="verUnProducto.php" method="POST">
             <h5><b>Nombre:</b> <?php echo $row[0];?></h5>
+            <input type="hidden" name="modelo" value="<?php echo $row[0];?>">
             <h5><b>Marca:</b> <?php echo $row[1]?></h5>
-            <h5></h5>
+            <input type="hidden" name="marca" value="<?php echo $row[1];?>">
             <h5><b>Precio:</b> <?php echo $row[2]?></h5>
+            <input type="hidden" name="precio" value="<?php echo $row[2];?>">
             <h5><b>Talla:</b> <?php echo $row[3]?></h5>
+            <input type="hidden" name="talla" value="<?php echo $row[3];?>">
+            <input  type="submit" value="Ver Producto">
         </div>
+        </form>
     </div>
     <br>
     <br>
