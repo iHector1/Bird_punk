@@ -1,19 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- Conexión a la base de datos -->
 <?php
     $serverName = "LAPTOP-BH1NLJJ4"; //serverName
-    $connectionInfo = array( "Database"=>"bearpay");
+    $connectionInfo = array( "Database"=>"BirdPunk");
     $conn = sqlsrv_connect($serverName, $connectionInfo);
-
-    $sql = "SELECT Stock FROM articulo";
-    //WHERE Info_Cliente.ID_Usuario ='".$_GET['id']."'
-    $stmt = sqlsrv_query($conn, $sql);
-
-    if( $stmt === false ) {
-        die( print_r( sqlsrv_errors(), true));
-        
-    }
 ?>
 
 <head>
@@ -78,16 +70,38 @@
                 $sql2 = "SELECT Stock FROM articulo";
             ?>
                 <div class="galeria">
+                    <!--Almacenar la imagen en la bd -->
+                    <?php
+                    //Primer img
+                        $sql = "SELECT Imagen FROM Articulo WHERE ID_Articulo = 5"; 
+                        $result = sqlsrv_query($conn, $sql);
+                        $row = sqlsrv_fetch_array($result);
+                    ?>
+
+                    <?php
+                    //Primer img
+                        $sql = "SELECT Imagen FROM Articulo WHERE ID_Articulo = 9"; 
+                        $result = sqlsrv_query($conn, $sql);
+                        $row2 = sqlsrv_fetch_array($result);
+                    ?>
+                    
+                    <?php
+                    //Primer img
+                        $sql = "SELECT Imagen FROM Articulo WHERE ID_Articulo = 11"; 
+                        $result = sqlsrv_query($conn, $sql);
+                        $row3 = sqlsrv_fetch_array($result);
+                    ?>
+    
                     <input type="radio" name="navegacion" id="_1" checked>
                     <input type="radio" name="navegacion" id="_2">
                     <input type="radio" name="navegacion" id="_3">
                     <input type="radio" name="navegacion" id="_4"> 
                     <input type="radio" name="navegacion" id="_5">
-                    <img src="tenis.jpg" width="600" height="300"/>
-                    <img src="Imagenes/tenis-2.jpg" width="600" height="300"/>
-                    <img src="Imagenes/tenis-3.jpg" width="600" height="300"/>
-                    <img src="Imagenes/tenis-4.jpg" width="600" height="300"/>
-                    <img src="Imagenes/tenis-1.jpg" width="600" height="300"/>
+                    <img src="tenis.jpg" width="600" height="300"/> <!--Ejemplo-->
+                    <img src="imageView.php?image_id= <?php echo $row["Imagen"]; ?>" width="600" height="300"/><br/>
+                    <img src="imageView.php?image_id= <?php echo $row2["Imagen"]; ?>" width="600" height="300"/><br/>
+                    <img src="imageView.php?image_id= <?php echo $row3["Imagen"]; ?>" width="600" height="300"/><br/>
+                    <img src="Imagenes/tenis-2.jpg" width="600" height="300"/> <!--Ejemplo-->
                 </div>
             </div>
         </div>
@@ -100,7 +114,7 @@
             <br><br>
             <h5>Talla</5>
             <br>
-            <mat-form-field appearance="fill" method="POST">
+            <mat-form-field appearance="fill" method="POST" required>
             <select matNativeControl required>
                 <option value="t1">25 cm</option>
                 <option value="t2">26 cm</option>
@@ -109,22 +123,37 @@
             </select>
             </mat-form-field>
             <br><br>
-            <form name="cantidad" method="POST">
+            <form name="form-cant" method="POST">
                 <h5>Cantidad</h5> 
-                    <input type="number" name="cantidad1">
+                    <input type="number" name="cantidad" min="1" value="0" required>
+                    <br><br>   
+                    <form method="get">
+                        <input type="submit" value="Añadir al carrito">
+                    </form>
             </form>
-            <br><br>
-            <input type="submit" value="Añadir al carrito">
-                <?php 
-                    /* LEER VARIABLES DE $_GET */
-                    $cantidad = intval($_GET['cantidad']);
-                    $fila = sqlsrv_fetch_array($stmt);
+            <!-- Verificar stock -->
+            <?php 
+                    $sql = "SELECT Stock FROM articulo WHERE ID_Articulo = 5";
+                    $stmt = sqlsrv_query($conn, $sql);
+                    $row=sqlsrv_fetch_array($stmt); //Obtiene el valor de stock de la bd
 
-                    if ($cantidad <= $fila ){
-                        //Se agrega un el producto al carrito
-                    }else
-                        //No se tiene esa cantidad de productos
-                    ?>
+                    echo("Cantidad de artículos: ");
+                    isset($_POST["cantidad"]) ? print $_POST["cantidad"] : "";//Imprime valor ingresado en pagina web
+                    //$cantidad = isset($_POST["cantidad"]) ? : ""; //Obtiene el valor ingresado en la pagina web
+
+                    echo("Stock: ");
+                    echo $row['Stock']; //Imprime la cantidad en el stock de la bd
+                    
+
+                    if(isset($_POST["cantidad"]) == $row['Stock']){      
+                        echo ("   Si hay");
+                    }else{
+                        echo ("   No hay");
+                    }
+            ?>
+
+
+                
         </div>  
     </div>
 </div> 
