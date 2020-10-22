@@ -1,20 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-    $serverName = "DESKTOP-IT4DIF6"; //serverName\instanceName
+   
+   $serverName = "DESKTOP-IT4DIF6"; //serverName\instanceName
         // Puesto que no se han especificado UID ni PWD en el array  $connectionInfo,
         // La conexión se intentará utilizando la autenticación Windows.
     $connectionInfo = array( "Database"=>"bearpay");
     $conn = sqlsrv_connect( $serverName, $connectionInfo);
-?>
-<?php
+
+    session_start();
+
+    $id_U = $_SESSION['ID_Usuario'];
+    $id_c = $_SESSION['ID_Carrito'];
+
+    
+    $sqlCantidad = "SELECT ID_Articulo , Cantidad_articulo FROM articulo_carrito WHERE ID_Articulo = $_GET[idArticulo] AND ID_Carrito = $id_c";
+    $stmt = sqlsrv_query($conn, $sqlCantidad);
+
+    
+    $articulos = false;
+    while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
+        $ID = $row['ID_Articulo'] ;
+        $Cant_Art = $row['Cantidad_articulo'] ;
+        $articulos = true;
+    }
+
+    $Cant_Art += $_GET[Cantidad];
+
+    if($articulos){
+        $Sql = "UPDATE articulo_carrito SET Cantidad_Articulo = $Cant_Art WHERE ID_Articulo = $_GET[idArticulo] AND ID_Carrito = $id_c";
+    }else{
+        $Sql = "INSERT INTO articulo_carrito VALUES($id_c,$_GET[idArticulo],$Cant_Art,0)";
+    }
+
+    sqlsrv_query($conn, $Sql);
+
     $sql = "SELECT articulo_carrito.ID_Articulo, Precio, Cantidad_Articulo FROM articulo 
-    INNER JOIN articulo_carrito ON articulo_carrito.ID_Articulo = articulo.ID_Articulo WHERE ID_Carrito = $_GET[id];";
+    INNER JOIN articulo_carrito ON articulo_carrito.ID_Articulo = articulo.ID_Articulo WHERE ID_Carrito = $id_c";
     $stmt = sqlsrv_query($conn, $sql);
 
-    if( $stmt === false ) {
+    if( $stmt == false ) {
         die( print_r( sqlsrv_errors(), true));
-        }
+    }
 
     $total = 0;
     while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
@@ -22,16 +49,24 @@
         $id_a = $row['ID_Articulo'];
         //UPDATE A CADA PRECIO POR ARTICULO DE ACUERDO A SU CANTIDAD
 
-        $sql = "UPDATE articulo_carrito SET Total_articulo = $total WHERE ID_Carrito = $_GET[id] AND ID_Articulo = $id_a";
+        $sql = "UPDATE articulo_carrito SET Total_articulo = $total WHERE ID_Carrito = $id_c AND ID_Articulo = $id_a";
         // $params = array($total, $_GET[id], $row['ID_Articulo']);
         $stmt2 = sqlsrv_query( $conn, $sql);
 
-        if( $stmt === false) {
+        if( $stmt == false) {
             die( print_r( sqlsrv_errors(), true) );
         }
     }
-    $sql = "SELECT articulo_carrito.ID_Articulo, Talla, Imagen, Total_articulo, Cantidad_Articulo, Modelo FROM carrito INNER JOIN articulo_carrito ON carrito.ID_Carrito = articulo_carrito.ID_Carrito INNER JOIN articulo ON articulo_carrito.ID_Articulo = articulo.ID_Articulo INNER JOIN modelo ON articulo.ID_Modelo = modelo.ID_Modelo INNER JOIN TALLA ON articulo.ID_Talla = talla.ID_Talla WHERE carrito.ID_Carrito = $_GET[id]";
+
+    $sql = "SELECT articulo_carrito.ID_Articulo, Talla, Imagen, Total_articulo, Cantidad_Articulo, Modelo FROM carrito 
+    INNER JOIN articulo_carrito ON carrito.ID_Carrito = articulo_carrito.ID_Carrito 
+    INNER JOIN articulo ON articulo_carrito.ID_Articulo = articulo.ID_Articulo 
+    INNER JOIN modelo ON articulo.ID_Modelo = modelo.ID_Modelo 
+    INNER JOIN TALLA ON articulo.ID_Talla = talla.ID_Talla
+    WHERE carrito.ID_Carrito = $id_c";
+  
     $res=sqlsrv_query($conn,$sql);
+
 ?>
 
 
@@ -91,12 +126,7 @@
 
 </section>
 
-        <!-- Cariito de compras cool-->
-        
-                                            
-                                            
-                                            
-                                            
+        <!-- Carrito de compras cool-->                                     
     <div class="navbar navbar-expand-md navbar-light"> </div>
     <div class="contenedor">
         <h1 id="Titulo" class="text-center mr-5 mt-5">Carrito de Compras</h1>
@@ -139,7 +169,7 @@
                                                         Talla: <?php echo $fila['Talla'];?>
                                                     </p>
                                                     <!--Datos del producto-->
-                                                    <p class="text-white mb-3">Cantidad : <?php echo $fila['Cantidad_Articulo'];?> | <a href="Eliminar.php?id=<?php echo $_GET['id'];?>&idProducto=<?php echo $fila['ID_Articulo'];?>" class="btn btn-outline-light icofont-trash text-danger" >Eliminar</a></p>
+                                                    <p class="text-white mb-3">Cantidad : <?php echo $fila['Cantidad_Articulo'];?> | <a href="Eliminar.php?idProducto=<?php echo $fila['ID_Articulo'];?>" class="btn btn-outline-light icofont-trash text-danger" >Eliminar</a></p>
                                                     </p>
                                                     
                                                 </div>
@@ -162,7 +192,7 @@
                                     <?PHP 
 
                                         $total=0;
-                                        $sql = "SELECT Total_articulo FROM articulo_carrito WHERE ID_Carrito = $_GET[id]";
+                                        $sql = "SELECT Total_articulo FROM articulo_carrito WHERE ID_Carrito = $id_c";
                                         //$params = array($id_c);
                                         $stmt = sqlsrv_query( $conn, $sql);
                                         if( $stmt === false) {
@@ -174,7 +204,7 @@
                                         }
                                     
                                         /*Actualiza el precio total de la BD*/
-                                        $sql = "UPDATE carrito SET Precio_Total = $total WHERE ID_Carrito = $_GET[id]";
+                                        $sql = "UPDATE carrito SET Precio_Total = $total WHERE ID_Carrito =  $id_c";
 
                                         $stmt = sqlsrv_query( $conn, $sql);
                                     
