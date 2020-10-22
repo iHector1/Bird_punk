@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- Conexión a la base de datos -->
 <?php
     $serverName = "LAPTOP-BH1NLJJ4"; //serverName
     $connectionInfo = array( "Database"=>"BirdPunk");
     $conn = sqlsrv_connect($serverName, $connectionInfo);
-
 ?>
 
 <head>
@@ -59,6 +59,19 @@
         </nav>
         <div class="navbar navbar-expand-md navbar-light"> </div>
     </section>
+
+    <!-- Valida el usuario del que se muestra el historial  -->
+    <?php
+    /*
+    $sql = "SELECT ID_Usuario FROM compra WHERE ID_Usuario = 1"; //Aquí se debe de condiciionar por el ID del usuario
+    $stmt = sqlsrv_query($conn, $sql);
+    $row=sqlsrv_fetch_array($stmt); //Obtiene el ID del usuariode la bd
+
+    echo $row['ID_Usuario'];
+    */
+    ?>
+    
+
     <!--- SECCIÓN DE HISTORIAL DE COMPRAS -->
     <section class="fadeInDown">
         <div class="mx-auto col-md-9">
@@ -112,7 +125,7 @@
                                                 $sql = "SELECT No_Orden FROM compra WHERE No_Orden = 1";
                                                 $stmt = sqlsrv_query($conn, $sql);
                                                 $row=sqlsrv_fetch_array($stmt); //Obtiene el numero de orden de la bd
-                                                echo("No. Orden");                                                
+                                                echo("No_Orden");                                                
                                                 //echo $row['No_Orden']; //No se puede agregar un registro
                                             ?>  
                                         <i class="icofont-clock-time ml-2"></i>
@@ -146,8 +159,7 @@
 
                             </div>
                         </div>
-</section>
-                       
+</section>                      
 </div>
 </body>
 </html>

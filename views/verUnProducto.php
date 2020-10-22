@@ -114,50 +114,46 @@
             <br><br>
             <h5>Talla</5>
             <br>
-            <mat-form-field appearance="fill" method="POST" required>
-            <select matNativeControl required>
-                <option value="t1">25 cm</option>
-                <option value="t2">26 cm</option>
-                <option value="t3">27 cm</option>
-                <option value="t4">28 cm</option>
+            <mat-form-field appearance="fill" name="talla1" method="POST" required>
+            <select matNativeControl  name="talla" required>
+                <option value="25">25 cm</option>
+                <option value="26">26 cm</option>
+                <option value="27">27 cm</option>
+                <option value="28">28 cm</option>
             </select>
             </mat-form-field>
             <br><br>
-            <form name="form-cant" method="POST">
+            <form name="form-stock" method="POST">
                 <h5>Cantidad</h5> 
-                    <input type="number" name="cantidad" min="1" value="0" required>
+                    <input type="number" name="cantidad" min=1 required>
                     <br><br>   
-                    <form method="get">
-                        <input type="submit" value="Añadir al carrito">
-                    </form>
+                    <input type="submit" value="Añadir al carrito">
             </form>
             <!-- Verificar stock -->
             <?php 
                     $sql = "SELECT Stock FROM articulo WHERE ID_Articulo = 5";
                     $stmt = sqlsrv_query($conn, $sql);
                     $row=sqlsrv_fetch_array($stmt); //Obtiene el valor de stock de la bd
+                    $cantidad = (int)$_POST['cantidad']; //Obtiene el valor de la página web
+                    $var = (int)$row['Stock']; //Casteo
 
-                    echo("Cantidad de artículos: ");
-                    isset($_POST["cantidad"]) ? print $_POST["cantidad"] : "";//Imprime valor ingresado en pagina web
-                    //$cantidad = isset($_POST["cantidad"]) ? : ""; //Obtiene el valor ingresado en la pagina web
-
-                    echo("Stock: ");
-                    echo $row['Stock']; //Imprime la cantidad en el stock de la bd
-                    
-
-                    if(isset($_POST["cantidad"]) == $row['Stock']){      
-                        echo ("   Si hay");
-                    }else{
-                        echo ("   No hay");
+                    while($cantidad == 0){
+                        echo (" ");
+                    }
+                    if($cantidad < $var || $cantidad == $var){ 
+            ?>
+                        <!-- Referencia para añadir al carrito -->
+                        <a href="http://localhost/Bird_punk/views/carrito.php/?$cantidad=$cantidad&$var=$var"><i class="icofont-cart"></i>Ir al carrito de compras</a>
+            <?php
+                    }else{                      
+                        echo "<script>alert('No hay suficiente stock');</script>";
+                        echo "<font color=\"red\">Stock:</font>";
+                        echo $row['Stock'];
                     }
             ?>
-
-
-                
         </div>  
     </div>
 </div> 
-
 </body>
 </html>
 
