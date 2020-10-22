@@ -3,8 +3,8 @@
 
 <!-- Conexión a la base de datos -->
 <?php
-    $serverName = "ALVAROCD-PC"; //serverName
-    $connectionInfo = array( "Database"=>"birdPunk");
+    $serverName = "LAPTOP-BH1NLJJ4"; //serverName
+    $connectionInfo = array( "Database"=>"BirdPunk");
     $conn = sqlsrv_connect($serverName, $connectionInfo);
 ?>
 
@@ -136,31 +136,28 @@
                     </form>
             </form>
             <!-- Verificar stock -->
-            <?php 
+             <!-- Verificar stock -->
+             <?php 
                     $sql = "SELECT Stock FROM articulo WHERE ID_Articulo = 5";
                     $stmt = sqlsrv_query($conn, $sql);
                     $row=sqlsrv_fetch_array($stmt); //Obtiene el valor de stock de la bd
+                    $cantidad = (int)$_POST['cantidad']; //Obtiene el valor de la página web
+                    $var = (int)$row['Stock']; //Casteo
 
-                    echo("Cantidad de artículos: ");
-                    isset($_POST["cantidad"]) ? print $_POST["cantidad"] : "";//Imprime valor ingresado en pagina web
-                    //$cantidad = isset($_POST["cantidad"]) ? : ""; //Obtiene el valor ingresado en la pagina web
-
-                    echo("<br>");
-                    echo("Stock: ");
-                    echo $row['Stock']; //Imprime la cantidad en el stock de la bd
-                    echo("<br>");
-
-                    if(isset($_POST["cantidad"]) == $row['Stock']){      
-                        echo ("   Si hay"); 
-                    }else{
-                        echo ("   No hay");
+                    while($cantidad == 0){
+                        echo (" ");
                     }
+                    if($cantidad < $var || $cantidad == $var){ 
             ?>
-
-
-
-
-                
+                        <!-- Referencia para añadir al carrito -->
+                        <a href="http://localhost/Bird_punk/views/carrito.php/?$cantidad=$cantidad&$var=$var"><i class="icofont-cart"></i>Ir al carrito de compras</a>
+            <?php
+                    }else{                      
+                        echo "<script>alert('No hay suficiente stock');</script>";
+                        echo "<font color=\"red\">Stock:</font>";
+                        echo $row['Stock'];
+                    }
+            ?>         
         </div>  
     </div>
 </div> 
