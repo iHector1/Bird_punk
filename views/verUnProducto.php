@@ -3,7 +3,7 @@
 
 <!-- Conexión a la base de datos -->
 <?php
-    $serverName = "LAPTOP-BH1NLJJ4"; //serverName
+    $serverName = "ALVAROCD-PC"; //serverName
     $connectionInfo = array( "Database"=>"BirdPunk");
     $conn = sqlsrv_connect($serverName, $connectionInfo);
 ?>

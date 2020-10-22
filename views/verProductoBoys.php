@@ -71,40 +71,27 @@ else{
     <!-------articulo------->
     <!-- Codigo PHP para obtener los datos de la base de datos -->
 <?php
-$query = "SELECT * FROM articulo WHERE Genero='M' OR Genero='U'";
+$query = "SELECT modelo.Modelo, marca.Marca, articulo.Precio, talla.Talla FROM articulo INNER JOIN modelo ON articulo.ID_Modelo=modelo.ID_Modelo INNER JOIN marca ON articulo.ID_Marca=marca.ID_Marca INNER JOIN talla ON articulo.ID_Talla=talla.ID_Talla WHERE Genero='M' OR Genero='U'";
 $res = sqlsrv_query($conn, $query);
 while ($row = sqlsrv_fetch_array($res)) {
 ?>
-<?php
-    echo($row[0]);
-    echo($row[1]);
-    echo($row[2]);
-    echo($row[3]);
-    echo($row[4]);
-    echo($row[5]);
-    echo($row[6]);
-    echo($row[7]);
-    echo("<br>");  
-}
 
-?> 
 <div class="articulos">
     <div class="articulo" >
         <div>
         <a href="verUnProducto.php"> <img src="tenis.jpg" class="uno"> </a>
         </div>
         <div class="desc">
-            <h5>Nombre</h5>
-            <h5>Texto</h5>
-            <h5>Marca</h5>
-            <h5>Precio</h5>
-        </div>
-        <div class="desc">
-            <h5>Nike</h5>
-            <h6>26</h6>
-            <h6>27</h6>
+            <h5><b>Nombre:</b> <?php echo $row[0];?></h5>
+            <h5><b>Marca:</b> <?php echo $row[1]?></h5>
+            <h5></h5>
+            <h5><b>Precio:</b> <?php echo $row[2]?></h5>
+            <h5><b>Talla:</b> <?php echo $row[3]?></h5>
         </div>
     </div>
+    <br>
+    <br>
+<?php }?>
 
     <!---------FOOTER--------->
     <section id="footer">
