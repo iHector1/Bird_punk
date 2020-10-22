@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<!-- Conexión a la base de datos -->
+<?php
+    $serverName = "LAPTOP-BH1NLJJ4"; //serverName
+    $connectionInfo = array( "Database"=>"BirdPunk");
+    $conn = sqlsrv_connect($serverName, $connectionInfo);
+?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -58,17 +66,42 @@
         <!-- columna derecha -->
         <div id="first"> 
             <div>
+            <?php
+                $sql2 = "SELECT Stock FROM articulo";
+            ?>
                 <div class="galeria">
+                    <!--Almacenar la imagen en la bd -->
+                    <?php
+                    //Primer img
+                        $sql = "SELECT Imagen FROM Articulo WHERE ID_Articulo = 5"; 
+                        $result = sqlsrv_query($conn, $sql);
+                        $row = sqlsrv_fetch_array($result);
+                    ?>
+
+                    <?php
+                    //Primer img
+                        $sql = "SELECT Imagen FROM Articulo WHERE ID_Articulo = 9"; 
+                        $result = sqlsrv_query($conn, $sql);
+                        $row2 = sqlsrv_fetch_array($result);
+                    ?>
+                    
+                    <?php
+                    //Primer img
+                        $sql = "SELECT Imagen FROM Articulo WHERE ID_Articulo = 11"; 
+                        $result = sqlsrv_query($conn, $sql);
+                        $row3 = sqlsrv_fetch_array($result);
+                    ?>
+    
                     <input type="radio" name="navegacion" id="_1" checked>
                     <input type="radio" name="navegacion" id="_2">
                     <input type="radio" name="navegacion" id="_3">
                     <input type="radio" name="navegacion" id="_4"> 
                     <input type="radio" name="navegacion" id="_5">
-                    <img src="tenis.jpg" width="600" height="300"/>
-                    <img src="Imagenes/tenis-2.jpg" width="600" height="300"/>
-                    <img src="Imagenes/tenis-3.jpg" width="600" height="300"/>
-                    <img src="Imagenes/tenis-4.jpg" width="600" height="300"/>
-                    <img src="Imagenes/tenis-1.jpg" width="600" height="300"/>
+                    <img src="tenis.jpg" width="600" height="300"/> <!--Ejemplo-->
+                    <img src="imageView.php?image_id= <?php echo $row["Imagen"]; ?>" width="600" height="300"/><br/>
+                    <img src="imageView.php?image_id= <?php echo $row2["Imagen"]; ?>" width="600" height="300"/><br/>
+                    <img src="imageView.php?image_id= <?php echo $row3["Imagen"]; ?>" width="600" height="300"/><br/>
+                    <img src="Imagenes/tenis-2.jpg" width="600" height="300"/> <!--Ejemplo-->
                 </div>
             </div>
         </div>
@@ -81,25 +114,46 @@
             <br><br>
             <h5>Talla</5>
             <br>
-            <mat-form-field appearance="fill" method="POST">
-            <select matNativeControl required>
-                <option value="t1">25 cm</option>
-                <option value="t2">26 cm</option>
-                <option value="t3">27 cm</option>
-                <option value="t4">28 cm</option>
+            <mat-form-field appearance="fill" name="talla1" method="POST" required>
+            <select matNativeControl  name="talla" required>
+                <option value="25">25 cm</option>
+                <option value="26">26 cm</option>
+                <option value="27">27 cm</option>
+                <option value="28">28 cm</option>
             </select>
             </mat-form-field>
             <br><br>
-            <form name="cantidad" method="POST">
+            <form name="form-stock" method="POST">
                 <h5>Cantidad</h5> 
-                    <input type="number" name="edad">
+                    <input type="number" name="cantidad" min=1 required>
+                    <br><br>   
+                    <input type="submit" value="Añadir al carrito">
             </form>
-            <br><br>
-            <input type="submit" value="Añadir al carrito">
+            <!-- Verificar stock -->
+            <?php 
+                    $sql = "SELECT Stock FROM articulo WHERE ID_Articulo = 5";
+                    $stmt = sqlsrv_query($conn, $sql);
+                    $row=sqlsrv_fetch_array($stmt); //Obtiene el valor de stock de la bd
+                    $cantidad = (int)$_POST['cantidad']; //Obtiene el valor de la página web
+                    $var = (int)$row['Stock']; //Casteo
+
+                    while($cantidad == 0){
+                        echo (" ");
+                    }
+                    if($cantidad < $var || $cantidad == $var){ 
+            ?>
+                        <!-- Referencia para añadir al carrito -->
+                        <a href="http://localhost/Bird_punk/views/carrito.php/?$cantidad=$cantidad&$var=$var"><i class="icofont-cart"></i>Ir al carrito de compras</a>
+            <?php
+                    }else{                      
+                        echo "<script>alert('No hay suficiente stock');</script>";
+                        echo "<font color=\"red\">Stock:</font>";
+                        echo $row['Stock'];
+                    }
+            ?>
         </div>  
     </div>
 </div> 
-
 </body>
 </html>
 

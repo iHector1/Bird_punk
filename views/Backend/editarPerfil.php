@@ -1,54 +1,65 @@
 <?php
+
     $serverName = "S-NOTEBOOK";
     $connectionInfo = array( "Database"=>"bearpay");
     $conn = sqlsrv_connect( $serverName, $connectionInfo);
 
-    echo "Ingrese su correo y contraseña. <br>";
-    echo "Correo: <br>";
-    echo "Contraseña: <br><br>";
-
     if( $conn ) {
-        $nombre = "sin nombre";
-        $apellido_p = "sin apellido paterno";
-        $apellido_m = "sin apellido materno";
+
+        $nombre = "";
+        $apellido_p = "";
+        $apellido_m = "";
         $correo = "correo@gmail.com";
-        $contraseña = "yeah";
+        $pass = "yeah";
+        $newPass = "";
 
-        $revisarUsuario = "SELECT Correo FROM usuario WHERE Correo = $correo";
-        $resultado = sqlsrv_query($conn, $revisarUsuario);
+        $existeUsuario = "SELECT Correo FROM usuario WHERE Correo = '$correo'";
 
-        if(sqlsrv_query($conn, $resultado)){
-            $revisarContra = "SELECT Contraseña FROM usuario WHERE Contraseña = '$contraseña'";
-            $resultado = sqlsrv_query($conn, $revisarContra);
-            
+        if(sqlsrv_query($conn, $existeUsuario)){
+
+            $ingresarPass = "SELECT Contraseña FROM usuario WHERE Contraseña = '$pass'";
+            $resultado = sqlsrv_query($conn, $ingresarPass);
+
             if(sqlsrv_query($conn, $resultado)){
-                $modificar = "UPDATE usuario SET Nombre_s = '$nombre', Apellido_Paterno = '$apellido_p',
-                                                 Apellido_Materno = '$apellido_m'";
-                $consulta=sqlsrv_query($conn, $modificar);
-                
-                // $modificar = "SELECT * FROM usuario WHERE Correo = '$correo'";
-                // $resultado = sqlsrv_query($conn, $modificar);
-                
-                // while($fila = sqlsrv_fetch_array($resultado)){
-                //     echo $fila["Nombre_s"] . "<br>";
-                //     echo $fila["Apellido_Paterno"] . "<br>";
-                //     echo $fila["Apellido_Materno"];
-                // }
 
-                if(sqlsrv_query($conn, $modificar)){
-                    echo "Modificación exitosa.<br>";
+                if($nombre != ""){
+                    $editarNombre = "UPDATE usuario SET Nombre_s = '$nombre'";
+                    if(sqlsrv_query($conn, $editarNombre))
+                        echo "Nombre editado exitosamente.<br>";
+                    else
+                        echo "Error, el nombre no se pudo editar.<br>";
                 }
-                else{
-                    echo "No se pudo realizar la modificación.<br>";
+
+                if($apellido_p != ""){
+                    $editarApellidoPaterno = "UPDATE usuario SET Apellido_Paterno = '$apellido_p'";
+                    if(sqlsrv_query($conn, $editarApellidoPaterno))
+                        echo "Apellido paterno editado exitosamente.<br>";
+                    else
+                        echo "Error, el apellido paterno no se pudo editar.<br>";
+                }
+
+                if($apellido_m != ""){
+                    $editarApellidoMaterno = "UPDATE usuario SET Apellido_Materno = '$apellido_m'";
+                    if(sqlsrv_query($conn, $editarApellidoMaterno))
+                        echo "Apellido materno editado exitosamente.<br>";
+                    else
+                        echo "Error, el apellido materno no se pudo editar.<br>";
+                }
+
+                if($newPass != ""){
+                    $editarPass = "UPDATE usuario SET Contraseña = '$newPass'";
+                    $resultado = sqlsrv_query($conn, $editarPass);
+                    if(sqlsrv_query($conn, $resultado))
+                        echo "Contraseña editada exitosamente.<br>";
+                    else
+                        echo "Error, la contraseña no se pudo editar.<br>";
                 }
             }
-            else{
-                echo "Error, la contraseña está errada.<br>";
-            }
+            else
+                echo "Error, la contraseña es incorrecta.<br>";
         }
-        else{
+        else
             echo "Error, no hay ningún usuario registrado con ese correo.<br>";
-        }
     }
     else{
         echo "Conexión no se pudo establecer.<br>";
