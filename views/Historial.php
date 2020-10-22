@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+    $serverName = "LAPTOP-BH1NLJJ4"; //serverName
+    $connectionInfo = array( "Database"=>"BirdPunk");
+    $conn = sqlsrv_connect($serverName, $connectionInfo);
+
+?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -67,21 +74,56 @@
                                     <a href="#">
                                         <img class="rounded d-block mr-4" src="tenis.jpg" alt="">
                                     </a>
+
                                     <div class="media-body">
                                         <!--FECHA DEL PEDIDO-->
                                         <a href="#">
-                                            <span class="float-right text-info">FECHA DE ENTREGA<i class="icofont-check-circled text-success"></i></span>
+                                            <span class="float-right text-info">FECHA DE ENTREGA
+                                            <i class="icofont-check-circled text-success">    
+                                            </i>
+                                            </span>
                                         </a>
                                         <!--NOMBRE DEL ARTICULO-->
                                         <h6 class="mb-2">
                                             <a href="#"></a>
-                                            <a href="#" class="text-black">NOMBRE DEL ARTICULO</a>
+                                            <a href="#" class="text-black">
+                                            <?php
+                                                $sql = "SELECT ID_Articulo FROM articulo WHERE ID_Articulo = 5";
+                                                $stmt = sqlsrv_query($conn, $sql);
+                                                $row=sqlsrv_fetch_array($stmt); //Obtiene el ID del articulo de la bd
+                                                echo("Tenis Nike Kyrie V SpongeBob ");
+                                                echo $row['ID_Articulo'];
+                                            ?> 
+                                            </a>
                                         </h6>
                                         <!--DIRECCION DEL ENVIO-->
-                                        <p class="text-gray mb-1"><i class="icofont-location-arrow"></i> DOMICILIO 
+                                        <p class="text-gray mb-1"><i class="icofont-location-arrow"></i> DOMICILIO
+                                            <?php
+                                                $sql = "SELECT Calle, NoExterior, NoInterior FROM info_cliente WHERE ID_Usuario = 1";
+                                                $stmt = sqlsrv_query($conn, $sql);
+                                                $row=sqlsrv_fetch_array($stmt); //Obtiene el domicilio de la bd
+                                                //echo $row['Calle, NoExterior, NoInterior']; //No se puede agregar un registro
+                                            ?> 
                                         </p>
                                         <!--ID ORDEN DESCRIPCIÓN-->
-                                        <p class="text-gray mb-3"><i class="icofont-list"></i> NUMERO DE ORDEN <i class="icofont-clock-time ml-2"></i> FECHA DEL PEDIDO</p>
+                                        <p class="text-gray mb-3">
+                                        <i class="icofont-list"></i> 
+                                            <?php
+                                                $sql = "SELECT No_Orden FROM compra WHERE No_Orden = 1";
+                                                $stmt = sqlsrv_query($conn, $sql);
+                                                $row=sqlsrv_fetch_array($stmt); //Obtiene el numero de orden de la bd
+                                                echo("No. Orden");                                                
+                                                //echo $row['No_Orden']; //No se puede agregar un registro
+                                            ?>  
+                                        <i class="icofont-clock-time ml-2"></i>
+                                            <?php
+                                                $sql = "SELECT Fecha_Compra FROM compra WHERE No_Orden = 1";
+                                                $stmt = sqlsrv_query($conn, $sql);
+                                                $row=sqlsrv_fetch_array($stmt); //Obtiene la fecha de compra de la bd
+                                                echo("Fecha_Compra");                                                
+                                                //echo $row['Fecha_Compra']; //No se puede agregar un registro
+                                            ?> 
+                                        </p>
                                         <p class="text-dark">DESCRIPCION
                                         </p>
                                         <hr>
@@ -90,8 +132,15 @@
                                             <a class="btn btn-sm btn-primary" href="carrito.php"><i class="icofont-refresh"></i> Comprar Nuevamente</a>
                                         </div>
                                         <!--PRECIO TOTAL DE COMPRA-->
-                                        <p class="mb-0 text-black text-primary pt-2"><span class="text-black font-weight-bold"> Total de Compra:</span> CANTIDAD TOTAL
-                                        </p>
+                                        <p class="mb-0 text-black text-primary pt-2"><span class="text-black font-weight-bold"> Total de Compra:</span> 
+                                            <?php
+                                                $sql = "SELECT Precio_Total FROM compra WHERE No_Orden = 1";
+                                                $stmt = sqlsrv_query($conn, $sql);
+                                                $row=sqlsrv_fetch_array($stmt); //Obtiene el precio total de la bd
+                                                echo("Precio_Total");                                                
+                                                //echo $row['Precio_Total']; //No se puede agregar un registro
+                                            ?> 
+                                            </p>
                                     </div>
                                 </div>
 

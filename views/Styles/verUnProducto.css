@@ -61,5 +61,4 @@ input[type=submit]{
   .galeria input[type=radio]:nth-of-type(5):checked ~ img:nth-of-type(5) {
     opacity: 1;
   }
-
   

@@ -1,3 +1,33 @@
+<?php
+    //Conexion al Servidor *Cambiar segun la maquina
+    $serverName = "DESKTOP-K60F1OJ"
+    or die ("Error en la conexion al servidor");
+
+    //Conexion a la BD Bird_Punk    *Cambiar segun el nombre de cada uno
+    $conectionInfo = array("Database" => "BirdPunk")
+    or die ("Error en la conexion a la base de datos");
+
+    $conn = sqlsrv_connect($serverName, $conectionInfo);
+
+    //Querys correspondientes a la primera Base de datos (BirdPunk)
+
+    session_start();
+    $_SESSION['ID_Usuario'] = 5;
+    $id_u = $_SESSION['ID_Usuario'];
+    $sql = "SELECT Total_articulo, Cantidad_Articulo, talla, modelo,Imagen FROM compra 
+            INNER JOIN detalle_compra ON compra.No_Orden = detalle_compra.No_Orden 
+            INNER JOIN articulo ON detalle_compra.ID_Articulo = articulo.ID_Articulo
+            INNER JOIN talla ON talla.ID_Talla = articulo.ID_Talla 
+            INNER JOIN modelo ON modelo.ID_Modelo = articulo.ID_Modelo
+            WHERE ID_Usuario = $id_u";
+    $recurso = sqlsrv_query($conn, $sql);
+
+    if ($recurso === false){
+        echo "Error";
+        die(print_r(sqlsrv_errors(), true));
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,42 +84,31 @@
 
     <h4>Numero de pedido: 123DER2345</h4>
     <!-------articulo------->
-    <div class="art">
+    <div class="art" >
+    <?php 
+                                        while($fila = sqlsrv_fetch_array($recurso)){
+                                    ?>
         <div>
             <div class="producto">
-                <img src="tenis.jpg" class="cancelar">
+                <img src="Imagenes/<?php echo $fila['Imagen'];?>" class="cancelar">
             </div>    
             <div class="producto">
-                <h6>Nombre articulo</h6>
-                <h6>Cantidad</h6>
-                <h6>Talla</h6>
-                <h6>Precio1</h6>
+                <h6><?php echo $fila['modelo'];?></h6>
+                <h6><?php echo $fila['Cantidad_Articulo'];?></h6>
+                <h6><?php echo $fila['talla'];?></h6>
+                <h6><?php echo $fila['Total_articulo'];?></h6>
             </div>
         </div>
-        <div>
-            <div class="producto">
-                <img src="tenis.jpg" class="cancelar">
-            </div>    
-            <div class="producto">
-                <h6>Nombre articulo</h6>
-                <h6>Cantidad</h6>
-                <h6>Talla</h6>
-                <h6>Precio2</h6>
-            </div>
-        </div>
-            <div class="producto">
-                <img src="tenis.jpg" class="cancelar">
-            </div>    
-            <div class="producto">
-                <h6>Nombre articulo</h6>
-                <h6>Cantidad</h6>
-                <h6>Talla</h6>
-                <h6>Precio3</h6>
-            </div>
+        <?php 
+            }
+        ?>
     </div> 
-    <input type="submit" class="fadeIn fourth" value="Cancelar pedido">
-    <input type="submit" class="fadeIn fourt" value="Agregar producto">
-    <input type="submit" class="fadeIn four" value="Finalizar compra">    
+    <form action  = "CancelarDevolver.php" >
+    <input type="submit"  class="fadeIn fourth"  value="Cancelar pedido" > 
+    <input type="submit" class="fadeIn fourt" value="Devolver  producto">
+    <!-- <input type="submit" class="fadeIn four" value="Finalizar compra">     -->
+    </form>
+    
         
     <!---------FOOTER--------->
     <section id="footer">

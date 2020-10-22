@@ -53,7 +53,6 @@
         <div class="navbar navbar-expand-md navbar-light"> </div>
 
     </section>
-
     <!-------articulo------->
 <div class="articulos">
     <div class="articulo" >
