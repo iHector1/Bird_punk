@@ -1,3 +1,11 @@
+<?php
+session_start();
+error_reporting(0);
+$varsesion = $_SESSION['usuario'];
+$varsesion2 = $_SESSION['IDusuario'];
+$varsesion3 = $_SESSION['IDcarrito'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,6 +36,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">MUJERES</a>
                     </li>
+                    <li class="nav-item">
+
+                    <?php
+                    if(!($varsesion == null || $varsesion == '')){
+                        echo "<h4 class='nav-link'>      Bienvenid@: ";  echo$_SESSION['usuario']; echo" </h4>";
+                    }
+                    ?>
+  
+                    </li>
                 </ul>
             </div>
             <div class="navbar w-100 order-2  mx-auto">
@@ -39,11 +56,26 @@
             <!--User/Carrito-->
             <div class="navbar w-100 order-3 ">
                 <ul class="navbar-nav mx-auto">
-                    <a href="IniciarSesion.php" class="navbar-button">
-                        <i class="fa fa-user-circle-o"></i>
-                    </a>
-                       <a href="carrito.php" class="navbar-button"> <i href class="fa fa-shopping-cart"></i></a>
-                 
+                        <?php
+                        if($varsesion == null || $varsesion == ''){
+                            echo "<a href='IniciarSesion.php' class='navbar-button'><i class='fa fa-user-circle-o'></i></a>";
+                        }
+                        ?> 
+                    
+                        <?php
+                        if(!($varsesion == null || $varsesion == '')){
+                            echo "<a href='carrito.php' class='navbar-button'> <i href class='fa fa-shopping-cart'></i></a>";
+                        }else{
+                            echo "<a href='Registro.php' class='navbar-button'> Registrarse</a>";
+                        }
+                        ?> 
+                        
+                       <?php
+                        if(!($varsesion == null || $varsesion == '')){
+                            echo " <a href='Logout.php' class='navbar-button'> Cerrar Sesion</a>";
+                        }
+                        ?> 
+                        
                 </ul>
             </div>
         </nav>

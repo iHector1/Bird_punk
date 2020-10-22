@@ -1,17 +1,3 @@
-<?php
-session_start();
-error_reporting(0);
-$varsesion = $_SESSION['usuario'];
-$varsesion2 = $_SESSION['IDusuario'];
-?>
-<?php
-if($varsesion == null || $varsesion == ''){
-    echo'<script type="text/javascript">
-        alert("Sesion cerrada.");
-        window.location.href = "Index.php";
-        </script>';
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,8 +13,26 @@ if($varsesion == null || $varsesion == ''){
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="Styles/IndexStyle.css" />
+    <link rel="stylesheet" href="Styles/styleVerProducto.css">
 </head>
 <body>
+
+<!-- Codigo PHP para Conexion -->
+
+<?php
+    $serverName = "ALVAROCD-PC";            //Aqui solo se tiene que cambiar por el nombre del servidor que va a alojar la BD
+    $connectionInfo = array( "Database"=>"birdpunk");
+    $conn = sqlsrv_connect( $serverName, $connectionInfo);
+if ($conn == TRUE) {
+    echo("Conexion exitosa");
+    echo("<br>"); 
+}
+else{
+    echo("Error en la conexion");
+}
+?>
+
+
     <!--Barra de navegación-->
     <section id="Nav-bar">
         <div class="navbar border-bottom navbar-expand-md navbar-light navbar-fixed-top">
@@ -37,30 +41,15 @@ if($varsesion == null || $varsesion == ''){
             <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item ">
-                        <a class="nav-link border-right" href="#">HOMBRES</a>
+                        <a class="nav-link border-right" href="verProductoBoys.php">HOMBRES</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link border-right" href="#">MUJERES</a>
+                        <a class="nav-link" href="verProductoGirls.php">MUJERES</a>
                     </li>
-                    <li class="nav-item">
-                        <?php
-                        if(!($varsesion == null || $varsesion == '')){
-                            echo "<a class='nav-link ' href='agregarAlmacenista.php'>ALMACENISTAS</a>";
-                        }
-                        ?>   
-                    </li>
-                    <li class="nav-item">
-                    <?php
-                    if(!($varsesion == null || $varsesion == '')){
-                        echo "<h4 class='nav-link'>      Bienvenid@: ";  echo$_SESSION['usuario']; echo" </h4>";
-                    }
-                    ?>
-                    </li>
-                    
                 </ul>
             </div>
             <div class="navbar w-100 order-2  mx-auto">
-                <a href="IndexAdministrador.php"><img src="imagenes/logo.PNG" width="60%" style="margin-left:150px;"></a>
+                <img class="mx-auto" src="imagenes/logo.PNG" width="60%">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
                     <i class="fa fa-bars" aria-hidden="true"></i>
                 </button>
@@ -68,17 +57,10 @@ if($varsesion == null || $varsesion == ''){
             <!--User/Carrito-->
             <div class="navbar w-100 order-3 ">
                 <ul class="navbar-nav mx-auto">
-                    <?php
-                        if($varsesion == null || $varsesion == ''){
-                            echo "<a href='IniciarSesion.php' class='navbar-button'><i class='fa fa-user-circle-o'></i></a>";
-                        }
-                    ?> 
-                    <?php
-                        if(!($varsesion == null || $varsesion == '')){
-                            echo " <a href='Logout.php' class='navbar-button'> Cerrar Sesion</a>";
-                        }
-                    ?> 
-                      
+                    <a href="IniciarSesion.php" class="navbar-button">
+                        <i class="fa fa-user-circle-o"></i>
+                    </a>
+                       <a href="carrito.php" class="navbar-button"> <i href class="fa fa-shopping-cart"></i></a>
                  
                 </ul>
             </div>
@@ -86,17 +68,49 @@ if($varsesion == null || $varsesion == ''){
         <div class="navbar navbar-expand-md navbar-light"> </div>
 
     </section>
-    <!-----------Banner------------>
-    <section id="banner">
-        <div class="fadeInDown"> 
-            <img class="rounded mx-auto d-block" src="imagenes/banner-bg.jpg" width="100%" padding-top="2px">
+    <!-------articulo------->
+    <!-- Codigo PHP para obtener los datos de la base de datos -->
+<?php
+$query = "SELECT * FROM articulo WHERE Genero='M' OR Genero='U'";
+$res = sqlsrv_query($conn, $query);
+while ($row = sqlsrv_fetch_array($res)) {
+?>
+<?php
+    echo($row[0]);
+    echo($row[1]);
+    echo($row[2]);
+    echo($row[3]);
+    echo($row[4]);
+    echo($row[5]);
+    echo($row[6]);
+    echo($row[7]);
+    echo("<br>");  
+}
+
+?> 
+<div class="articulos">
+    <div class="articulo" >
+        <div>
+        <a href="verUnProducto.php"> <img src="tenis.jpg" class="uno"> </a>
         </div>
-        
-    </section>
+        <div class="desc">
+            <h5>Nombre</h5>
+            <h5>Texto</h5>
+            <h5>Marca</h5>
+            <h5>Precio</h5>
+        </div>
+        <div class="desc">
+            <h5>Nike</h5>
+            <h6>26</h6>
+            <h6>27</h6>
+        </div>
+    </div>
+
     <!---------FOOTER--------->
     <section id="footer">
 
     </section>
-    
+
+
 </body>
 </html>
