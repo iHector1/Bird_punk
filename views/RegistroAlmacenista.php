@@ -1,3 +1,18 @@
+<?php
+session_start();
+error_reporting(0);
+$varsesion = $_SESSION['usuario'];
+$varsesion2 = $_SESSION['IDusuario'];
+?>
+
+<?php
+if($varsesion == null || $varsesion == ''){
+    echo'<script type="text/javascript">
+        alert("Sesion cerrada.");
+        window.location.href = "Index.php";
+        </script>';
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,6 +43,16 @@
                     <li class="nav-item">
                         <a class="nav-link " href="agregarAlmacenista.php">ALMACENISTAS</a>
                     </li>
+                    <li class="nav-item">
+                    <?php
+                    if($varsesion == null || $varsesion == ''){
+
+                    }else{
+                        echo "<h4 class='nav-link'>Bienvenid@: ";  echo$_SESSION['usuario']; echo" </h4>";
+                        
+                    }
+                    ?>
+                    </li>
                     
                 </ul>
             </div>
@@ -40,11 +65,12 @@
             <!--User/Carrito-->
             <div class="navbar w-100 order-3 ">
                 <ul class="navbar-nav mx-auto">
-                    <a href="IniciarSesion.php" class="navbar-button">
-                        <i class="fa fa-user-circle-o"></i>
-                    </a>
-                    
-                 
+                    <?php
+                        if($varsesion == null || $varsesion == ''){
+                            echo "<a href='IniciarSesion.php' class='navbar-button'><i class='fa fa-user-circle-o'></i></a>";
+                        }
+                    ?> 
+
                 </ul>
             </div>
         </nav>
@@ -60,12 +86,12 @@
         </div>
 
         <!-- Login Form -->
-        <form method="POST" action="./Index.php">
+        <form method="POST" action="./Registrar_Insert_Almacenistas.php">
             <div class="contenedorIzq">
         <input type="text" id="name" class="fadeIn second" name="name" placeholder="Nombre(s)" required>
-        <input type="text" id="lastName" class="fadeIn second" name="lastName" placeholder="Apellido(s)" required>
+        <input type="text" id="lastName1" class="fadeIn second" name="lastName1" placeholder="Apellido Paterno" required>
+        <input type="text" id="lastName2" class="fadeIn second" name="lastName2" placeholder="Apellido Materno" required>
         <input type="email" id="email" class="fadeIn second" name="email" placeholder="Correo electrónico" required>
-        <input type="text" id="user" class="fadeIn second" name="user" placeholder="Usuario" required>
         <input type="password" id="password" class="fadeIn second" name="password" placeholder="Contraseña" required>
             </div>
 
@@ -74,10 +100,11 @@
             <div class="titulo">
                 <h3> DOMICILIO USUARIO </h3>
             </div>    
-        <input type="text" id="address" class="fadeIn second" name="address" placeholder="Calle" required>
+            <input type="text" id="address" class="fadeIn second" name="address" placeholder="Calle" required>
         <input type="number" id="numberExt" class="fadeIn third" name="numberExt" placeholder="No. Exterior" required>
         <input type="number" id="numberInt" class="fadeIn third" name="numberInt" placeholder="No. Interior" >
         <input type="text" id="suburb" class="fadeIn second" name="suburb" placeholder="Colonia" required>
+        <input type="text" id="state" class="fadeIn second" name="state" placeholder="Estado" required>
         <input type="number" id="cp" class="fadeIn third" name="cp" placeholder="Código Postal" required>
         <input type="submit" class="fadeIn fourth" value="Registrarse">
         </form>

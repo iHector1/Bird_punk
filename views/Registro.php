@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
@@ -38,7 +39,7 @@
                         <a href="IniciarSesion.php" class="navbar-button">
                             <i class="fa fa-user-circle-o"></i>
                         </a>
-                        <a href="carrito.php" class="navbar-button"> <i href class="fa fa-shopping-cart"></i></a>
+                        
                     
                     </ul>
                 </div>
@@ -54,12 +55,12 @@
         </div>
 
         <!-- Login Form -->
-        <form method="POST" action="./Index.php">
+        <form method="POST" action="./Registrar_Insert.php">
             <div class="contenedorIzq">
         <input type="text" id="name" class="fadeIn second" name="name" placeholder="Nombre(s)" required>
-        <input type="text" id="lastName" class="fadeIn second" name="lastName" placeholder="Apellido(s)" required>
+        <input type="text" id="lastName1" class="fadeIn second" name="lastName1" placeholder="Apellido Paterno" required>
+        <input type="text" id="lastName2" class="fadeIn second" name="lastName2" placeholder="Apellido Materno" required>
         <input type="email" id="email" class="fadeIn second" name="email" placeholder="Correo electrónico" required>
-        <input type="text" id="user" class="fadeIn second" name="user" placeholder="Usuario" required>
         <input type="password" id="password" class="fadeIn second" name="password" placeholder="Contraseña" required>
             </div>
 
@@ -72,6 +73,7 @@
         <input type="number" id="numberExt" class="fadeIn third" name="numberExt" placeholder="No. Exterior" required>
         <input type="number" id="numberInt" class="fadeIn third" name="numberInt" placeholder="No. Interior" >
         <input type="text" id="suburb" class="fadeIn second" name="suburb" placeholder="Colonia" required>
+        <input type="text" id="state" class="fadeIn second" name="state" placeholder="Estado" required>
         <input type="number" id="cp" class="fadeIn third" name="cp" placeholder="Código Postal" required>
         <input type="submit" class="fadeIn fourth" value="Registrarse">
         </form>

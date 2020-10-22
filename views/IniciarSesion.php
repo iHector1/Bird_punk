@@ -1,3 +1,17 @@
+<?php
+session_start();
+error_reporting(0);
+$varsesion = $_SESSION['usuario'];
+$varsesion2 = $_SESSION['IDusuario'];
+?>
+<?php
+if(!($varsesion == null || $varsesion == '')){
+    echo'<script type="text/javascript">
+        alert("Ya se ha iniciado sesion.");
+        window.location.href = "Index.php";
+        </script>';
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,8 +70,8 @@
         </div>
 
         <!-- Login Form -->
-        <form method="POST" action="./Index.php">
-        <input type="text" id="user" class="fadeIn second" name="user" placeholder="Usuario" required>
+        <form method="POST" action="./OpLogin.php">
+        <input type="text" id="user" class="fadeIn second" name="user" placeholder="Correo electronico" required>
         <input type="password" id="password" class="fadeIn third" name="password" placeholder="Contraseña" required>
         <input type="submit" class="fadeIn fourth" value="Iniciar Sesión">
         </form>

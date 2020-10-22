@@ -1,3 +1,17 @@
+<?php
+session_start();
+error_reporting(0);
+$varsesion = $_SESSION['usuario'];
+$varsesion2 = $_SESSION['IDusuario'];
+?>
+<?php
+if($varsesion == null || $varsesion == ''){
+    echo'<script type="text/javascript">
+        alert("Sesion cerrada.");
+        window.location.href = "Index.php";
+        </script>';
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +43,18 @@
                         <a class="nav-link border-right" href="#">MUJERES</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="agregarAlmacenista.php">ALMACENISTAS</a>
+                        <?php
+                        if(!($varsesion == null || $varsesion == '')){
+                            echo "<a class='nav-link ' href='agregarAlmacenista.php'>ALMACENISTAS</a>";
+                        }
+                        ?>   
+                    </li>
+                    <li class="nav-item">
+                    <?php
+                    if(!($varsesion == null || $varsesion == '')){
+                        echo "<h4 class='nav-link'>      Bienvenid@: ";  echo$_SESSION['usuario']; echo" </h4>";
+                    }
+                    ?>
                     </li>
                     
                 </ul>
@@ -43,9 +68,16 @@
             <!--User/Carrito-->
             <div class="navbar w-100 order-3 ">
                 <ul class="navbar-nav mx-auto">
-                    <a href="IniciarSesion.php" class="navbar-button">
-                        <i class="fa fa-user-circle-o"></i>
-                    </a>
+                    <?php
+                        if($varsesion == null || $varsesion == ''){
+                            echo "<a href='IniciarSesion.php' class='navbar-button'><i class='fa fa-user-circle-o'></i></a>";
+                        }
+                    ?> 
+                    <?php
+                        if(!($varsesion == null || $varsesion == '')){
+                            echo " <a href='Logout.php' class='navbar-button'> Cerrar Sesion</a>";
+                        }
+                    ?> 
                       
                  
                 </ul>

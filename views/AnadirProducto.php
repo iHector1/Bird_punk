@@ -1,3 +1,18 @@
+<?php
+session_start();
+error_reporting(0);
+$varsesion = $_SESSION['usuario'];
+$varsesion2 = $_SESSION['IDusuario'];
+?>
+
+<?php
+if($varsesion == null || $varsesion == ''){
+    echo'<script type="text/javascript">
+        alert("Sesion cerrada.");
+        window.location.href = "Index.php";
+        </script>';
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -39,11 +54,7 @@
             <!--User/Carrito-->
             <div class="navbar w-100 order-3 ">
                 <ul class="navbar-nav mx-auto">
-                    <a href="IniciarSesion.php" class="navbar-button">
-                        <i class="fa fa-user-circle-o"></i>
-                    </a>
-                       
-                 
+
                 </ul>
             </div>
         </nav>
