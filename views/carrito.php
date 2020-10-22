@@ -1,90 +1,34 @@
 <?php
-session_start();
-error_reporting(0);
-$varsesion = $_SESSION['usuario']; //Nombre de usuario
-$varsesion2 = $_SESSION['IDusuario']; //ID de usuario
-$varsesion3 = $_SESSION['IDcarrito']; //ID de carrito del usuario 
+ session_start();
+ error_reporting(0);
+// $varsesion = $_SESSION['usuario']; //Nombre de usuario
+// $varsesion2 = $_SESSION['IDusuario']; //ID de usuario
+// $varsesion3 = $_SESSION['IDcarrito']; //ID de carrito del usuario 
 
-?>
+// ?>
 
-<?php
-if($varsesion == null || $varsesion == ''){
-    echo'<script type="text/javascript">
-        alert("Sesion cerrada.");
-        window.location.href = "Index.php";
-        </script>';
-}
-?>
+ <?php
+// if($varsesion == null || $varsesion == ''){
+//     echo'<script type="text/javascript">
+//         alert("Sesion cerrada.");
+//         window.location.href = "Index.php";
+//         </script>';
+// }
+// ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <?php
-   
-   $serverName = "DESKTOP-IT4DIF6"; //serverName\instanceName
-        // Puesto que no se han especificado UID ni PWD en el array  $connectionInfo,
-        // La conexión se intentará utilizando la autenticación Windows.
-    $connectionInfo = array( "Database"=>"bearpay");
-    $conn = sqlsrv_connect( $serverName, $connectionInfo);
-
-    session_start();
-
+    //$Cantidad = $_POST('Cantidad');
+    $Cantidad = 4;
     $id_U = $_SESSION['ID_Usuario'];
     $id_c = $_SESSION['ID_Carrito'];
 
-    
-    $sqlCantidad = "SELECT ID_Articulo , Cantidad_articulo FROM articulo_carrito WHERE ID_Articulo = $_GET[idArticulo] AND ID_Carrito = $id_c";
-    $stmt = sqlsrv_query($conn, $sqlCantidad);
-
-    
-    $articulos = false;
-    while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
-        $ID = $row['ID_Articulo'] ;
-        $Cant_Art = $row['Cantidad_articulo'] ;
-        $articulos = true;
-    }
-
-    $Cant_Art += $_GET[Cantidad];
-
-    if($articulos){
-        $Sql = "UPDATE articulo_carrito SET Cantidad_Articulo = $Cant_Art WHERE ID_Articulo = $_GET[idArticulo] AND ID_Carrito = $id_c";
-    }else{
-        $Sql = "INSERT INTO articulo_carrito VALUES($id_c,$_GET[idArticulo],$Cant_Art,0)";
-    }
-
-    sqlsrv_query($conn, $Sql);
-
-    $sql = "SELECT articulo_carrito.ID_Articulo, Precio, Cantidad_Articulo FROM articulo 
-    INNER JOIN articulo_carrito ON articulo_carrito.ID_Articulo = articulo.ID_Articulo WHERE ID_Carrito = $id_c";
-    $stmt = sqlsrv_query($conn, $sql);
-
-    if( $stmt == false ) {
-        die( print_r( sqlsrv_errors(), true));
-    }
-
-    $total = 0;
-    while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
-        $total = $row['Precio'] * $row['Cantidad_Articulo'];
-        $id_a = $row['ID_Articulo'];
-        //UPDATE A CADA PRECIO POR ARTICULO DE ACUERDO A SU CANTIDAD
-
-        $sql = "UPDATE articulo_carrito SET Total_articulo = $total WHERE ID_Carrito = $id_c AND ID_Articulo = $id_a";
-        // $params = array($total, $_GET[id], $row['ID_Articulo']);
-        $stmt2 = sqlsrv_query( $conn, $sql);
-
-        if( $stmt == false) {
-            die( print_r( sqlsrv_errors(), true) );
-        }
-    }
-
-    $sql = "SELECT articulo_carrito.ID_Articulo, Talla, Imagen, Total_articulo, Cantidad_Articulo, Modelo FROM carrito 
-    INNER JOIN articulo_carrito ON carrito.ID_Carrito = articulo_carrito.ID_Carrito 
-    INNER JOIN articulo ON articulo_carrito.ID_Articulo = articulo.ID_Articulo 
-    INNER JOIN modelo ON articulo.ID_Modelo = modelo.ID_Modelo 
-    INNER JOIN TALLA ON articulo.ID_Talla = talla.ID_Talla
-    WHERE carrito.ID_Carrito = $id_c";
-  
-    $res=sqlsrv_query($conn,$sql);
-
+    include 'conexion.php';
+    include 'Backend/BCarrito/agregarCarrito.php';
+    include 'Backend/BCarrito/totalArticulo.php';
+    include 'Backend/BCarrito/totalCarrito.php';
+    include 'Backend/BCarrito/mostrarCarrito.php';
 ?>
 
 
@@ -200,36 +144,16 @@ if($varsesion == null || $varsesion == ''){
                                         <div>
                                             <form action="Pago.php">
                                                 <input class="btn btn-primary" type="submit" value="PAGAR" 
-                                                style="outline:none;margin-top:60px;position:absolute;border:none;font-size:25px;text-align:left;">
+                                                style="outline:none;margin-top:90px;position:absolute;border:none;font-size:25px;text-align:left;">
                                             </form>
                                         </div>
-
+                                        <!-- Limpiar carrito -->
+                                        <form method="post">
+                                                <input  class="btn btn-primary" type="submit" name="limpiar" id="limpiar" value="Limpiar carrito" style="outline:none;margin-top:90px;margin-left:425px;position:absolute;border:none;font-size:25px;text-align:left;"/><br/>
+                                            </form>
+                                         <!-- Limpiar carrito -->
                                         <hr>
                                         <div class="text-right">
-                                    
-                                    <?PHP 
-
-                                        $total=0;
-                                        $sql = "SELECT Total_articulo FROM articulo_carrito WHERE ID_Carrito = $id_c";
-                                        //$params = array($id_c);
-                                        $stmt = sqlsrv_query( $conn, $sql);
-                                        if( $stmt === false) {
-                                            die( print_r( sqlsrv_errors(), true) );
-                                        }
-
-                                        while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
-                                        $total = $total + $row['Total_articulo'];
-                                        }
-                                    
-                                        /*Actualiza el precio total de la BD*/
-                                        $sql = "UPDATE carrito SET Precio_Total = $total WHERE ID_Carrito =  $id_c";
-
-                                        $stmt = sqlsrv_query( $conn, $sql);
-                                    
-                                        if( $stmt === false) {
-                                            die( print_r( sqlsrv_errors(), true) );
-                                        }
-                                    ?>
                                     <p class="mb-0 text-white pt-2"><span class="font-weight-bold"> Total de Compra: $</span><?PHP echo $total;?>
                                     <?php sqlsrv_close($conn); ?>
                                     </p>
@@ -243,8 +167,23 @@ if($varsesion == null || $varsesion == ''){
         </section>
 
     </div>
-
-    
 </body>
+
+<?PHP
+
+function Limpiar() {
+
+    Include 'Backend/BCarrito/LimpiarCarrito.php';
+
+    $URL="carrito.php";
+    echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+}
+?>
+
+<?PHP
+if(array_key_exists('limpiar',$_POST)){
+    Limpiar();
+ }
+ ?>
 
 </html>

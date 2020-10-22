@@ -4,12 +4,12 @@ error_reporting(0);
 ?>
 
 <?php
-if($varsesion == null || $varsesion == ''){
-    echo'<script type="text/javascript">
-        alert("Sesion cerrada.");
-        window.location.href = "Index.php";
-        </script>';
-}
+// if($varsesion == null || $varsesion == ''){
+//     echo'<script type="text/javascript">
+//         alert("Sesion cerrada.");
+//         window.location.href = "Index.php";
+//         </script>';
+// }
 ?>
 
 
@@ -17,40 +17,9 @@ if($varsesion == null || $varsesion == ''){
 <html lang="en">
 <?php
     // $ID_Usuario = 2;
-    $serverName = "DESKTOP-IT4DIF6"; //serverName\instanceName
-        // Puesto que no se han especificado UID ni PWD en el array  $connectionInfo,
-        // La conexión se intentará utilizando la autenticación Windows.
-    $connectionInfo = array( "Database"=>"bearpay");
-    $conn = sqlsrv_connect( $serverName, $connectionInfo);
-
+    include 'conexion.php';
     $id_c = $_SESSION['ID_Carrito'] ;
-
-    $sql = "SELECT Total_articulo FROM articulo_carrito WHERE articulo_carrito.ID_Articulo = $_GET[idProducto]";
-    $stmt=sqlsrv_query($conn,$sql);
-    
-    while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
-        //echo $row['ID_Carrito']."<br />";
-        $resP = $row['Total_articulo']; 
-    }
-
-    $sql = "DELETE FROM articulo_carrito WHERE ID_articulo = $_GET[idProducto] AND ID_Carrito =  $id_c";
-    $res=sqlsrv_query($conn,$sql);
-
-    $sql = "SELECT Modelo, Imagen, Precio FROM articulo INNER JOIN modelo ON modelo.ID_Modelo = articulo.ID_Modelo WHERE articulo.ID_Articulo = $_GET[idProducto]";
-    $res1=sqlsrv_query($conn,$sql);
-
-    while($fila = sqlsrv_fetch_array($res1)){
-        $imagen = $fila['Imagen'];
-        $precio = $fila['Precio'];
-        $nombre = $fila['Modelo'];
-
-        $arregloCarrito[] = array(
-            'Imagen' => $imagen,
-            'Precio' => $precio,
-            'Nombre' => $nombre,
-        );
-    }
-
+    include 'Backend/BCarrito/funcionesEliminar.php' ;
 ?>
 
 
@@ -108,17 +77,10 @@ if($varsesion == null || $varsesion == ''){
         </nav>
         <div class="navbar navbar-expand-md navbar-light"> </div>
 
-</section>
-
-        <!-- Cariito de compras cool-->
-        
-                                            
-                                            
-                                            
-                                            
+</section>                        
     <div class="navbar navbar-expand-md navbar-light"> </div>
     <div class="contenedor">
-        <h1 id="Titulo" class="text-center mr-5 mt-5">Producto Eliminado</h1>
+        <h1 id="Titulo" class="text-center mr-5 mt-5 text-danger">Producto Eliminado</h1>
         <h4 class="float-right">Precio</h4>
         <hr class="col-md-10">
 
@@ -134,45 +96,31 @@ if($varsesion == null || $varsesion == ''){
                         <div class=" mb-4 order-list shadow-sm">
                             
                             <div class=" p-4">
-
-                                <?php 
-                                //if(isset($_SESSION['carrito'])) {
-                                    //$arregloCarrito = $_SESSION['carrito'];
-                                    for($i=0; $i < count($arregloCarrito);$i++){ ?>
                                         <div class="navbar navbar-expand-md navbar-light"> </div>
                                     <a href="#"></a>
                                        
                                     <div class="media">
                                         <a href="#"> 
-                                            <img class="rounded d-block mr-4" src=Imagenes/<?php echo $arregloCarrito[$i]['Imagen'];?> alt=""> 
+                                            <img class="border border-danger rounded-lg" src=Imagenes/<?php echo $fila['Imagen'];?> width="600" height="300" alt=""> 
                                         </a>
                                         
                                         <div class="media-body">
                                             <!--Precio del producto-->
                                             <a>
-                                                <span class="float-right text-info">$<?php echo $arregloCarrito[$i]['Precio'];?> MNX</span>
+                                                <h5 class="float-right text-info">$<?php echo $fila['Precio'];?> MNX</h5>
                                             </a>
 
                                             <!--Precio del articulo-->
                                             <h6 class="mb-2">
                                                 <a href="#"></a>
-                                                <a href="#" class="text-black">
-                                                    <?php echo $arregloCarrito[$i]['Nombre'];?>
-                                                </a>
+                                                <h4 class="text-center ">Modelo: <?php echo $fila['Modelo'];?></h4>
                                             
                                         </div>
                                     </div>
-                                    <?php
-                                                }//Fin while
-                                    ?>
-                                    <?php sqlsrv_close($conn); ?>
 
-                                    
+                                    <?php sqlsrv_close($conn); ?>
                                     <div>
-                                        
-                                            <a href="Carrito.php" class="btn btn-primary" type="submit"
-                                            >Carrito</a>
-                                        
+                                            <a class="btn btn-primary" href="Carrito.php" style="outline:none;margin-top:60px;position:absolute;border:none;font-size:25px;text-align:left;" type="submit">Carrito</a>
                                     </div>
 
                                     <hr>
@@ -185,12 +133,8 @@ if($varsesion == null || $varsesion == ''){
                     </div>
                 </div>
             </div>
-            
         </section>
-
     </div>
-
-    
 </body>
 
 </html>
