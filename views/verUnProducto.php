@@ -3,8 +3,8 @@
 
 <!-- Conexión a la base de datos -->
 <?php
-    $serverName = "LAPTOP-BH1NLJJ4"; //serverName
-    $connectionInfo = array( "Database"=>"BirdPunk");
+    $serverName = "ALVAROCD-PC"; //serverName
+    $connectionInfo = array( "Database"=>"birdPunk");
     $conn = sqlsrv_connect($serverName, $connectionInfo);
 ?>
 
@@ -32,10 +32,10 @@
             <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item ">
-                        <a class="nav-link border-right" href="#">HOMBRES</a>
+                        <a class="nav-link border-right" href="verProductoBoys.php">HOMBRES</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">MUJERES</a>
+                        <a class="nav-link" href="verProductoGirls.php">MUJERES</a>
                     </li>
                 </ul>
             </div>
@@ -106,54 +106,65 @@
             </div>
         </div>
 
+            <!-- Obtencion de los datos de verProducto a verUnProducto -->
+            <?php
+                $modelo = $_POST['modelo'];
+                //var_dump($modelo);
+                $marca = $_POST['marca'];
+                //var_dump($marca);
+                $precio = $_POST['precio'];
+                //var_dump($precio);
+                $talla = $_POST['talla'];
+                //var_dump($talla);
+            ?>
         <!-- Columna izquierda -->
         <div id="second">
-            <h4 class="text-center">Tenis Nike Kyrie V SpongeBob</h4>
-            <h4 class="text-center">Nike</h4>
-            <h4 class="text-center">$13,000</h4>
+            <h4 class="text-center"><?php echo ("<b>Modelo: </b>".$modelo)?></h4>
+            <h4 class="text-center"><?php echo ("<b>Marca: </b>".$marca)?></h4>
+            <h4 class="text-center"><?php echo ("<b>Precio:</b> $".$precio)?></h4>
             <br><br>
             <h5>Talla</5>
             <br>
-            <mat-form-field appearance="fill" name="talla1" method="POST" required>
-            <select matNativeControl  name="talla" required>
-                <option value="25">25 cm</option>
-                <option value="26">26 cm</option>
-                <option value="27">27 cm</option>
-                <option value="28">28 cm</option>
-            </select>
-            </mat-form-field>
-            <br><br>
-            <form name="form-stock" method="POST">
+            <h4 class=><?php echo ($talla)?></h4>
+            
+            <form name="form-cant" method="POST">
                 <h5>Cantidad</h5> 
-                    <input type="number" name="cantidad" min=1 required>
+                    <input type="number" name="cantidad" min="1" value="0" required>
                     <br><br>   
-                    <input type="submit" value="Añadir al carrito">
+                    <form method="get">
+                        <input type="submit" value="Añadir al carrito">
+                    </form>
             </form>
             <!-- Verificar stock -->
             <?php 
                     $sql = "SELECT Stock FROM articulo WHERE ID_Articulo = 5";
                     $stmt = sqlsrv_query($conn, $sql);
                     $row=sqlsrv_fetch_array($stmt); //Obtiene el valor de stock de la bd
-                    $cantidad = (int)$_POST['cantidad']; //Obtiene el valor de la página web
-                    $var = (int)$row['Stock']; //Casteo
 
-                    while($cantidad == 0){
-                        echo (" ");
+                    echo("Cantidad de artículos: ");
+                    isset($_POST["cantidad"]) ? print $_POST["cantidad"] : "";//Imprime valor ingresado en pagina web
+                    //$cantidad = isset($_POST["cantidad"]) ? : ""; //Obtiene el valor ingresado en la pagina web
+
+                    echo("<br>");
+                    echo("Stock: ");
+                    echo $row['Stock']; //Imprime la cantidad en el stock de la bd
+                    echo("<br>");
+
+                    if(isset($_POST["cantidad"]) == $row['Stock']){      
+                        echo ("   Si hay"); 
+                    }else{
+                        echo ("   No hay");
                     }
-                    if($cantidad < $var || $cantidad == $var){ 
             ?>
-                        <!-- Referencia para añadir al carrito -->
-                        <a href="http://localhost/Bird_punk/views/carrito.php/?$cantidad=$cantidad&$var=$var"><i class="icofont-cart"></i>Ir al carrito de compras</a>
-            <?php
-                    }else{                      
-                        echo "<script>alert('No hay suficiente stock');</script>";
-                        echo "<font color=\"red\">Stock:</font>";
-                        echo $row['Stock'];
-                    }
-            ?>
+
+
+
+
+                
         </div>  
     </div>
 </div> 
+
 </body>
 </html>
 
