@@ -1,54 +1,56 @@
+<?php
+session_start();
+error_reporting(0);
+?>
+
+<?php
+if($varsesion == null || $varsesion == ''){
+    echo'<script type="text/javascript">
+        alert("Sesion cerrada.");
+        window.location.href = "Index.php";
+        </script>';
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <?php
-           // $ID_Usuario = 2;
+    // $ID_Usuario = 2;
     $serverName = "DESKTOP-IT4DIF6"; //serverName\instanceName
         // Puesto que no se han especificado UID ni PWD en el array  $connectionInfo,
         // La conexión se intentará utilizando la autenticación Windows.
     $connectionInfo = array( "Database"=>"bearpay");
     $conn = sqlsrv_connect( $serverName, $connectionInfo);
-?>
-<?php
 
-/*if(isset($_SESSION['carrito'])){
-//Si existe ya estaba agregado
-}
-else{*/
-    //if(isset($_GET['id'])){
-         
-        $sql = "SELECT Total_articulo FROM articulo_carrito WHERE articulo_carrito.ID_Articulo = $_GET[idProducto]";
-        $stmt=sqlsrv_query($conn,$sql);
-       
-        while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
-            //echo $row['ID_Carrito']."<br />";
-            $resP = $row['Total_articulo']; 
-              }
+    $id_c = $_SESSION['ID_Carrito'] ;
 
-        $nombre="";
-        $precio="";
-        $imagen="";
-        $cantidad="";
-        $talla="";
-        $sql = "DELETE FROM articulo_carrito WHERE ID_articulo = $_GET[idProducto] AND ID_Carrito = $_GET[id]";
-        $res=sqlsrv_query($conn,$sql);
+    $sql = "SELECT Total_articulo FROM articulo_carrito WHERE articulo_carrito.ID_Articulo = $_GET[idProducto]";
+    $stmt=sqlsrv_query($conn,$sql);
+    
+    while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
+        //echo $row['ID_Carrito']."<br />";
+        $resP = $row['Total_articulo']; 
+    }
 
-        $sql = "SELECT Modelo, Imagen, Precio FROM articulo INNER JOIN modelo ON modelo.ID_Modelo = articulo.ID_Modelo WHERE articulo.ID_Articulo = $_GET[idProducto]";
-        $res1=sqlsrv_query($conn,$sql);
+    $sql = "DELETE FROM articulo_carrito WHERE ID_articulo = $_GET[idProducto] AND ID_Carrito =  $id_c";
+    $res=sqlsrv_query($conn,$sql);
 
-        while($fila = sqlsrv_fetch_array($res1)){
-            $imagen = $fila['Imagen'];
-            $precio = $fila['Precio'];
-            $nombre = $fila['Modelo'];
+    $sql = "SELECT Modelo, Imagen, Precio FROM articulo INNER JOIN modelo ON modelo.ID_Modelo = articulo.ID_Modelo WHERE articulo.ID_Articulo = $_GET[idProducto]";
+    $res1=sqlsrv_query($conn,$sql);
 
-            $arregloCarrito[] = array(
-                'Imagen' => $imagen,
-                'Precio' => $precio,
-                'Nombre' => $nombre,
-            );
-        }
+    while($fila = sqlsrv_fetch_array($res1)){
+        $imagen = $fila['Imagen'];
+        $precio = $fila['Precio'];
+        $nombre = $fila['Modelo'];
 
-    //}
-//}
+        $arregloCarrito[] = array(
+            'Imagen' => $imagen,
+            'Precio' => $precio,
+            'Nombre' => $nombre,
+        );
+    }
+
 ?>
 
 
@@ -168,7 +170,7 @@ else{*/
                                     
                                     <div>
                                         
-                                            <a href="Carrito.php?id=<?php echo $_GET['id'];?>" class="btn btn-primary" type="submit"
+                                            <a href="Carrito.php" class="btn btn-primary" type="submit"
                                             >Carrito</a>
                                         
                                     </div>
