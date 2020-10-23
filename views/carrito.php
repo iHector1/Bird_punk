@@ -12,9 +12,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-$id_U = $_SESSION['IDusuario']; //ID de Usuario
-$id_c = $_SESSION['IDcarrito']; //ID del carrito
-    $Cantidad = 4;
+    $id_U = $_SESSION['IDusuario']; //ID de Usuario
+    $id_c = $_SESSION['IDcarrito']; //ID del carrito
     include 'conexion.php';
     include 'Backend/BCarrito/agregarCarrito.php';
     include 'Backend/BCarrito/Cantidades.php';
@@ -50,10 +49,10 @@ $id_c = $_SESSION['IDcarrito']; //ID del carrito
             <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item ">
-                        <a class="nav-link border-right" href="#">HOMBRES</a>
+                        <a class="nav-link border-right" href="verProductoBoys.php">HOMBRES</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">MUJERES</a>
+                        <a class="nav-link" href="verProductoGirls.php">MUJERES</a>
                     </li>
                 </ul>
             </div>

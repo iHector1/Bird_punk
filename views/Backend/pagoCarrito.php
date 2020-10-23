@@ -1,6 +1,4 @@
 <?php
-    $IDProducto = $_GET['idProducto'];
-    
 
     $sql = "SELECT Total_articulo FROM articulo_carrito WHERE articulo_carrito.ID_Articulo = '".$IDProducto."' AND articulo_carrito.ID_Carrito = '".$id_c."'";
     $stmt=sqlsrv_query($conn,$sql);
@@ -15,4 +13,5 @@
     $res1=sqlsrv_query($conn,$sql);
 
     $fila = sqlsrv_fetch_array($res1);
+
 ?>

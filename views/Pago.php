@@ -4,10 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pago</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>
+    <script scr="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/motion-ui.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="Styles/stylesPago.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="Styles/IndexStyle.css" />
 
+    <?php
+        session_start();
+        $varsesion = $_SESSION['usuario']; //Nombre de usuario
+        if($varsesion == null || $varsesion == ''){
+           echo'<script type="text/javascript">
+               alert("Sesion cerrada.");
+               window.location.href = "Index.php";
+               </script>';
+        }
+        $id_U = $_SESSION['IDusuario']; //ID de Usuario
+        $id_c = $_SESSION['IDcarrito']; //ID del carrito
+        include 'conexion.php';
+        include 'Backend/BCarrito/mostrarCarrito.php';
+        
+    ?>
 </head>
 <body>
     <section id="Nav-bar">
@@ -17,10 +40,10 @@
             <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item ">
-                        <a class="nav-link border-right" href="#">HOMBRES</a>
+                        <a class="nav-link border-right" href="verProductoBoys.php">HOMBRES</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">MUJERES</a>
+                        <a class="nav-link" href="verProductoGirls.php">MUJERES</a>
                     </li>
                 </ul>
             </div>
@@ -42,13 +65,10 @@
             </div>
         </nav>
         <div class="navbar navbar-expand-md navbar-light"> </div>
-
     </section>
-
     <div>
         <h1>Finalizar la compra</h1>
     </div>
-
     <div class="contenedor1">
         <div class="Parte1">
             <h2>IDENTIFICACIÓN</h2>
@@ -59,7 +79,6 @@
             <input type="text" class="InfoUsuario" id="name" name="name" placeholder="Nombre del usuario" disabled>
             <input type="email" id="user" class="InfoUsuario" name="email" placeholder="Correo electrónico" disabled>
         </div>
-
         <div class="Parte2">
             <h2>DIRECCIÓN DE ENVÍO</h2>
             <hr color=#1C2331 size=1 width= 100%>
@@ -72,41 +91,71 @@
             <input type="number" id="number" class="InfoUsuario" name="number" placeholder="Número" disabled>
             <input type="text" class="InfoUsuario" id="colonia" name="colonia" placeholder="Colonia" disabled>
             <input type="number" id="cp" class="InfoUsuario" name="cp" placeholder="C.P." disabled>
-            <a href="EditarDomicilio.php" target="_blank">Editar</a>
+            <a class= "Editar" href="EditarDomicilio.php" target="_blank">Editar</a>
+            </form>
         </div>
         
     </div>
-
-    <div class="contenedor2">
+    <!--<div class="contenedor2">
         <h2>PAGO</h2>
         <hr color=#1C2331 size=1 width= 100%>
         <h3>BearPay</h3>
-
         <form method="POST" action="BearPay_Login.php">
             <input type="email" id="user" class="fadeIn second" name="email" placeholder="Correo electrónico" required>
             <input type="password" id="password" class="fadeIn second" name="password" placeholder="Contraseña" required>
             <input type="submit" class="btt" value="COMPRAR AHORA">
         </form>
-    </div>
+    </div>-->
     
     <div class="contenedor3">
         <h4>RESUMEN DE LA COMPRA</h4>
-        <div class="img">
-            <img class="imagen" src="tenis.jpg" alt="tenis">
-        </div>
 
-        <div class="Info">
-        <p>Nombre del artículo: </p>
-        <p>Cantidad:</p>
-        <p>Precio: $</p>
-        </div>
+        <div id="contenedorResumen">
+        <?php 
+            while($fila = sqlsrv_fetch_array($res)){
+        ?>
+                <div class="navbar navbar-expand-md navbar-light"> </div>
+                <a href="#"></a>
+                
+                <div class="media">
+                    <a href="#"> 
+                        <img class="rounded d-block mr-4" src=Imagenes/<?php echo $fila['Imagen'];?> alt=""> 
+                    </a>
+                    
+                    <div class="media-body">
+                        <!--Precio del producto-->
+                        <a>
+                            <span class="float-right text-info">$<?php echo $fila['Total_articulo'];?> MNX</span>
+                        </a>
 
-        <a class="Resumen" href="carrito.php" target="_blank">Volver al carrito</a>
-        <p>SUBTOTAL: </p>
-        <p>COSTO DE ENVÍO: </p>
-        <p>TOTAL: </p>
+                        <!--Precio del articulo-->
+                        <h6 class="mb-2">
+                            <a href="#"></a>
+                            <a href="#" class="text-black">
+                            <?php echo $fila['Modelo'];?>
+                            </a>
+                        </h6>
+                        <!--DIRECCION DEL ENVIO-->
+                        <p class="text-white mb-1"> 
+                            Talla: <?php echo $fila['Talla'];?>
+                        </p>
+                        <!--Datos del producto-->
+                        <p class="text-white mb-3">Cantidad : <?php echo $fila['Cantidad_Articulo'];?></p>
+                        </p>
+                        
+                    </div>
+                </div>
+        <?php
+            }//Fin while
+        ?>
+        <div>
+
+        
     </div>
-
-    
+    <p>TOTAL: </p>
+        <a class="btt2" href="carrito.php" >Volver al carrito</a>
+        <form method="POST" action="BearPay_Login.php">
+            <input type="submit" class="btt" value="Comprar ahora">
+        </form>
 </body>
 </html>

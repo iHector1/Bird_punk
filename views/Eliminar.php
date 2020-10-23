@@ -18,7 +18,7 @@ error_reporting(0);
 <?php
     // $ID_Usuario = 2;
     include 'conexion.php';
-    $id_c = $_SESSION['ID_Carrito'] ;
+    $id_c = $_SESSION['IDcarrito'] ;
     include 'Backend/BCarrito/funcionesEliminar.php' ;
 ?>
 
