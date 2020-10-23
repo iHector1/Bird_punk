@@ -1,31 +1,23 @@
-<?php
- session_start();
- error_reporting(0);
-// $varsesion = $_SESSION['usuario']; //Nombre de usuario
-// $varsesion2 = $_SESSION['IDusuario']; //ID de usuario
-// $varsesion3 = $_SESSION['IDcarrito']; //ID de carrito del usuario 
-
-// ?>
-
  <?php
-// if($varsesion == null || $varsesion == ''){
-//     echo'<script type="text/javascript">
-//         alert("Sesion cerrada.");
-//         window.location.href = "Index.php";
-//         </script>';
-// }
-// ?>
+ session_start();
+ $varsesion = $_SESSION['usuario']; //Nombre de usuario
+    if($varsesion == null || $varsesion == ''){
+        echo'<script type="text/javascript">
+            alert("Sesion cerrada.");
+            window.location.href = "Index.php";
+            </script>';
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
 <?php
-    //$Cantidad = $_POST('Cantidad');
+$id_U = $_SESSION['IDusuario']; //ID de Usuario
+$id_c = $_SESSION['IDcarrito']; //ID del carrito
     $Cantidad = 4;
-    $id_U = $_SESSION['ID_Usuario'];
-    $id_c = $_SESSION['ID_Carrito'];
-
     include 'conexion.php';
     include 'Backend/BCarrito/agregarCarrito.php';
+    include 'Backend/BCarrito/Cantidades.php';
     include 'Backend/BCarrito/totalArticulo.php';
     include 'Backend/BCarrito/totalCarrito.php';
     include 'Backend/BCarrito/mostrarCarrito.php';
