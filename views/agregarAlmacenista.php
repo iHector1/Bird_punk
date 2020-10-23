@@ -28,12 +28,7 @@
         <nav class="navbar border-bottom navbar-expand-md navbar-light">
             <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item ">
-                        <a class="nav-link border-right" href="verProductosBoys.php">HOMBRES</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link border-right" href="verProductosGirls.php">MUJERES</a>
-                    </li>
+                   
                     <li class="nav-item">
                         <a class="nav-link " href="agregarAlmacenista.php">ALMACENISTAS</a>
                     </li>

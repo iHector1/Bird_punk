@@ -38,21 +38,21 @@ if($varsesion == null || $varsesion == ''){
             <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
                 <ul class="navbar-nav mx-auto">
                     
-                    <li class="nav-item">
+                    <li class="nav-item" style="white-space: nowrap;">
                         <?php
                         if(!($varsesion == null || $varsesion == '')){
                             echo "<a class='nav-link border-right' href='AnadirProducto.php'>AGREGAR PRODUCTO</a>";
                         }
                         ?>  
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" style="white-space: nowrap;">
                         <?php
                         if(!($varsesion == null || $varsesion == '')){
                             echo "<a class='nav-link' href='EditarProducto.php'>EDITAR PRODUCTO</a>";
                         }
                         ?>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" style="white-space: nowrap;">
                     <?php
                     if(!($varsesion == null || $varsesion == '')){
                         echo "<a href='editarPerfil.php'><h4 style='padding-left:100px;' class='nav-link'>Bienvenid@: ";  echo$_SESSION['usuario']; echo" </h4></a>";
