@@ -1,191 +1,213 @@
 body {
-    font-family: "Open Sans";
-  }
+  font-family: "Open Sans";
+}
 
-  h1 {
-    text-align: left;
-    font-size: 28px;
-    font-weight: 600;
-    text-transform: uppercase;
-    display:inline-block;
-    margin-top: 0px;
-    margin-bottom: 5px; 
-    margin-left: 20px;
-    color: black;
-  }
+h1 {
+  text-align: left;
+  font-size: 28px;
+  font-weight: 600;
+  text-transform: uppercase;
+  display:inline-block;
+  margin-top: 0px;
+  margin-bottom: 5px; 
+  margin-left: 20px;
+  color: black;
+}
 
-  h2 {
-    text-align: center;
-    font-size: 26px;
-    font-weight: 600;
-    text-transform: uppercase;
-    display:inline-block;
-    margin: 0px;
-    width: 100%;
-    padding: 0px;
-    color: black;
-  }
+h2 {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 600;
+  text-transform: uppercase;
+  display:inline-block;
+  margin: 0px;
+  width: 100%;
+  padding: 0px;
+  color: black;
+}
 
-  h4 {
-    text-align: center;
-    font-size: 26px;
-    font-weight: 600;
-    text-transform: uppercase;
-    display:inline-block;
-    margin: 0px;
-    width: 100%;
-    padding: 0px;
-    color: white;
-  }
+h4 {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 600;
+  text-transform: uppercase;
+  display:inline-block;
+  margin: 0px;
+  width: 100%;
+  padding: 0px;
+  color: white;
+}
 
-  h3 {
-    text-align: center;
-    font-size: 20px;
-    display:inline-block;
-    margin: 0px;
-    width: 100%;
-    padding: 0px;
-    color: black;
-  }
+h3 {
+  text-align: center;
+  font-size: 20px;
+  display:inline-block;
+  margin: 0px;
+  width: 100%;
+  padding: 0px;
+  color: black;
+}
 
-  p{
-    text-align: left;
-    font-size: 12px;
-    display:inline-block;
-    margin: 10px;
-    width: 100%;
-    padding: 0px;
-    color: white;
-  }
+p{
+  text-align: left;
+  font-size: 12px;
+  display:inline-block;
+  margin: 10px;
+  width: 100%;
+  padding: 0px;
+  color: white;
+}
 
-  .contenedor1{
-      width: 30%;
-      display: inline-block;
-      margin: 5px;
-      float: left;
-  }
+.contenedor1{
+    width: 30%;
+    display: inline-block;
+    margin: 5px;
+    float: left;
+}
 
-  .Parte1{
-      display: block;
-      height: 50%;
-  }
-
-  .Parte2{
+.Parte1{
     display: block;
     height: 50%;
 }
 
-  .contenedor2{
-    width: 30%;
-    display: inline-block;
-    margin: 5px;
-    margin-left: 50px;
+.Parte2{
+  display: block;
+  height: 50%;
 }
 
-  .contenedor3{
-    border-radius: 5px;
-    width: 30%;
-    background-color: #1C2331;
-    display: inline-block;
-    margin: 3px;
-    float: right;
+.contenedor2{
+  width: 30%;
+  display: inline-block;
+  margin: 5px;
+  margin-left: 50px;
 }
+
+.contenedor3{
+  border-radius: 5px;
+  width: 40%;
+  height: 450px;
+  background-color: #1C2331;
+  display: inline-block;
+  margin-left: 100px;
+}
+#contenedorResumen
+{
+  border-radius: 5px;
+  width: 770px;
+  height: 400px;
+  background-color: #1C2331;
+  display: inline-block;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.prueba{
+    background-color: blue;
+}
+
+a{
+  border-radius: 5px;
+  padding: 10px 7px;
+  text-decoration: none;
+  color: #fff;
   
-  .prueba{
-      background-color: blue;
-  }
+  margin: 5px;
+  display: inline-block;
+}
 
-  a{
-    border-radius: 5px;
-    padding: 10px 7px;
-    text-decoration: none;
-    color: #fff;
-    background-color: #1C2331;
-    margin: 5px;
-    display: inline-block;
-  }
+.Resumen{
+  border-radius: 5px;
+  padding: 10px 7px;
+  text-decoration: none;
+  color:black;
+  background-color: white;
+  margin: 5px;
+  display: inline-block;
+  margin-left: 150px;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
 
-  .Resumen{
-    border-radius: 5px;
-    padding: 10px 7px;
-    text-decoration: none;
-    color:black;
-    background-color: white;
-    margin: 5px;
-    display: inline-block;
-    margin-left: 150px;
-    margin-bottom: 15px;
-    cursor: pointer;
-  }
+.fadeIn.second {
+  background-color: white;
+  border: none;
+  color: black;
+  padding: 8px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  width: 70%;
+  border: 1px solid #434343;
+  margin: 15px;
+  margin-left: 52px;
+}  
 
-  .fadeIn.second {
-    background-color: white;
-    border: none;
-    color: black;
-    padding: 8px 15px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    width: 70%;
-    border: 1px solid #434343;
-    margin: 15px;
-    margin-left: 52px;
-  }  
-  
-  .btt{
-    border-radius: 5px;
-    padding: 10px 7px;
-    text-decoration: none;
-    color: #fff;
-    background-color: #1C2331;
-    margin: 5px;
-    display: inline-block;
-    margin-left: 150px;
-    margin-bottom: 15px;
-    cursor: pointer;
-  }
+.btt{
+  border-radius: 5px;
+  padding: 10px 7px;
+  text-decoration: none;
+  color: #1C2331;
+  background-color: #fff;
+  margin: 5px;
+  display: inline-block;
+  margin-left: 10px;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+.btt2{
+  border-radius: 5px;
+  padding: 10px 7px;
+  text-decoration: none;
+  color: #1C2331;
+  background-color: #fff;
+  margin-top: 50px;
+  display: inline-block;
+  margin-left: 10px;
+  margin-top: 50px;
+  cursor: pointer;
+}
 
- .InfoUsuario{
-    background-color: white;
-    border: none;
-    color: black;
-    padding: 8px 15px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    width: 70%;
-    margin: 15px;
-    margin-left: 52px;
-    margin-top: 5px;
- }
+.InfoUsuario{
+  background-color: white;
+  border: none;
+  color: black;
+  padding: 8px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  width: 70%;
+  margin: 15px;
+  margin-left: 52px;
+  margin-top: 5px;
+}
 
- .InfoArt{
-    border: none;
-    padding: 8px 15px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 10px;
-    width: 70%;
-    margin: 5px;
- }
+.InfoArt{
+  border: none;
+  padding: 8px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  width: 70%;
+  margin: 5px;
+}
 
- .img{
-     width: 45%;
-     height: 50%;
-     float: left;
-     margin-left: 5px;
- }
+.img{
+   width: 45%;
+   height: 50%;
+   float: left;
+   margin-left: 5px;
+}
 
- .imagen{
-     width: 100%;
-     height: auto;
- }
+.imagen{
+   width: 100%;
+   height: auto;
+}
 
 .Info{
-    width: 50%;
-    float: right;
-    color: white;
+  width: 50%;
+  float: right;
+  color: white;
 }

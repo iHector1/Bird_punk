@@ -3,9 +3,13 @@
 
 <!-- Conexión a la base de datos -->
 <?php
-    $serverName = "LAPTOP-BH1NLJJ4"; //serverName
-    $connectionInfo = array( "Database"=>"BirdPunk");
-    $conn = sqlsrv_connect($serverName, $connectionInfo);
+    
+    error_reporting(0);
+    include 'conexion.php';
+    
+    //$serverName = "LAPTOP-BH1NLJJ4"; //serverName
+    //$connectionInfo = array( "Database"=>"BirdPunk");
+    //$conn = sqlsrv_connect($serverName, $connectionInfo);
 ?>
 
 <head>
@@ -109,13 +113,12 @@
             <!-- Obtencion de los datos de verProducto a verUnProducto -->
             <?php
                 $modelo = $_POST['modelo'];
-                //var_dump($modelo);
                 $marca = $_POST['marca'];
-                //var_dump($marca);
                 $precio = $_POST['precio'];
-                //var_dump($precio);
                 $talla = $_POST['talla'];
-                //var_dump($talla);
+                $IDArticulo = $_POST['ID_Articulo'];
+                $pagina = $_POST['Genero'];
+                
             ?>
         <!-- Columna izquierda -->
         <div id="second">
@@ -127,36 +130,46 @@
             <br>
             <h4 class=><?php echo ($talla)?></h4>
             
-            <form name="form-cant" method="POST">
+            <form name="form-cant" action="carrito.php" method="POST">
                 <h5>Cantidad</h5> 
                     <input type="number" name="cantidad" min="1" value="0" required>
                     <br><br>   
-                    <form method="get">
-                        <input type="submit" value="Añadir al carrito">
-                    </form>
+                    <input type="hidden" name="ID_Articulo" value="<?php echo $IDArticulo;?>">
+                    <input type="submit" value="Añadir al carrito">
             </form>
-            <!-- Verificar stock -->
-             <!-- Verificar stock -->
-             <?php 
-                    $sql = "SELECT Stock FROM articulo WHERE ID_Articulo = 5";
-                    $stmt = sqlsrv_query($conn, $sql);
-                    $row=sqlsrv_fetch_array($stmt); //Obtiene el valor de stock de la bd
-                    $cantidad = (int)$_POST['cantidad']; //Obtiene el valor de la página web
-                    $var = (int)$row['Stock']; //Casteo
 
-                    while($cantidad == 0){
-                        echo (" ");
-                    }
-                    if($cantidad < $var || $cantidad == $var){ 
-            ?>
-                        <!-- Referencia para añadir al carrito -->
-                        <a href="http://localhost/Bird_punk/views/carrito.php/?$cantidad=$cantidad&$var=$var"><i class="icofont-cart"></i>Ir al carrito de compras</a>
-            <?php
-                    }else{                      
-                        echo "<script>alert('No hay suficiente stock');</script>";
-                        echo "<font color=\"red\">Stock:</font>";
-                        echo $row['Stock'];
-                    }
+
+             <!-- Verificar stock -->
+             <!-- Verificar stock -->
+            <?php 
+                $sql = "SELECT Stock FROM articulo WHERE ID_Articulo = '".$IDArticulo."'";
+                $stmt = sqlsrv_query($conn, $sql);
+                $row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC); //Obtiene el valor de stock de la bd
+                $cantidad = $_POST['cantidad']; //Obtiene el valor de la página web
+                $var = (int)$row['Stock']; //Casteo
+                echo "Stock: ";
+                echo $row['Stock'];
+                $pagina = (int)$pagina;
+                
+
+                while($cantidad == 0){
+                    echo (" ");
+                }
+                if($cantidad < $var || $cantidad == $var){ 
+                ?>
+                    <!-- Referencia para añadir al carrito -->
+                    
+                <?php
+                }
+                else
+                {                      
+                    
+                    echo "<script>alert('No hay suficiente stock');</script>";
+                    echo '<script type="text/javascript">
+                    window.location = "Index.php"
+                    </script>';
+                    
+                }
             ?>         
         </div>  
     </div>

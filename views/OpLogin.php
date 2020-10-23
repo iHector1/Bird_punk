@@ -5,9 +5,14 @@ include ("conexion.php");
 $user = $_POST['user'];
 $password = $_POST['password'];
 
+echo $user;
+echo $password;
 
-$sql = "SELECT * FROM usuario WHERE Correo = '$user' AND Contrasena = '$password'";
-$stmt = sqlsrv_query( $conn, $sql );
+
+$sql = "SELECT * FROM usuario WHERE Correo = '".$user."' AND Contrasena = '".$password."'";
+$stmt = sqlsrv_query($conn, $sql);
+
+echo $stmt;
 
 if( $stmt ) {
     $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC);

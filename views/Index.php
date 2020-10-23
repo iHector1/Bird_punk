@@ -31,10 +31,10 @@ $varsesion3 = $_SESSION['IDcarrito'];
             <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item ">
-                        <a class="nav-link border-right" href="#">HOMBRES</a>
+                        <a class="nav-link border-right" href="verProductoBoys.php">HOMBRES</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">MUJERES</a>
+                        <a class="nav-link" href="verProductoGirls.php">MUJERES</a>
                     </li>
                     <li class="nav-item">
 
