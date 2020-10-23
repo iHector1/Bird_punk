@@ -65,47 +65,56 @@ if($varsesion == null || $varsesion == ''){
             <div class="row mt-3 p-2 rectangle">
                 <h2 class="col-11 m-3 mb-5 ">Datos del producto</h2>
                 <div class="col-5 ml-4">
-                    <form method="POST" action="IndexAlmacenista.php">
+                    <form method="POST" action="Backend/agregarArticulo.php">
                         <!-- Nombre -->
-                        <input class="m-2 form-control float-right" type="text" id="name" name="name" placeholder="Nombre" required>
-                        <text class="m-2 mt-4 lightText">$</text>
+                        <input class="m-2 form-control float-right" type="text" id="name" name="nombre" placeholder="Nombre" required>
+                       
                         <!-- Precio -->
-                        <input class="m-2 form-control w-75 float-right" type="number" id="price" name="price" placeholder="Precio" required></input>
-                        <div class="m-2">
-                            <text class="lightText mr-5">Genero</text>
-                            <!-- Genero -->
-                            <label class="m-2 mr-5 radio_inline"><input type="radio" id="gender" name="gender" value="0" required><text class="darkText"> Mujer</text></label>
-                            <label class="m-2 mr-5 radio_inline"><input type="radio" id="gender" name="gender" value="1"><text class="darkText"> Hombre</text></label>
-                            <label class="m-2 radio_inline"><input type="radio" id="gender" name="gender" value="2"><text class="darkText"> Otro</text></label>
-                        </div>
-                        <text class="m-2 lightText">Talla</text>
-                        <!-- Talla -->
-                        <select class="mb-5 p-1 w-75 float-right selectText" name="size" id="size" required>
-                            <option value="" disabled selected>Talla</option>
-                            <option value="24">MX 24</option>
-                            <option value="24.5">MX 24.5</option>
-                            <option value="25">MX 25</option>
-                            <option value="25.5">MX 25.5</option>
-                            <option value="26">MX 26</option>
-                            <option value="26.5">MX 26.5</option>
-                            <option value="27">MX 27</option>
-                            <option value="27.5">MX 27.5</option>
-                            <option value="28">MX 28</option>
-                            <option value="28.5">MX 28.5</option>
-                            <option value="29">MX 29</option>
-                            <option value="29.5">MX 29.5</option>
-                            <option value="30">MX 30</option>
+                        <input class="m-2 form-control float-right" type="number" id="price" name="precio" placeholder="$ Precio" required></input>
+
+                        <select class="m-2 form-control float-right" name="marca" id="marca" required>
+                            <option value="" disabled selected>Marca</option>
+                            <option value="1">Nike</option>
+                            <option value="2">Adidas</option>
+                            
                         </select>
-                </div>
-                <div class="col-3">
-                        <!-- Imagen -->
-                        <img class="img mt-2 ml-5" src="Imagenes/camera4.png" alt="">
-                </div>
-                <div class="col-3">
-                        <!-- Stock -->
-                        <text class="m-2 lightText">En stock</text>
-                        <input class="m-2 form-control" type="number" id="stock" name="stock" placeholder="Cantidad" required>
-                        <!-- Submit -->
+                        <div class="m-2">
+                            <text class="lightText mr-5">Genero</text><br>
+                            <!-- Genero -->
+                            <label class="m-2 mr-5 radio_inline"><input type="radio" id="gender" name="genero" value="M" required><text class="darkText"> Mujer</text></label>
+                            <label class="m-2 mr-5 radio_inline"><input type="radio" id="gender" name="genero" value="H"><text class="darkText"> Hombre</text></label>
+                            <label class="m-2 radio_inline"><input type="radio" id="gender" name="genero" value="U"><text class="darkText"> Unisex</text></label>
+                        </div>
+                       
+                        <!-- Talla -->
+                        <select class="m-2 form-control float-right" name="talla" id="talla" required>
+                            <option value="" disabled selected>Talla</option>
+                            <option value="1">MX 24</option>
+                            <option value="2">MX 24.5</option>
+                            <option value="3">MX 25</option>
+                            <option value="4">MX 25.5</option>
+                            <option value="5">MX 26</option>
+                            <option value="6">MX 26.5</option>
+                            <option value="7">MX 27</option>
+                            <option value="8">MX 27.5</option>
+                            <option value="9">MX 28</option>
+                            <option value="10">MX 28.5</option>
+                            <option value="11">MX 29</option>
+                            <option value="12">MX 29.5</option>
+                            <option value="13">MX 30</option>
+                        </select>
+                        </div>
+                        <div class="col-3">
+                            <!-- Imagen -->
+                            <img class="img mt-2 ml-5" src="Imagenes/camera4.png" alt="">
+                            <input type="file" id="browse" name="browse" accept=".jpg, .jpeg, .png" required><br>
+
+                            </div>
+                        <div class="col-3">
+                            <!-- Stock -->
+                            <text class="m-2 lightText">En stock</text>
+                            <input class="m-2 form-control" type="number" id="stock" name="stock" placeholder="Cantidad" required>
+                            <!-- Submit -->
                         <input class="m-2 mt-5 btn btn-dark btn-outline-light float-right" type="submit" value="Registrar producto">
                     </form>
                 </div>

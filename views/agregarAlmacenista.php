@@ -28,8 +28,16 @@
         <nav class="navbar border-bottom navbar-expand-md navbar-light">
             <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
                 <ul class="navbar-nav mx-auto">
-                    
-                <li class="nav-item ">
+                    <li class="nav-item ">
+                        <a class="nav-link border-right" href="verProductosBoys.php">HOMBRES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link border-right" href="verProductosGirls.php">MUJERES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="agregarAlmacenista.php">ALMACENISTAS</a>
+                    </li>
+                    <li class="nav-item">
                     <?php
                     if(!($varsesion == null || $varsesion == '')){
                         echo "<a href='editarPerfil.php'><h4 style='padding-left:100px;' class='nav-link'>Bienvenid@: ";  echo$_SESSION['usuario']; echo" </h4></a>";
@@ -76,18 +84,20 @@
         <?php
             include 'conexion.php';
             include 'Backend/buscarAlmacenista.php';
+            //include 'Backend/eliminarAlmacenista.php';
             while($row = sqlsrv_fetch_array($Almacenistas))
             {              
         ?>
-            <form method="POST" action="Backend/eliminarAlmacenista.php">
+            <form method="POST" action="./Backend/eliminarAlmacenistaBE.php">
                 <tr>
                     <td>
-                        <p><?php echo $row[1];?><br> Domicilio: <?php echo $row[8]; ?>, <?php echo $row[9];?>, <?php echo $row[10]; ?>, <?php echo $row[11]; ?>, <?php echo $row[12]; ?>)<br> <?php echo $row[4]; ?> <br> </p>
+                        <p><?php echo $row[1]." ".$row[2]." ".$row[3];?><br> Calle: <?php echo $row[8]; ?>,<br> No.Exterior: <?php echo $row[9];?><br>No.Interior: <?php echo $row[10];?> <br>Colonia: <?php echo $row[11]; ?> <br>CP: <?php echo $row[12];?><br> Correo: <?php echo $row[4]; ?> <br> </p>
                     </td>
                     <td>
-                        <button type="submit" class="btn btn-default btn-circle"><b>X</b></button>
+                        <button type="submit" onClick="return confirm('¿Desea eliminar este almacenista?');" class="btn btn-default btn-circle"><b>X</b></button>
                     </td>
                 </tr>
+                <input type="hidden" name="idalmacenista" value="<?php echo $row[0];?>">
             </form>
         <?php
             }

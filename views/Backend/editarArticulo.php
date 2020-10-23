@@ -1,7 +1,5 @@
 <?php
-    $serverName = "S-NOTEBOOK";
-    $connectionInfo = array( "Database"=>"bearpay");
-    $conn = sqlsrv_connect( $serverName, $connectionInfo);
+    include '../conexion.php';
 
     if($conn){
         $id_articulo = 5;

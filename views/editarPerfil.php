@@ -39,6 +39,11 @@ if($varsesion == null || $varsesion == ''){
                         echo "<a href='editarPerfil.php'><h4 style='padding-left:100px;' class='nav-link'>Bienvenid@: ";  echo$_SESSION['usuario']; echo" </h4></a>";
                     }
                     ?>
+                    <li class="nav-item ">
+                        <a class="nav-link border-right" href="verProductosBoys.php">HOMBRES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="verProductosGirls.php">MUJERES</a>
                     </li>
                 </ul>
             </div>
