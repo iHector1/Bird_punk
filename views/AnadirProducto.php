@@ -105,6 +105,7 @@ if($varsesion == null || $varsesion == ''){
                 <div class="col-3">
                         <!-- Imagen -->
                         <img class="img mt-2 ml-5" src="Imagenes/camera4.png" alt="">
+                        <input style="margin-left: 48px;" type="file" name="imagen" required>
                 </div>
                 <div class="col-3">
                         <!-- Stock -->
