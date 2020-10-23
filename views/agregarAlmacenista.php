@@ -1,17 +1,14 @@
 <?php
-session_start();
-error_reporting(0);
-$varsesion = $_SESSION['usuario'];
-$varsesion2 = $_SESSION['IDusuario'];
-?>
-
-<?php
-if($varsesion == null || $varsesion == ''){
-    echo'<script type="text/javascript">
-        alert("Sesion cerrada.");
-        window.location.href = "Index.php";
-        </script>';
-}
+    session_start();
+    error_reporting(0);
+    $varsesion = $_SESSION['usuario'];
+    $varsesion2 = $_SESSION['IDusuario'];
+    if($varsesion == null || $varsesion == ''){
+        echo'<script type="text/javascript">
+            alert("Sesion cerrada.");
+            window.location.href = "Index.php";
+            </script>';
+    }
 ?>
 <html>
 <head>
@@ -82,47 +79,37 @@ if($varsesion == null || $varsesion == ''){
 
 <body>
 
+    
+
     <div class="contenedorAlmacenista">
         <table>
-            <tr>
-                <td>
-                    <P>Nombre Almacenista <br> Domicilio (calle1,numero ext #11, numero int #12, colonia)<br> almacenista1@gmail.com <br> </P>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-default btn-circle"><i class="fa fa-check"></i></button>
-                    <button type="button" class="btn btn-default btn-circle"><b>X</b></button>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <P>Nombre Almacenista <br> Domicilio (calle1,numero ext #11, numero int #12, colonia)<br> almacenista1@gmail.com <br> </P>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-default btn-circle"><i class="fa fa-check"></i></button>
-                    <button type="button" class="btn btn-default btn-circle"><b>X</b></button>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <P>Nombre Almacenista <br> Domicilio (calle1,numero ext #11, numero int #12, colonia)<br> almacenista1@gmail.com <br> </P>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-default btn-circle"><i class="fa fa-check"></i></button>
-                    <button type="button" class="btn btn-default btn-circle"><b>X</b></button>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <P>Nombre Almacenista <br> Domicilio (calle1,numero ext #11, numero int #12, colonia)<br> almacenista1@gmail.com <br> </P>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-default btn-circle"><i class="fa fa-check"></i></button>
-                    <button type="button" class="btn btn-default btn-circle"><b>X</b></button>
-                </td>
-            </tr>
+        <?php
+            include 'conexion.php';
+            include 'Backend/buscarAlmacenista.php';
+            while($row = sqlsrv_fetch_array($Almacenistas))
+            {              
+        ?>
+            <form method="POST" action="Backend/eliminarAlmacenista.php">
+                <tr>
+                    <td>
+                        <p><?php echo $row[1];?><br> Domicilio: <?php echo $row[8]; ?>, <?php echo $row[9];?>, <?php echo $row[10]; ?>, <?php echo $row[11]; ?>, <?php echo $row[12]; ?>)<br> <?php echo $row[4]; ?> <br> </p>
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-default btn-circle"><b>X</b></button>
+                    </td>
+                </tr>
+            </form>
+        <?php
+            }
+        ?>
         </table>
+    
+        
         <button type="submit" type="button" class="btn btn-light"><a href="RegistroAlmacenista.php">Agregar Almacenista</a></button>
+            
+        
     </div>
+    
 </body>
 
 </html>
