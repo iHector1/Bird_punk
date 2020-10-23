@@ -93,10 +93,10 @@
                 <img src="Imagenes/<?php echo $fila['Imagen'];?>" class="cancelar">
             </div>    
             <div class="producto">
-                <h6><?php echo $fila['modelo'];?></h6>
-                <h6><?php echo $fila['Cantidad_Articulo'];?></h6>
-                <h6><?php echo $fila['talla'];?></h6>
-                <h6><?php echo $fila['Total_articulo'];?></h6>
+                <h6>Modelo: <?php echo $fila['modelo'];?></h6>
+                <h6>Cantidad: <?php echo $fila['Cantidad_Articulo'];?></h6>
+                <h6>Talla: <?php echo $fila['talla'];?></h6>
+                <h6>Precio Total: <?php echo $fila['Total_articulo'];?></h6>
             </div>
         </div>
         <?php 

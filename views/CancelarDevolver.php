@@ -141,6 +141,8 @@
     
     //Verificar que el estado sea enviado
     if ($estatus == 'S'){
+        $MontoA = sqlsrv_get_field( $query, 0);
+        // echo "El monto del usuario $nombre es = $MontoA"."<br/>";
         echo "Valido para cancelar<br/>";
          $precioBP = $MontoA + $precioT;
          echo "<h4 align: 'center'>La cantidad de dinero actual del cliente es ".$precioBP." <br/></h4";
