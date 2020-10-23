@@ -1,12 +1,17 @@
 <?php
-        session_start();
-        $varsesion = $_SESSION['usuario']; //Nombre de usuario
-        if($varsesion == null || $varsesion == ''){
-           echo'<script type="text/javascript">
-               alert("Sesion cerrada.");
-               window.location.href = "Index.php";
-               </script>';
-        }
+    session_start();
+    error_reporting(0);
+    $varsesion = $_SESSION['usuario'];
+    $varsesion2 = $_SESSION['IDusuario'];
+    $varsesion3 = $_SESSION['IDcarrito'];
+?>
+<?php
+if($varsesion == null || $varsesion == ''){
+    echo'<script type="text/javascript">
+        alert("Sesion cerrada.");
+        window.location.href = "Index.php";
+        </script>';
+}
 ?>
 
 <!DOCTYPE html>
@@ -69,9 +74,6 @@
             <!--User/Carrito-->
             <div class="navbar w-100 order-3 ">
                 <ul class="navbar-nav mx-auto">
-                    <a href="IniciarSesion.php" class="navbar-button">
-                        <i class="fa fa-user-circle-o"></i>
-                    </a>
                        <a href="carrito.php" class="navbar-button"> <i href class="fa fa-shopping-cart"></i></a>
                        <?php
                         if(!($varsesion == null || $varsesion == '')){

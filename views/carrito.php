@@ -1,12 +1,17 @@
- <?php
- session_start();
- $varsesion = $_SESSION['usuario']; //Nombre de usuario
-    if($varsesion == null || $varsesion == ''){
-        echo'<script type="text/javascript">
-            alert("Sesion cerrada.");
-            window.location.href = "Index.php";
-            </script>';
-    }
+<?php
+    session_start();
+    error_reporting(0);
+    $varsesion = $_SESSION['usuario'];
+    $varsesion2 = $_SESSION['IDusuario'];
+    $varsesion3 = $_SESSION['IDcarrito'];
+?>
+<?php
+if($varsesion == null || $varsesion == ''){
+    echo'<script type="text/javascript">
+        alert("Sesion cerrada.");
+        window.location.href = "Index.php";
+        </script>';
+}
 ?>
 
 <!DOCTYPE html>
@@ -53,6 +58,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="verProductoGirls.php">MUJERES</a>
                     </li>
+                    <?php
+                    if(!($varsesion == null || $varsesion == '')){
+                        echo "<a href='editarPerfil.php'><h4 style='padding-left:100px;' class='nav-link'>Bienvenid@: ";  echo$_SESSION['usuario']; echo" </h4></a>";
+                    }
+                    ?>
+                    </li>
                 </ul>
             </div>
 
@@ -66,10 +77,7 @@
             <!--User/Carrito-->
             <div class="navbar w-100 order-3 ">
                 <ul class="navbar-nav mx-auto">
-                    <a href="IniciarSesion.php" class="navbar-button">
-                        <i class="fa fa-user-circle-o"></i>
-                    </a>
-                       <a href="carrito.php" class="navbar-button"> <i href class="fa fa-shopping-cart"></i></a>
+
                  
                 </ul>
             </div>

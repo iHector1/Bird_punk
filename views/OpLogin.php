@@ -38,18 +38,21 @@ if( $stmt ) {
         $_SESSION['usuario'] = $row['Nombre_s'];
         $_SESSION['IDusuario'] = $row['ID_Usuario'];
         $_SESSION['IDcarrito'] = $row2['ID_Carrito'];
+        $_SESSION['IDtipousuario'] = $row['ID_Tipo_Usuario'];
         header("Location:Index.php");
     }
     if($row['ID_Tipo_Usuario'] == '2'){
         session_start();
         $_SESSION['usuario'] = $row['Nombre_s'];
         $_SESSION['IDusuario'] = $row['ID_Usuario'];
+        $_SESSION['IDtipousuario'] = $row['ID_Tipo_Usuario'];
         header("Location:IndexAlmacenista.php");
     }
     if($row['ID_Tipo_Usuario'] == '3'){
         session_start();
         $_SESSION['usuario'] = $row['Nombre_s'];
         $_SESSION['IDusuario'] = $row['ID_Usuario'];
+        $_SESSION['IDtipousuario'] = $row['ID_Tipo_Usuario'];
         header("Location:IndexAdministrador.php");
     }
 }else{
