@@ -18,7 +18,6 @@
     include 'Backend/BCarrito/agregarCarrito.php';
     include 'Backend/BCarrito/Cantidades.php';
     include 'Backend/BCarrito/totalArticulo.php';
-    include 'Backend/BCarrito/totalCarrito.php';
     include 'Backend/BCarrito/mostrarCarrito.php';
 ?>
 

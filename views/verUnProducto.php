@@ -71,55 +71,29 @@
         <div id="first"> 
             <div>
             <?php
-                $sql2 = "SELECT Stock FROM articulo";
-            ?>
-                <div class="galeria">
-                    <!--Almacenar la imagen en la bd -->
-                    <?php
-                    //Primer img
-                        $sql = "SELECT Imagen FROM Articulo WHERE ID_Articulo = 5"; 
-                        $result = sqlsrv_query($conn, $sql);
-                        $row = sqlsrv_fetch_array($result);
-                    ?>
-
-                    <?php
-                    //Primer img
-                        $sql = "SELECT Imagen FROM Articulo WHERE ID_Articulo = 9"; 
-                        $result = sqlsrv_query($conn, $sql);
-                        $row2 = sqlsrv_fetch_array($result);
-                    ?>
-                    
-                    <?php
-                    //Primer img
-                        $sql = "SELECT Imagen FROM Articulo WHERE ID_Articulo = 11"; 
-                        $result = sqlsrv_query($conn, $sql);
-                        $row3 = sqlsrv_fetch_array($result);
-                    ?>
-    
-                    <input type="radio" name="navegacion" id="_1" checked>
-                    <input type="radio" name="navegacion" id="_2">
-                    <input type="radio" name="navegacion" id="_3">
-                    <input type="radio" name="navegacion" id="_4"> 
-                    <input type="radio" name="navegacion" id="_5">
-                    <img src="tenis.jpg" width="600" height="300"/> <!--Ejemplo-->
-                    <img src="imageView.php?image_id= <?php echo $row["Imagen"]; ?>" width="600" height="300"/><br/>
-                    <img src="imageView.php?image_id= <?php echo $row2["Imagen"]; ?>" width="600" height="300"/><br/>
-                    <img src="imageView.php?image_id= <?php echo $row3["Imagen"]; ?>" width="600" height="300"/><br/>
-                    <img src="Imagenes/tenis-2.jpg" width="600" height="300"/> <!--Ejemplo-->
-                </div>
-            </div>
-        </div>
-
-            <!-- Obtencion de los datos de verProducto a verUnProducto -->
-            <?php
+            //<!-- Obtencion de los datos de verProducto a verUnProducto -->
+            
                 $modelo = $_POST['modelo'];
                 $marca = $_POST['marca'];
                 $precio = $_POST['precio'];
                 $talla = $_POST['talla'];
                 $IDArticulo = $_POST['ID_Articulo'];
                 $pagina = $_POST['Genero'];
+                $imagen = $_POST['imagen'];
                 
+            
+                $sql2 = "SELECT Stock FROM articulo";
             ?>
+                <div class="galeria">
+                   <!--Almacenar la imagen en la bd -->
+                    <input type="radio" name="navegacion" id="_1" checked>
+                    
+                    <img src="Imagenes/<?php echo $imagen;?>" width="500" height="300"/> <!--Ejemplo-->
+                </div>
+            </div>
+        </div>
+
+            
         <!-- Columna izquierda -->
         <div id="second">
             <h4 class="text-center"><?php echo ("<b>Modelo: </b>".$modelo)?></h4>

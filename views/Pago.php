@@ -29,6 +29,8 @@
         $id_c = $_SESSION['IDcarrito']; //ID del carrito
         include 'conexion.php';
         include 'Backend/BCarrito/mostrarCarrito.php';
+        include 'Backend/BCarrito/totalCarrito.php';
+        include 'Backend/pagoCarrito.php';
         
     ?>
 </head>
@@ -68,32 +70,41 @@
     </section>
     <div>
         <h1>Finalizar la compra</h1>
-    </div>
+    </div><br><br>
     <div class="contenedor1">
+        <?php
+            while($row = sqlsrv_fetch_array($infousuario))
+            {
+            
+            $nombreCompleto = $row[0] ." ".$row[1]." ".$row[2];
+        ?>
         <div class="Parte1">
-            <h2>IDENTIFICACIÓN</h2>
+            <h1>IDENTIFICACIÓN</h1>
             <hr color=#1C2331 size=1 width= 100%>
             <!-- IMPRESIÓN DEL NOMBRE E EMAIL DEL USUARIO
             <output class="prueba" id="name" for="datos usuario" placeholder="Nombre del usuario"></output>
             <output class="prueba" id="email" for="datos usuario"></output> -->
-            <input type="text" class="InfoUsuario" id="name" name="name" placeholder="Nombre del usuario" disabled>
-            <input type="email" id="user" class="InfoUsuario" name="email" placeholder="Correo electrónico" disabled>
-        </div>
+            <input type="text" class="InfoUsuario" id="name" name="name" placeholder="Nombre Completo: <?php echo $nombreCompleto;?>" disabled>
+            <input type="email" id="user" class="InfoUsuario" name="email" placeholder="Correo Electronico: <?php echo $row[3];?>" disabled>
+        </div><br><br>
         <div class="Parte2">
-            <h2>DIRECCIÓN DE ENVÍO</h2>
+            <h1>DIRECCIÓN DE ENVÍO</h1>
             <hr color=#1C2331 size=1 width= 100%>
             <!-- IMPRESIÓN DE LA CALLE, NÚMERO, COLONIA Y C.P.
             <output class="prueba" id="address" for="direccion"></output>
             <output class="prueba" id="number" for="direccion"></output>
             <output class="prueba" id="suburb" for="direccion"></output>
             <output class="prueba" id="cp" for="direccion"></output>-->
-            <input type="text" class="InfoUsuario" id="address" name="address" placeholder="Calle" disabled>
-            <input type="number" id="number" class="InfoUsuario" name="number" placeholder="Número" disabled>
-            <input type="text" class="InfoUsuario" id="colonia" name="colonia" placeholder="Colonia" disabled>
-            <input type="number" id="cp" class="InfoUsuario" name="cp" placeholder="C.P." disabled>
+            <input type="text" class="InfoUsuario" id="address" name="address" placeholder="Calle: <?php echo $row[4];?>" disabled>
+            <input type="number" id="number" class="InfoUsuario" name="number" placeholder="Numero Exterior: <?php echo $row[5];?>" disabled>
+            <input type="text" class="InfoUsuario" id="colonia" name="colonia" placeholder="Colonia: <?php echo $row[6];?>" disabled>
+            <input type="number" id="cp" class="InfoUsuario" name="cp" placeholder="Código Postal: <?php echo $row[7];?>" disabled>
             <a class= "Editar" href="EditarDomicilio.php" target="_blank">Editar</a>
             </form>
         </div>
+        <?php
+            }
+        ?>
         
     </div>
     <!--<div class="contenedor2">
@@ -119,7 +130,7 @@
                 
                 <div class="media">
                     <a href="#"> 
-                        <img class="rounded d-block mr-4" src=Imagenes/<?php echo $fila['Imagen'];?> alt=""> 
+                        <img class="rounded d-block mr-4" style="width:200px; height:160px;" src=Imagenes/<?php echo $fila['Imagen'];?> alt=""> 
                     </a>
                     
                     <div class="media-body">
@@ -129,12 +140,9 @@
                         </a>
 
                         <!--Precio del articulo-->
-                        <h6 class="mb-2">
-                            <a href="#"></a>
-                            <a href="#" class="text-black">
-                            <?php echo $fila['Modelo'];?>
-                            </a>
-                        </h6>
+                        <p class="mb-2">
+                            <b><?php echo $fila['Modelo'];?></b>
+                        </p>
                         <!--DIRECCION DEL ENVIO-->
                         <p class="text-white mb-1"> 
                             Talla: <?php echo $fila['Talla'];?>
@@ -152,7 +160,7 @@
 
         
     </div>
-    <p>TOTAL: </p>
+    <p style="font-size:20px;" ><b>TOTAL:</b> $<?php echo $total;?></p>
         <a class="btt2" href="carrito.php" >Volver al carrito</a>
         <form method="POST" action="BearPay_Login.php">
             <input type="submit" class="btt" value="Comprar ahora">

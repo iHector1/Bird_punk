@@ -59,7 +59,7 @@ if($varsesion == null || $varsesion == ''){
                     <li class="nav-item">
                     <?php
                     if(!($varsesion == null || $varsesion == '')){
-                        echo "<h4 class='nav-link'>Bienvenid@: ";  echo$_SESSION['usuario']; echo" </h4>";
+                        echo "<a href='editarPerfil.php'><h4 style='padding-left:100px;' class='nav-link'>Bienvenid@: ";  echo$_SESSION['usuario']; echo" </h4></a>";
                     }
                     ?>
                     </li>

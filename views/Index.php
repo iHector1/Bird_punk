@@ -1,9 +1,9 @@
 <?php
-session_start();
-error_reporting(0);
-$varsesion = $_SESSION['usuario'];
-$varsesion2 = $_SESSION['IDusuario'];
-$varsesion3 = $_SESSION['IDcarrito'];
+    session_start();
+    error_reporting(0);
+    $varsesion = $_SESSION['usuario'];
+    $varsesion2 = $_SESSION['IDusuario'];
+    $varsesion3 = $_SESSION['IDcarrito'];
 ?>
 
 <!DOCTYPE html>
