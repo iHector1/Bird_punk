@@ -26,7 +26,7 @@
             echo "Error, todos los campos deben estar llenos.";
     }
     else{
-        echo "Conexión no se pudo establecer.<br>";
+        echo "La conexión no se pudo establecer.<br>";
         die( print_r( sqlsrv_errors(), true));
     }
 
