@@ -16,15 +16,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Conexión a la base de datos -->
 <?php
-    
-    
-    include 'conexion.php';
-    
-    //$serverName = "LAPTOP-BH1NLJJ4"; //serverName
-    //$connectionInfo = array( "Database"=>"BirdPunk");
-    //$conn = sqlsrv_connect($serverName, $connectionInfo);
+    include ("conexion.php");
 ?>
 
 <head>
@@ -123,7 +116,7 @@
             
             <form name="form-cant" action="carrito.php" method="POST">
                 <h5>Cantidad</h5> 
-                    <input type="number" name="cantidad" min="1" value="0" required>
+                    <input type="number" name="cantidad" min="1" required>
                     <br><br>   
                     <input type="hidden" name="ID_Articulo" value="<?php echo $IDArticulo;?>">
                     <input type="submit" value="Añadir al carrito">
