@@ -3,9 +3,7 @@
 
 <!-- Conexión a la base de datos -->
 <?php
-    $serverName = "LAPTOP-BH1NLJJ4"; //serverName
-    $connectionInfo = array( "Database"=>"BirdPunk");
-    $conn = sqlsrv_connect($serverName, $connectionInfo);
+    include ("conexion.php");
 ?>
 
 <head>
@@ -62,13 +60,12 @@
 
     <!-- Valida el usuario del que se muestra el historial  -->
     <?php
-    /*
-    $sql = "SELECT ID_Usuario FROM compra WHERE ID_Usuario = 1"; //Aquí se debe de condiciionar por el ID del usuario
+    
+    $sql = "SELECT ID_Usuario FROM usuario WHERE ID_Usuario = 1"; //Aquí se debe de condiciionar por el ID del usuario
     $stmt = sqlsrv_query($conn, $sql);
     $row=sqlsrv_fetch_array($stmt); //Obtiene el ID del usuariode la bd
-
-    echo $row['ID_Usuario'];
-    */
+    //echo $row['ID_Usuario'];
+    
     ?>
     
 
@@ -79,6 +76,21 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane  fade  active show" id="orders" role="tabpanel" aria-labelledby="orders-tab">
                         <h4 class="font-weight-bold mt-0 mb-4">Historial de Compras</h4>
+
+                        <!-- Recorre los artículos del historial  -->
+                        <?php
+                            $sql = "SELECT * FROM compra WHERE ID_Usuario = 1";
+                            $stmt = sqlsrv_query($conn, $sql);
+                            //$row = sqlsrv_fetch_array($stmt); //Obtiene el numero de orden de la bd
+                            
+                            //$var = (int)$row['ID_Detalle']; //Casteo
+
+                            while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_NUMERIC)) 
+                            {
+                                ?>
+
+                            
+
                         <div class="bg-white card mb-4 order-list shadow-sm">
                             <div class="gold-members p-4">
                                 <a href="#">
@@ -101,40 +113,53 @@
                                             <a href="#"></a>
                                             <a href="#" class="text-black">
                                             <?php
-                                                $sql = "SELECT ID_Articulo FROM articulo WHERE ID_Articulo = 5";
+                                                $sql = "SELECT modelo, marca FROM modelo, articulo, marca WHERE articulo.ID_Modelo = modelo.ID_Modelo 
+                                                AND articulo.ID_Marca = marca.ID_Marca AND articulo.ID_Articulo = 2";
                                                 $stmt = sqlsrv_query($conn, $sql);
-                                                $row=sqlsrv_fetch_array($stmt); //Obtiene el ID del articulo de la bd
-                                                echo("Tenis Nike Kyrie V SpongeBob ");
-                                                echo $row['ID_Articulo'];
+                                                $row = sqlsrv_fetch_array($stmt); //Obtiene los datos de la bd
+                                                echo $row['modelo'];
+                                                echo(" - ");
+                                                echo $row['marca'];
                                             ?> 
                                             </a>
                                         </h6>
                                         <!--DIRECCION DEL ENVIO-->
-                                        <p class="text-gray mb-1"><i class="icofont-location-arrow"></i> DOMICILIO
+                                        <p class="text-gray mb-1"><i class="icofont-location-arrow"></i>
                                             <?php
                                                 $sql = "SELECT Calle, NoExterior, NoInterior FROM info_cliente WHERE ID_Usuario = 1";
                                                 $stmt = sqlsrv_query($conn, $sql);
                                                 $row=sqlsrv_fetch_array($stmt); //Obtiene el domicilio de la bd
-                                                //echo $row['Calle, NoExterior, NoInterior']; //No se puede agregar un registro
+                                                echo $row['Calle'];
+                                                echo(" #");
+                                                echo $row['NoExterior'];
+                                                echo(" - Int #");
+                                                echo $row['NoInterior'];
                                             ?> 
                                         </p>
                                         <!--ID ORDEN DESCRIPCIÓN-->
                                         <p class="text-gray mb-3">
                                         <i class="icofont-list"></i> 
                                             <?php
-                                                $sql = "SELECT No_Orden FROM compra WHERE No_Orden = 1";
+                                                $sql = "SELECT No_Orden FROM compra WHERE No_Orden = 2";
                                                 $stmt = sqlsrv_query($conn, $sql);
-                                                $row=sqlsrv_fetch_array($stmt); //Obtiene el numero de orden de la bd
-                                                echo("No_Orden");                                                
-                                                //echo $row['No_Orden']; //No se puede agregar un registro
+                                                $row = sqlsrv_fetch_array($stmt); //Obtiene el numero de orden de la bd
+                                                echo("No. Orden: ");                                                
+                                                echo $row['No_Orden'];
                                             ?>  
                                         <i class="icofont-clock-time ml-2"></i>
                                             <?php
-                                                $sql = "SELECT Fecha_Compra FROM compra WHERE No_Orden = 1";
+                                                $sql = "SELECT Fecha_Compra FROM compra WHERE No_Orden = 4";
                                                 $stmt = sqlsrv_query($conn, $sql);
-                                                $row=sqlsrv_fetch_array($stmt); //Obtiene la fecha de compra de la bd
-                                                echo("Fecha_Compra");                                                
-                                                //echo $row['Fecha_Compra']; //No se puede agregar un registro
+                                                sqlsrv_fetch($stmt);//Obtiene el dato de la bd
+                                                
+                                                // retrieve date as a DateTime object, then convert to string using PHP's date_format function
+                                                $date = sqlsrv_get_field($stmt, 0);
+                                                if ($date === false) {
+                                                die(print_r(sqlsrv_errors(), true));
+                                                }
+                                                $date_string = date_format($date, 'jS, F Y');
+                                                echo "$date_string\n";
+
                                             ?> 
                                         </p>
                                         <p class="text-dark">DESCRIPCION
@@ -147,11 +172,11 @@
                                         <!--PRECIO TOTAL DE COMPRA-->
                                         <p class="mb-0 text-black text-primary pt-2"><span class="text-black font-weight-bold"> Total de Compra:</span> 
                                             <?php
-                                                $sql = "SELECT Precio_Total FROM compra WHERE No_Orden = 1";
+                                                $sql = "SELECT Precio_Total FROM compra WHERE No_Orden = 2";
                                                 $stmt = sqlsrv_query($conn, $sql);
                                                 $row=sqlsrv_fetch_array($stmt); //Obtiene el precio total de la bd
-                                                echo("Precio_Total");                                                
-                                                //echo $row['Precio_Total']; //No se puede agregar un registro
+                                                echo("$");                                                                                            
+                                                echo $row['Precio_Total'];
                                             ?> 
                                             </p>
                                     </div>
@@ -159,6 +184,10 @@
 
                             </div>
                         </div>
+
+                        <?php
+                            }
+                        ?>  
 </section>                      
 </div>
 </body>

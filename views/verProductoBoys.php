@@ -20,16 +20,7 @@
 <!-- Codigo PHP para Conexion -->
 
 <?php
-    $serverName = "ALVAROCD-PC";            //Aqui solo se tiene que cambiar por el nombre del servidor que va a alojar la BD
-    $connectionInfo = array( "Database"=>"birdpunk");
-    $conn = sqlsrv_connect( $serverName, $connectionInfo);
-// if ($conn == TRUE) {
-//     echo("Conexion exitosa");
-//     echo("<br>"); 
-// }
-// else{
-//     echo("Error en la conexion");
-// }
+    include ("conexion.php");
 ?>
 
 

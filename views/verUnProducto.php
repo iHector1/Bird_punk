@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Conexión a la base de datos -->
 <?php
-    $serverName = "LAPTOP-BH1NLJJ4"; //serverName
-    $connectionInfo = array( "Database"=>"BirdPunk");
-    $conn = sqlsrv_connect($serverName, $connectionInfo);
+    include ("conexion.php");
 ?>
 
 <head>
@@ -127,18 +124,16 @@
             <br>
             <h4 class=><?php echo ($talla)?></h4>
             
-            <form name="form-cant" method="POST">
+            <form name="form-cant" method="POST" action="carrito.php">
                 <h5>Cantidad</h5> 
-                    <input type="number" name="cantidad" min="1" value="0" required>
+                    <input type="number" name="cantidad" min="1" required>
                     <br><br>   
-                    <form method="get">
+
                         <input type="submit" value="Añadir al carrito">
-                    </form>
             </form>
             <!-- Verificar stock -->
-             <!-- Verificar stock -->
              <?php 
-                    $sql = "SELECT Stock FROM articulo WHERE ID_Articulo = 5";
+                    $sql = "SELECT Stock FROM articulo WHERE ID_Articulo = 3";
                     $stmt = sqlsrv_query($conn, $sql);
                     $row=sqlsrv_fetch_array($stmt); //Obtiene el valor de stock de la bd
                     $cantidad = (int)$_POST['cantidad']; //Obtiene el valor de la página web
@@ -150,7 +145,7 @@
                     if($cantidad < $var || $cantidad == $var){ 
             ?>
                         <!-- Referencia para añadir al carrito -->
-                        <a href="http://localhost/Bird_punk/views/carrito.php/?$cantidad=$cantidad&$var=$var"><i class="icofont-cart"></i>Ir al carrito de compras</a>
+                        <!--<a href="http://localhost/Bird_punk/views/carrito.php"><i class="icofont-cart"></i>Ir al carrito de compras</a> -->
             <?php
                     }else{                      
                         echo "<script>alert('No hay suficiente stock');</script>";
