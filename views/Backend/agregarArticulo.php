@@ -21,8 +21,10 @@
         }
         echo $ID_Modelo;
 
-        $param2 = array($ID_Modelo, $id_marca, $id_talla, $genero, $precio, $stock);
-        $agregar = sqlsrv_query($conn, "INSERT INTO articulo (ID_Modelo, ID_Marca, ID_Talla, Genero, Precio, Stock) VALUES (?,?,?,?,?,?)", $param2);
+        $nombreIMG = $nombremodelo . "" . $ID_Modelo;
+
+        $param2 = array($ID_Modelo, $id_marca, $id_talla, $genero, $precio, $stock,$nombreIMG);
+        $agregar = sqlsrv_query($conn, "INSERT INTO articulo (ID_Modelo, ID_Marca, ID_Talla, Genero, Precio, Stock, Imagen) VALUES (?,?,?,?,?,?,?)", $param2);
 
         if($agregar)
             echo "Artículo agregado correctamente. <br>";
@@ -33,13 +35,18 @@
         $filename = addslashes($_FILES['browse']['name']);
         $file = file_get_contents($file);
         $file = base64_encode($file);
-        move_uploaded_file($_FILES['browse']['tmp_name'], '../Imagenes/'.$imagen.'.jpg');
-        
+        move_uploaded_file($_FILES['browse']['tmp_name'], '../Imagenes/'.$nombreIMG.'.jpg');
+        echo '<script type="text/javascript">
+                  window.location = "../AnadirProducto.php"
+                  </script>';
         
     }
     else{
         echo "La conexión no se pudo establecer.<br>";
         die( print_r( sqlsrv_errors(), true));
+        echo '<script type="text/javascript">
+                  window.location = "../AnadirProducto.php"
+                  </script>';
     } 
 
     sqlsrv_close($conn);
