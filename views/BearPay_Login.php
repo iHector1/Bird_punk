@@ -28,10 +28,10 @@
 
 
         <!-- Login Form -->
-        <form method="POST" action="./Index.php">
-        <input type="text" id="user" class="fadeIn second" name="user" placeholder="Usuario" required>
-        <input type="password" id="password" class="fadeIn third" name="password" placeholder="Contraseña" required>
-        <input type="submit" class="fadeIn fourth" value="Iniciar Sesión">
+        <form method="POST" action="Backend/loginBearPay.php">
+            <input type="text" id="user" class="fadeIn second" name="user" placeholder="Usuario" required>
+            <input type="password" id="password" class="fadeIn third" name="password" placeholder="Contraseña" required>
+            <input type="submit" class="fadeIn fourth" value="Iniciar Sesión">
         </form>
 
 
