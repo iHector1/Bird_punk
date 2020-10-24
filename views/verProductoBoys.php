@@ -1,3 +1,19 @@
+<?php
+    session_start();
+    error_reporting(0);
+    $varsesion = $_SESSION['usuario'];
+    $varsesion2 = $_SESSION['IDusuario'];
+    $varsesion3 = $_SESSION['IDcarrito'];
+?>
+<?php
+if($varsesion == null || $varsesion == ''){
+    echo'<script type="text/javascript">
+        alert("Sesion cerrada.");
+        window.location.href = "Index.php";
+        </script>';
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +36,17 @@
 <!-- Codigo PHP para Conexion -->
 
 <?php
-    include ("conexion.php");
+    include 'conexion.php';
+    //$serverName = "ALVAROCD-PC";            //Aqui solo se tiene que cambiar por el nombre del servidor que va a alojar la BD
+    //$connectionInfo = array( "Database"=>"birdpunk");
+    //$conn = sqlsrv_connect( $serverName, $connectionInfo);
+// if ($conn == TRUE) {
+//     echo("Conexion exitosa");
+//     echo("<br>"); 
+// }
+// else{
+//     echo("Error en la conexion");
+// }
 ?>
 
 
@@ -40,7 +66,7 @@
                 </ul>
             </div>
             <div class="navbar w-100 order-2  mx-auto">
-                <img class="mx-auto" src="imagenes/logo.PNG" width="60%">
+            <a href="Index.php"><img src="imagenes/logo.PNG" width="60%" style="margin-left:150px;"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
                     <i class="fa fa-bars" aria-hidden="true"></i>
                 </button>
@@ -48,10 +74,12 @@
             <!--User/Carrito-->
             <div class="navbar w-100 order-3 ">
                 <ul class="navbar-nav mx-auto">
-                    <a href="IniciarSesion.php" class="navbar-button">
-                        <i class="fa fa-user-circle-o"></i>
-                    </a>
                        <a href="carrito.php" class="navbar-button"> <i href class="fa fa-shopping-cart"></i></a>
+                       <?php
+                        if(!($varsesion == null || $varsesion == '')){
+                            echo " <a href='Logout.php' class='navbar-button'> Cerrar Sesion</a>";
+                        }
+                        ?> 
                  
                 </ul>
             </div>
@@ -62,7 +90,7 @@
     <!-------articulo------->
     <!-- Codigo PHP para obtener los datos de la base de datos -->
 <?php
-$query = "SELECT modelo.Modelo, marca.Marca, articulo.Precio, talla.Talla FROM articulo INNER JOIN modelo ON articulo.ID_Modelo=modelo.ID_Modelo INNER JOIN marca ON articulo.ID_Marca=marca.ID_Marca INNER JOIN talla ON articulo.ID_Talla=talla.ID_Talla WHERE Genero='M' OR Genero='U'";
+$query = "SELECT modelo.Modelo, marca.Marca, articulo.Precio, talla.Talla, articulo.ID_Articulo, articulo.Imagen FROM articulo INNER JOIN modelo ON articulo.ID_Modelo=modelo.ID_Modelo INNER JOIN marca ON articulo.ID_Marca=marca.ID_Marca INNER JOIN talla ON articulo.ID_Talla=talla.ID_Talla WHERE Genero='M' OR Genero='U'";
 $res = sqlsrv_query($conn, $query);
 while ($row = sqlsrv_fetch_array($res)) {
 ?>
@@ -70,19 +98,29 @@ while ($row = sqlsrv_fetch_array($res)) {
 <div class="articulos">
     <div class="articulo" >
         <div>
-        <a href="verUnProducto.php"> <img src="tenis.jpg" class="uno" method = "POST"> </a>
+        <a href="verUnProducto.php"> <img src="Imagenes/<?php echo $row[5];?>" class="uno" method = "POST"> </a>
         </div>
         <div class="desc">
         <form action="verUnProducto.php" method="POST">
             <h5><b>Nombre:</b> <?php echo $row[0];?></h5>
             <input type="hidden" name="modelo" value="<?php echo $row[0];?>">
+
             <h5><b>Marca:</b> <?php echo $row[1]?></h5>
             <input type="hidden" name="marca" value="<?php echo $row[1];?>">
+
             <h5><b>Precio:</b> <?php echo $row[2]?></h5>
             <input type="hidden" name="precio" value="<?php echo $row[2];?>">
+
             <h5><b>Talla:</b> <?php echo $row[3]?></h5>
             <input type="hidden" name="talla" value="<?php echo $row[3];?>">
+
+            <input type="hidden" name="ID_Articulo" value="<?php echo $row[4];?>">
+            <input type="hidden" name="imagen" value="<?php echo $row[5];?>">
+            <input type="hidden" name="Genero" value="1">
+            
             <input  type="submit" value="Ver Producto">
+
+            
         </div>
         </form>
     </div>

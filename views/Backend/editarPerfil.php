@@ -1,29 +1,27 @@
 <?php
-
-    $serverName = "S-NOTEBOOK";
-    $connectionInfo = array( "Database"=>"bearpay");
-    $conn = sqlsrv_connect( $serverName, $connectionInfo);
+    include '../conexion.php';
 
     if( $conn ) {
 
         $nombre = "";
         $apellido_p = "";
         $apellido_m = "";
-        $correo = "correo@gmail.com";
-        $pass = "yeah";
+        $correo = "chops@chops";
+        $pass = "passabc";
+        $newCorreo = "";
         $newPass = "";
+        $idTipo = "";
 
         $existeUsuario = "SELECT Correo FROM usuario WHERE Correo = '$correo'";
 
         if(sqlsrv_query($conn, $existeUsuario)){
 
-            $ingresarPass = "SELECT Contraseña FROM usuario WHERE Contraseña = '$pass'";
-            $resultado = sqlsrv_query($conn, $ingresarPass);
+            $ingresarPass = "SELECT Contrasena FROM usuario WHERE Contrasena = '$pass'";
 
-            if(sqlsrv_query($conn, $resultado)){
+            if(sqlsrv_query($conn, $ingresarPass)){
 
                 if($nombre != ""){
-                    $editarNombre = "UPDATE usuario SET Nombre_s = '$nombre'";
+                    $editarNombre = "UPDATE usuario SET Nombre_s = '$nombre' WHERE Correo = '$correo'";
                     if(sqlsrv_query($conn, $editarNombre))
                         echo "Nombre editado exitosamente.<br>";
                     else
@@ -31,7 +29,7 @@
                 }
 
                 if($apellido_p != ""){
-                    $editarApellidoPaterno = "UPDATE usuario SET Apellido_Paterno = '$apellido_p'";
+                    $editarApellidoPaterno = "UPDATE usuario SET Apellido_Paterno = '$apellido_p' WHERE Correo = '$correo'";
                     if(sqlsrv_query($conn, $editarApellidoPaterno))
                         echo "Apellido paterno editado exitosamente.<br>";
                     else
@@ -39,7 +37,7 @@
                 }
 
                 if($apellido_m != ""){
-                    $editarApellidoMaterno = "UPDATE usuario SET Apellido_Materno = '$apellido_m'";
+                    $editarApellidoMaterno = "UPDATE usuario SET Apellido_Materno = '$apellido_m' WHERE Correo = '$correo'";
                     if(sqlsrv_query($conn, $editarApellidoMaterno))
                         echo "Apellido materno editado exitosamente.<br>";
                     else
@@ -47,12 +45,27 @@
                 }
 
                 if($newPass != ""){
-                    $editarPass = "UPDATE usuario SET Contraseña = '$newPass'";
-                    $resultado = sqlsrv_query($conn, $editarPass);
-                    if(sqlsrv_query($conn, $resultado))
+                    $editarPass = "UPDATE usuario SET Contrasena = '$newPass' WHERE Correo = '$correo'";
+                    if(sqlsrv_query($conn, $editarPass))
                         echo "Contraseña editada exitosamente.<br>";
                     else
                         echo "Error, la contraseña no se pudo editar.<br>";
+                }
+
+                if($newCorreo != ""){
+                    $editarCorreo = "UPDATE usuario SET Correo = '$newCorreo' WHERE Correo = '$correo'";
+                    if(sqlsrv_query($conn, $editarCorreo))
+                        echo "Correo editado exitosamente.<br>";
+                    else
+                        echo "Error, el correo no se pudo editar.<br>";
+                }
+
+                if($idTipo != ""){
+                    $editarIdTipo = "UPDATE usuario SET ID_Tipo_Usuario = '$idTipo' WHERE Correo = '$correo'";
+                    if(sqlsrv_query($conn, $editarIdTipo))
+                        echo "Tipo de usuario editado exitosamente.<br>";
+                    else
+                        echo "Error, el id de tipo de usuario no se pudo editar.<br>";
                 }
             }
             else
@@ -62,7 +75,9 @@
             echo "Error, no hay ningún usuario registrado con ese correo.<br>";
     }
     else{
-        echo "Conexión no se pudo establecer.<br>";
+        echo "La conexión no se pudo establecer.<br>";
         die( print_r( sqlsrv_errors(), true));
    }
+   
+   sqlsrv_close($conn);
 ?>

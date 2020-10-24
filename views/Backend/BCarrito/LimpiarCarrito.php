@@ -1,8 +1,8 @@
 <?php
     include 'conexion.php';
 
-    $id_U = $_SESSION['ID_Usuario'];
-    $id_C = $_SESSION['ID_Carrito']; 
+    $id_U = $_SESSION['IDusuario'];
+    $id_C = $_SESSION['IDcarrito']; 
  
     $sql = "DELETE FROM articulo_carrito WHERE ID_Carrito = ?";
     $params = array($id_C);

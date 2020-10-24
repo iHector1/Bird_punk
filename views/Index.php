@@ -1,9 +1,10 @@
 <?php
-session_start();
-error_reporting(0);
-$varsesion = $_SESSION['usuario'];
-$varsesion2 = $_SESSION['IDusuario'];
-$varsesion3 = $_SESSION['IDcarrito'];
+    session_start();
+    error_reporting(0);
+    $varsesion = $_SESSION['usuario'];
+    $varsesion2 = $_SESSION['IDusuario'];
+    $varsesion3 = $_SESSION['IDcarrito'];
+    $varsesion4 = $_SESSION['IDtipousuario'];
 ?>
 
 <!DOCTYPE html>
@@ -31,19 +32,25 @@ $varsesion3 = $_SESSION['IDcarrito'];
             <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item ">
-                        <a class="nav-link border-right" href="#">HOMBRES</a>
+                        <?php
+                            if(!($varsesion == null || $varsesion == '')){
+                            echo "<a class='nav-link border-right' href='verProductoBoys.php'>HOMBRES</a>";
+                            }
+                        ?>    
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">MUJERES</a>
+                        <?php
+                            if(!($varsesion == null || $varsesion == '')){
+                            echo "<a class='nav-link' href='verProductoGirls.php'>MUJERES</a>";
+                            }
+                        ?>
                     </li>
-                    <li class="nav-item">
-
+                    <li class="nav-item ">
                     <?php
                     if(!($varsesion == null || $varsesion == '')){
-                        echo "<h4 class='nav-link'>      Bienvenid@: ";  echo$_SESSION['usuario']; echo" </h4>";
+                        echo "<a href='editarPerfil.php'><h4 style='padding-left:100px;' class='nav-link'>Bienvenid@: ";  echo$_SESSION['usuario']; echo" </h4></a>";
                     }
                     ?>
-  
                     </li>
                 </ul>
             </div>

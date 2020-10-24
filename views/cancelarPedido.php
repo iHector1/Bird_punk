@@ -13,6 +13,8 @@
 
     session_start();
     $_SESSION['ID_Usuario'] = 5;
+    $_SESSION['No.Orden'] = 6;
+    $id_orden = $_SESSION['No.Orden'];
     $id_u = $_SESSION['ID_Usuario'];
     $sql = "SELECT Total_articulo, Cantidad_Articulo, talla, modelo,Imagen FROM compra 
             INNER JOIN detalle_compra ON compra.No_Orden = detalle_compra.No_Orden 
@@ -31,6 +33,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BIRD PUNK</title>
@@ -82,7 +85,7 @@
 
     </section>
 
-    <h4>Numero de pedido: 123DER2345</h4>
+    <h4>Numero de pedido:<?php echo $id_orden?></h4>
     <!-------articulo------->
     <div class="art" >
     <?php 
@@ -93,17 +96,17 @@
                 <img src="Imagenes/<?php echo $fila['Imagen'];?>" class="cancelar">
             </div>    
             <div class="producto">
-                <h6><?php echo $fila['modelo'];?></h6>
-                <h6><?php echo $fila['Cantidad_Articulo'];?></h6>
-                <h6><?php echo $fila['talla'];?></h6>
-                <h6><?php echo $fila['Total_articulo'];?></h6>
+                <h6>Modelo: <?php echo $fila['modelo'];?></h6>
+                <h6>Cantidad: <?php echo $fila['Cantidad_Articulo'];?></h6>
+                <h6>Talla: <?php echo $fila['talla'];?></h6>
+                <h6>Precio Total: <?php echo $fila['Total_articulo'];?></h6>
             </div>
         </div>
         <?php 
             }
         ?>
     </div> 
-    <form action  = "CancelarDevolver.php" >
+    <form action  = "Backend/CancelarDevolver.php" >
     <input type="submit"  class="fadeIn fourth"  value="Cancelar pedido" > 
     <input type="submit" class="fadeIn fourt" value="Devolver  producto">
     <!-- <input type="submit" class="fadeIn four" value="Finalizar compra">     -->

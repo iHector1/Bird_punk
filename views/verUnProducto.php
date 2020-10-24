@@ -1,3 +1,18 @@
+<?php
+    
+    error_reporting(0);
+    $varsesion = $_SESSION['usuario'];
+    $varsesion2 = $_SESSION['IDusuario'];
+    $varsesion3 = $_SESSION['IDcarrito'];
+?>
+<?php
+/*if($varsesion == null || $varsesion == ''){
+    echo'<script type="text/javascript">
+        alert("Sesion cerrada.");
+        window.location.href = "Index.php";
+        </script>';
+}*/
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,10 +60,12 @@
             <!--User/Carrito-->
             <div class="navbar w-100 order-3 ">
                 <ul class="navbar-nav mx-auto">
-                    <a href="IniciarSesion.php" class="navbar-button">
-                        <i class="fa fa-user-circle-o"></i>
-                    </a>
-                       <a href="carrito.php" class="navbar-button"> <i href class="fa fa-shopping-cart"></i></a>
+                <a href="carrito.php" class="navbar-button"> <i href class="fa fa-shopping-cart"></i></a>
+                       <?php
+                        if(!($varsesion == null || $varsesion == '')){
+                            echo " <a href='Logout.php' class='navbar-button'> Cerrar Sesion</a>";
+                        }
+                        ?> 
                  
                 </ul>
             </div>
@@ -64,56 +81,29 @@
         <div id="first"> 
             <div>
             <?php
+            //<!-- Obtencion de los datos de verProducto a verUnProducto -->
+            
+                $modelo = $_POST['modelo'];
+                $marca = $_POST['marca'];
+                $precio = $_POST['precio'];
+                $talla = $_POST['talla'];
+                $IDArticulo = $_POST['ID_Articulo'];
+                $pagina = $_POST['Genero'];
+                $imagen = $_POST['imagen'];
+                
+            
                 $sql2 = "SELECT Stock FROM articulo";
             ?>
                 <div class="galeria">
-                    <!--Almacenar la imagen en la bd -->
-                    <?php
-                    //Primer img
-                        $sql = "SELECT Imagen FROM Articulo WHERE ID_Articulo = 5"; 
-                        $result = sqlsrv_query($conn, $sql);
-                        $row = sqlsrv_fetch_array($result);
-                    ?>
-
-                    <?php
-                    //Primer img
-                        $sql = "SELECT Imagen FROM Articulo WHERE ID_Articulo = 9"; 
-                        $result = sqlsrv_query($conn, $sql);
-                        $row2 = sqlsrv_fetch_array($result);
-                    ?>
-                    
-                    <?php
-                    //Primer img
-                        $sql = "SELECT Imagen FROM Articulo WHERE ID_Articulo = 11"; 
-                        $result = sqlsrv_query($conn, $sql);
-                        $row3 = sqlsrv_fetch_array($result);
-                    ?>
-    
+                   <!--Almacenar la imagen en la bd -->
                     <input type="radio" name="navegacion" id="_1" checked>
-                    <input type="radio" name="navegacion" id="_2">
-                    <input type="radio" name="navegacion" id="_3">
-                    <input type="radio" name="navegacion" id="_4"> 
-                    <input type="radio" name="navegacion" id="_5">
-                    <img src="tenis.jpg" width="600" height="300"/> <!--Ejemplo-->
-                    <img src="imageView.php?image_id= <?php echo $row["Imagen"]; ?>" width="600" height="300"/><br/>
-                    <img src="imageView.php?image_id= <?php echo $row2["Imagen"]; ?>" width="600" height="300"/><br/>
-                    <img src="imageView.php?image_id= <?php echo $row3["Imagen"]; ?>" width="600" height="300"/><br/>
-                    <img src="Imagenes/tenis-2.jpg" width="600" height="300"/> <!--Ejemplo-->
+                    
+                    <img src="Imagenes/<?php echo $imagen;?>" width="500" height="300"/> <!--Ejemplo-->
                 </div>
             </div>
         </div>
 
-            <!-- Obtencion de los datos de verProducto a verUnProducto -->
-            <?php
-                $modelo = $_POST['modelo'];
-                //var_dump($modelo);
-                $marca = $_POST['marca'];
-                //var_dump($marca);
-                $precio = $_POST['precio'];
-                //var_dump($precio);
-                $talla = $_POST['talla'];
-                //var_dump($talla);
-            ?>
+            
         <!-- Columna izquierda -->
         <div id="second">
             <h4 class="text-center"><?php echo ("<b>Modelo: </b>".$modelo)?></h4>
@@ -124,34 +114,46 @@
             <br>
             <h4 class=><?php echo ($talla)?></h4>
             
-            <form name="form-cant" method="POST" action="carrito.php">
+            <form name="form-cant" action="carrito.php" method="POST">
                 <h5>Cantidad</h5> 
                     <input type="number" name="cantidad" min="1" required>
                     <br><br>   
-
-                        <input type="submit" value="Añadir al carrito">
+                    <input type="hidden" name="ID_Articulo" value="<?php echo $IDArticulo;?>">
+                    <input type="submit" value="Añadir al carrito">
             </form>
-            <!-- Verificar stock -->
-             <?php 
-                    $sql = "SELECT Stock FROM articulo WHERE ID_Articulo = 3";
-                    $stmt = sqlsrv_query($conn, $sql);
-                    $row=sqlsrv_fetch_array($stmt); //Obtiene el valor de stock de la bd
-                    $cantidad = (int)$_POST['cantidad']; //Obtiene el valor de la página web
-                    $var = (int)$row['Stock']; //Casteo
 
-                    while($cantidad == 0){
-                        echo (" ");
-                    }
-                    if($cantidad < $var || $cantidad == $var){ 
-            ?>
-                        <!-- Referencia para añadir al carrito -->
-                        <!--<a href="http://localhost/Bird_punk/views/carrito.php"><i class="icofont-cart"></i>Ir al carrito de compras</a> -->
-            <?php
-                    }else{                      
-                        echo "<script>alert('No hay suficiente stock');</script>";
-                        echo "<font color=\"red\">Stock:</font>";
-                        echo $row['Stock'];
-                    }
+
+             <!-- Verificar stock -->
+             <!-- Verificar stock -->
+            <?php 
+                $sql = "SELECT Stock FROM articulo WHERE ID_Articulo = '".$IDArticulo."'";
+                $stmt = sqlsrv_query($conn, $sql);
+                $row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC); //Obtiene el valor de stock de la bd
+                $cantidad = $_POST['cantidad']; //Obtiene el valor de la página web
+                $var = (int)$row['Stock']; //Casteo
+                echo "Stock: ";
+                echo $row['Stock'];
+                $pagina = (int)$pagina;
+                
+
+                while($cantidad == 0){
+                    echo (" ");
+                }
+                if($cantidad < $var || $cantidad == $var){ 
+                ?>
+                    <!-- Referencia para añadir al carrito -->
+                    
+                <?php
+                }
+                else
+                {                      
+                    
+                    echo "<script>alert('No hay suficiente stock');</script>";
+                    echo '<script type="text/javascript">
+                    window.location = "Index.php"
+                    </script>';
+                    
+                }
             ?>         
         </div>  
     </div>

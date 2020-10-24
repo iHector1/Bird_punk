@@ -1,18 +1,16 @@
 <?php
-session_start();
-error_reporting(0);
-$varsesion = $_SESSION['usuario'];
-$varsesion2 = $_SESSION['IDusuario'];
+    session_start();
+    error_reporting(0);
+    $varsesion = $_SESSION['usuario'];
+    $varsesion2 = $_SESSION['IDusuario'];
+    if($varsesion == null || $varsesion == ''){
+        echo'<script type="text/javascript">
+            alert("Sesion cerrada.");
+            window.location.href = "Index.php";
+            </script>';
+    }
 ?>
 
-<?php
-if($varsesion == null || $varsesion == ''){
-    echo'<script type="text/javascript">
-        alert("Sesion cerrada.");
-        window.location.href = "Index.php";
-        </script>';
-}
-?>
 <html>
 <head>
     <script src="https://code.jquery.com/jquery.min.js"></script>
@@ -30,22 +28,14 @@ if($varsesion == null || $varsesion == ''){
         <nav class="navbar border-bottom navbar-expand-md navbar-light">
             <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item ">
-                        <a class="nav-link border-right" href="#">HOMBRES</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link border-right" href="#">MUJERES</a>
-                    </li>
+                   
                     <li class="nav-item">
                         <a class="nav-link " href="agregarAlmacenista.php">ALMACENISTAS</a>
                     </li>
                     <li class="nav-item">
                     <?php
-                    if($varsesion == null || $varsesion == ''){
-
-                    }else{
-                        echo "<h4 class='nav-link'>      Bienvenid@: ";  echo$_SESSION['usuario']; echo" </h4>";
-                        
+                    if(!($varsesion == null || $varsesion == '')){
+                        echo "<a href='editarPerfil.php'><h4 style='padding-left:100px;' class='nav-link'>Bienvenid@: ";  echo$_SESSION['usuario']; echo" </h4></a>";
                     }
                     ?>
                     </li>
@@ -61,11 +51,11 @@ if($varsesion == null || $varsesion == ''){
             <!--User/Carrito-->
             <div class="navbar w-100 order-3 ">
                 <ul class="navbar-nav mx-auto">
-                    <?php
-                        if($varsesion == null || $varsesion == ''){
-                            echo "<a href='IniciarSesion.php' class='navbar-button'><i class='fa fa-user-circle-o'></i></a>";
+                <?php
+                        if(!($varsesion == null || $varsesion == '')){
+                            echo " <a href='Logout.php' class='navbar-button'> Cerrar Sesion</a>";
                         }
-                    ?> 
+                        ?> 
                        
                  
                 </ul>
@@ -82,47 +72,39 @@ if($varsesion == null || $varsesion == ''){
 
 <body>
 
+    
+
     <div class="contenedorAlmacenista">
         <table>
-            <tr>
-                <td>
-                    <P>Nombre Almacenista <br> Domicilio (calle1,numero ext #11, numero int #12, colonia)<br> almacenista1@gmail.com <br> </P>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-default btn-circle"><i class="fa fa-check"></i></button>
-                    <button type="button" class="btn btn-default btn-circle"><b>X</b></button>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <P>Nombre Almacenista <br> Domicilio (calle1,numero ext #11, numero int #12, colonia)<br> almacenista1@gmail.com <br> </P>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-default btn-circle"><i class="fa fa-check"></i></button>
-                    <button type="button" class="btn btn-default btn-circle"><b>X</b></button>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <P>Nombre Almacenista <br> Domicilio (calle1,numero ext #11, numero int #12, colonia)<br> almacenista1@gmail.com <br> </P>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-default btn-circle"><i class="fa fa-check"></i></button>
-                    <button type="button" class="btn btn-default btn-circle"><b>X</b></button>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <P>Nombre Almacenista <br> Domicilio (calle1,numero ext #11, numero int #12, colonia)<br> almacenista1@gmail.com <br> </P>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-default btn-circle"><i class="fa fa-check"></i></button>
-                    <button type="button" class="btn btn-default btn-circle"><b>X</b></button>
-                </td>
-            </tr>
+        <?php
+            include 'conexion.php';
+            include 'Backend/buscarAlmacenista.php';
+            //include 'Backend/eliminarAlmacenista.php';
+            while($row = sqlsrv_fetch_array($Almacenistas))
+            {              
+        ?>
+            <form method="POST" action="./Backend/eliminarAlmacenistaBE.php">
+                <tr>
+                    <td>
+                        <p><?php echo $row[1]." ".$row[2]." ".$row[3];?><br> Calle: <?php echo $row[8]; ?>,<br> No.Exterior: <?php echo $row[9];?><br>No.Interior: <?php echo $row[10];?> <br>Colonia: <?php echo $row[11]; ?> <br>CP: <?php echo $row[12];?><br> Correo: <?php echo $row[4]; ?> <br> </p>
+                    </td>
+                    <td>
+                        <button type="submit" onClick="return confirm('¿Desea eliminar este almacenista?');" class="btn btn-default btn-circle"><b>X</b></button>
+                    </td>
+                </tr>
+                <input type="hidden" name="idalmacenista" value="<?php echo $row[0];?>">
+            </form>
+        <?php
+            }
+        ?>
         </table>
+    
+        
         <button type="submit" type="button" class="btn btn-light"><a href="RegistroAlmacenista.php">Agregar Almacenista</a></button>
+            
+        
     </div>
+    
 </body>
 
 </html>

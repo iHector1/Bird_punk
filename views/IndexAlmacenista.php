@@ -3,6 +3,7 @@ session_start();
 error_reporting(0);
 $varsesion = $_SESSION['usuario'];
 $varsesion2 = $_SESSION['IDusuario'];
+$varsesion4 = $_SESSION['IDtipousuario'];
 ?>
 <?php
 if($varsesion == null || $varsesion == ''){
@@ -36,30 +37,25 @@ if($varsesion == null || $varsesion == ''){
         <nav class="navbar border-bottom navbar-expand-md navbar-light">
             <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item ">
-                        <a class="nav-link border-right" href="#">HOMBRES</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link border-right" href="#">MUJERES</a>
-                    </li>
-                    <li class="nav-item">
+                    
+                    <li class="nav-item" style="white-space: nowrap;">
                         <?php
                         if(!($varsesion == null || $varsesion == '')){
                             echo "<a class='nav-link border-right' href='AnadirProducto.php'>AGREGAR PRODUCTO</a>";
                         }
                         ?>  
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" style="white-space: nowrap;">
                         <?php
                         if(!($varsesion == null || $varsesion == '')){
                             echo "<a class='nav-link' href='EditarProducto.php'>EDITAR PRODUCTO</a>";
                         }
                         ?>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" style="white-space: nowrap;">
                     <?php
                     if(!($varsesion == null || $varsesion == '')){
-                        echo "<h4 class='nav-link'>Bienvenid@: ";  echo$_SESSION['usuario']; echo" </h4>";
+                        echo "<a href='editarPerfil.php'><h4 style='padding-left:100px;' class='nav-link'>Bienvenid@: ";  echo$_SESSION['usuario']; echo" </h4></a>";
                     }
                     ?>
                     </li>
@@ -74,11 +70,7 @@ if($varsesion == null || $varsesion == ''){
             <!--User/Carrito-->
             <div class="navbar w-100 order-3 ">
                 <ul class="navbar-nav mx-auto">
-                    <?php
-                        if($varsesion == null || $varsesion == ''){
-                            echo "<a href='IniciarSesion.php' class='navbar-button'><i class='fa fa-user-circle-o'></i></a>";
-                        }
-                    ?> 
+                    
                     <?php
                         if(!($varsesion == null || $varsesion == '')){
                             echo " <a href='Logout.php' class='navbar-button'> Cerrar Sesion</a>";
