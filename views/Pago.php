@@ -163,6 +163,10 @@
     <p style="font-size:20px;" ><b>TOTAL:</b> $<?php echo $total;?></p>
         <a class="btt2" href="carrito.php" >Volver al carrito</a>
         <form method="POST" action="BearPay_Login.php">
+
+            <?php
+                $_SESSION['total'] = $total;
+            ?>
             <input type="submit" class="btt" value="Comprar ahora">
         </form>
 </body>
