@@ -1,16 +1,19 @@
 <?php
-session_start();
-error_reporting(0);
-$varsesion = $_SESSION['usuario'];
-$varsesion2 = $_SESSION['IDusuario'];
-?>
-<?php
-if($varsesion == null || $varsesion == ''){
-    echo'<script type="text/javascript">
-        alert("Sesion cerrada.");
-        window.location.href = "Index.php";
-        </script>';
-}
+    session_start();
+    error_reporting(0);
+    $varsesion = $_SESSION['usuario'];
+    $varsesion2 = $_SESSION['IDusuario'];
+    ?>
+    <?php
+    if($varsesion == null || $varsesion == ''){
+        echo'<script type="text/javascript">
+            alert("Sesion cerrada.");
+            window.location.href = "Index.php";
+            </script>';
+    }
+
+    include 'conexion.php';
+    include 'Backend/mostrarArticulosEditar.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,42 +68,48 @@ if($varsesion == null || $varsesion == ''){
                     <h1>Editar Producto</h1>
                 </div>
             </div>
+                        
+            <?php
+            while($row = sqlsrv_fetch_array($articulos)){
+            ?>
             <div class="row mt-3 p-2 rectangle">
                 <h2 class="col-11 m-3 mb-5 ">Datos del producto</h2>
-                <div class="col-5 ml-4">
+                        <div class="col-5 ml-4">
                     <!-- Obtención de datos de producto existente -->
-                    <form method="POST" action="IndexAlmacenista.php">
+                    <form method="POST" action="Backend/modificarArticulo.php">
                         <!-- NombreProducto | No se puede editar -->
-                        <input class="m-2 form-control float-right" type="text" id="name" name="name" placeholder="SustituirNombreProducto" disabled></input>
-                        <text class="m-2 mt-4 lightText">$</text>
+                        <input class="m-2 form-control float-right" type="number" id="name" name="name" placeholder="<?php echo $row[1];?>" disabled></input>
+
+                        <!-- NombreProducto | No se puede editar -->
+                        <input class="m-2 form-control float-right" type="number" id="precio" name="precio" placeholder="Precio actual:<?php echo $row[2];?>" required></input>
                         <!-- PrecioProducto | Se puede editar -->
-                        <input class="m-2 form-control w-75 float-right" type="number" id="price" name="price" placeholder="SustituirPrecioProducto" required></input>
-                        <div class="m-2">
-                            <text class="lightText mr-5">Genero</text>
-                            <!-- GeneroProducto | No se puede editar | Si está checked no se debe deshabilitar y viceversa -->
-                            <label class="m-2 mr-5 radio_inline"><input type="radio" id="gender" name="gender" value="0" checked><text class="darkText"> Mujer</text></label>
-                            <label class="m-2 mr-5 radio_inline"><input type="radio" id="gender" name="gender" value="1" disabled><text class="darkText"> Hombre</text></label>
-                            <label class="m-2 radio_inline"><input type="radio" id="gender" name="gender" value="2" disabled><text class="darkText"> Otro</text></label>
-                        </div>
-                        <text class="m-2 lightText">Talla</text>
-                        <!-- TallaProducto | No se puede editar -->
-                        <select class="mb-5 p-1 w-75 float-right selectText" name="size" id="size" disabled>
-                            <option value="1" selected>SustituirTallaProducto</option>
-                        </select>
-                </div>
-                <div class="col-3">
-                        <!-- Imagen | No se puede editar -->
-                        <img class="img mt-2 ml-5" src="Imagenes/tenis1.jpg" alt="">
-                </div>
-                <div class="col-3">
-                        <!-- Stock | Se puede editar -->
-                        <text class="m-2 lightText">En stock</text>
-                        <input class="m-2 form-control" type="number" id="stock" name="stock" placeholder="SustituirCantidadStock" required></input>
+                        <input class="m-2 form-control float-right" type="number" id="stock" name="stock" placeholder="Stock actual: <?php echo $row[3];?>" required></input>
                         <!-- Submit -->
-                        <input class="m-2 mt-5 btn btn-dark btn-outline-light float-right" type="submit" value="Actualizar producto">
+                        
+
+                        <input type="hidden" name="ID_Articulo" value="<?php echo $row[0];?>">
+
+                        </div>
+                        <div class="col-3">
+                                <!-- Imagen | No se puede editar -->
+                                <img class="img mt-2 ml-5" src="Imagenes/<?php echo $row[4];?>" alt="">
+                        </div>
+
+
+                        <input class="m-2 btn btn-dark btn-outline-light float-right" style="height:50px;"type="submit" value="Actualizar producto">                    
+                    </form>  
+
+                    <form method="POST" action="Backend/eliminarArticulo.php">
+                        <input class="m-2 btn btn-dark btn-outline-light float-left" style="height:50px;"type="submit" value="Eliminar producto">
+
+                        <input type="hidden" name="ID_Articulo" value="<?php echo $row[0];?>">
                     </form>
-                </div>
+
+                       
             </div>
+            <?php
+            }
+            ?>
         </div>
         
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

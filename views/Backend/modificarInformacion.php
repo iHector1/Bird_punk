@@ -22,7 +22,6 @@
     $modificarDomicilio=sqlsrv_query($conn,$sql2);
 
     echo'<script type="text/javascript">
-    alert("Sesion cerrada.");
     window.location.href = "../editarPerfil.php";
     </script>';
 
