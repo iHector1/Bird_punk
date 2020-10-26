@@ -9,19 +9,13 @@
 </html> 
 
 <?php
-    //include 'conexion.php'
-    //Conexion al Servidor *Cambiar segun la maquina
-    $serverName = "DESKTOP-K60F1OJ"
-    or die ("Error en la conexion al servidor");
+    include '../conexion.php';
+    include '../conexionBearPay.php';
 
-    //                                                            Conexion a la BD Bird_Punk    *Cambiar segun el nombre de cada uno
-    $conectionInfo = array("Database" =>"BirdPunk")
-    or die ("Error en la conexion a la base de datos");
-
-    $conn = sqlsrv_connect($serverName, $conectionInfo);
+    $NumOrden = $_POST['noOrden'];
 
     //Querys correspondientes a la primera Base de datos (BirdPunk)
-    $NumOrden = 6;          //Cambiar una vez que lo obtengan los demas
+    //$NumOrden = 6;          //Cambiar una vez que lo obtengan los demas
     $Select = " SELECT usuario.ID_Usuario,No_Orden, Nombre_s, Estatus, Precio_Total
                 FROM compra
                 INNER JOIN usuario
@@ -57,11 +51,7 @@
         $precioT = sqlsrv_get_field( $recurso, 4);
     }
       
-    //                                                                          Conexion a la BD BearPay
-    $conexionInfo1 = array("Database" => "BearPay")
-    or die ("Error en la conexion a la base de datos");
     
-    $cone = sqlsrv_connect($serverName, $conexionInfo1);
     $precioBP = 0;
 
     //Query correspondiente para encontrar al usuario que realizo esta compra
@@ -70,7 +60,7 @@
                  FROM Usuario
                  WHERE Nombre_Usuario  = '$nombre'";
 
-    $query= sqlsrv_query($cone, $SelectBP);
+    $query= sqlsrv_query($connBP, $SelectBP);
 
     if ($query === false){
         echo "Error";
@@ -84,16 +74,16 @@
     
     
     //Verificar que el estado sea enviado
-    if ($estatus == 'S'){
+    if ($estatus == 'Enviado'){
         $MontoA = sqlsrv_get_field( $query, 0);
         $precioBP = $MontoA + $precioT;
-        $estatusBP = 5;
+        $estatusBP = 3;
         //UPDETEAR A LA BD DEL BANCO LA CANTIDAD DEL PEDIDO CANCELADO O DEVUELTO
         $UpdateBP = "UPDATE Usuario 
             SET Monto = $precioBP 
             WHERE Nombre_Usuario = '$nombre'"; 
 
-        $EqueryBP= sqlsrv_query($cone, $UpdateBP);
+        $EqueryBP= sqlsrv_query($connBP, $UpdateBP);
 
         if ($EqueryBP === false){
             echo "Error";
@@ -116,10 +106,10 @@
         </script>
         <?php
     }
-    else if ($estatus == 'D'){
+    else if ($estatus == 'Entregado'){
         $MontoA = sqlsrv_get_field( $query, 0);
         $precioBP = $MontoA + $precioT;
-        $estatusBP = 6;
+        $estatusBP = 4;
         //UPDETEAR A LA BD DEL BANCO LA CANTIDAD DEL PEDIDO CANCELADO O DEVUELTO
         $UpdateBP = "UPDATE Usuario 
                 SET Monto = $precioBP 
@@ -148,14 +138,14 @@
         </script>
         <?php
     }
-    else if ($estatus == 'C'){
+    else if ($estatus == 'Cancelado'){
         ?>
         <script type="text/javascript">
             alert("No es posible realizar esta operacion ya que tu pedido se encuentra con el status de cancelado");
         </script>
         <?php
     }
-    else if ($estatus == 'R'){
+    else if ($estatus == 'Devolucion'){
         ?>
         <script type="text/javascript">
             alert("No es posible realizar esta operacion ya que tu pedido se encuentra con el status de devuelto");
@@ -169,4 +159,9 @@
         </script>
         <?php
     }
+
+
+    echo '<script type="text/javascript">
+                  window.location = "../Historial.php"
+                  </script>';
 ?>

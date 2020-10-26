@@ -41,7 +41,14 @@
                     <li class="nav-item">
                         <?php
                             if(!($varsesion == null || $varsesion == '')){
-                            echo "<a class='nav-link' href='verProductoGirls.php'>MUJERES</a>";
+                            echo "<a class='nav-link border-right' href='verProductoGirls.php'>MUJERES</a>";
+                            }
+                        ?>
+                    </li>
+                    <li class="nav-item">
+                        <?php
+                            if(!($varsesion == null || $varsesion == '')){
+                            echo "<a class='nav-link' href='Historial.php'>HISTORIAL</a>";
                             }
                         ?>
                     </li>

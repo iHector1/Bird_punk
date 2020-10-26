@@ -1,11 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<!-- Conexión a la base de datos -->
 <?php
-    include ("conexion.php");
+    include 'conexion.php';
+    session_start();
+    error_reporting(0);
+    $varsesion = $_SESSION['usuario'];
+    $IDusuario = $_SESSION['IDusuario'];
+    $varsesion4 = $_SESSION['IDtipousuario'];
+    ?>
+    <?php
+    if($varsesion == null || $varsesion == ''){
+        echo'<script type="text/javascript">
+            alert("Sesion cerrada.");
+            window.location.href = "Index.php";
+            </script>';
+            
+    }
 ?>
 
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,6 +34,7 @@
     <link rel="stylesheet" href="Styles/IndexStyle.css" />
     <link rel="stylesheet" href="https://allyoucan.cloud/cdn/icofont/1.0.1/icofont.css">
     <link rel="stylesheet" href="Styles/Historial.css" />
+    <link rel="stylesheet" href="Styles/styleVerProducto.css">
 </head>
 <body>
      <!--Barra de navegación-->
@@ -57,138 +71,136 @@
         </nav>
         <div class="navbar navbar-expand-md navbar-light"> </div>
     </section>
-
-    <!-- Valida el usuario del que se muestra el historial  -->
-    <?php
-    
-    $sql = "SELECT ID_Usuario FROM usuario WHERE ID_Usuario = 1"; //Aquí se debe de condiciionar por el ID del usuario
-    $stmt = sqlsrv_query($conn, $sql);
-    $row=sqlsrv_fetch_array($stmt); //Obtiene el ID del usuariode la bd
-    //echo $row['ID_Usuario'];
-    
-    ?>
-    
+      
+           
 
     <!--- SECCIÓN DE HISTORIAL DE COMPRAS -->
     <section class="fadeInDown">
         <div class="mx-auto col-md-9">
-            <div class="osahan-account-page-right shadow-sm bg-white p-4 h-100">
-                <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane  fade  active show" id="orders" role="tabpanel" aria-labelledby="orders-tab">
-                        <h4 class="font-weight-bold mt-0 mb-4">Historial de Compras</h4>
+            <h4 class="font-weight-bold mt-0 mb-4">Historial de Compras</h4>
 
-                        <!-- Recorre los artículos del historial  -->
-                        <?php
-                            $sql = "SELECT * FROM compra WHERE ID_Usuario = 1";
-                            $stmt = sqlsrv_query($conn, $sql);
-                            //$row = sqlsrv_fetch_array($stmt); //Obtiene el numero de orden de la bd
-                            
-                            //$var = (int)$row['ID_Detalle']; //Casteo
+                            <!-- Recorre los artículos del historial  -->
+                            <?php
+                                $domicilio = "SELECT Calle, NoExterior, NoInterior FROM info_cliente WHERE ID_Usuario = '$IDusuario'";
+                                $stmtD = sqlsrv_query($conn, $domicilio);
 
-                            while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_NUMERIC)) 
-                            {
+                                while($r = sqlsrv_fetch_array($stmtD))
+                                {
+                                    $calle = $r[0];
+                                    $noexterior = $r[1];
+                                    $nointerior = $r[2];
+                                }
+
+
+                                $sql = "SELECT compra.No_Orden, compra.Fecha_Compra, compra.Precio_Total, estatus.Estatus FROM compra INNER JOIN estatus ON compra.ID_Estatus = estatus.ID_Estatus WHERE ID_Usuario = '$IDusuario'";
+                                $stmt = sqlsrv_query($conn, $sql);
+
+                                while($row = sqlsrv_fetch_array($stmt)) 
+                                {
+                                    $noorden = $row[0];
+                                    
+                                    $f = $row[1];
+                                    
+
+                                    $total = $row[2]; 
+                                    $estatus = $row[3];
                                 ?>
 
-                            
+                                <div class="osahan-account-page-right shadow-sm bg-white p-4 h-100">
+                                <?php echo '<h5> <b>NO. ORDEN:</b> '.$noorden.'</h5>';?>
+                                <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane  fade  active show" id="orders" role="tabpanel" aria-labelledby="orders-tab">
+                                <?php
 
-                        <div class="bg-white card mb-4 order-list shadow-sm">
-                            <div class="gold-members p-4">
-                                <a href="#">
-                                </a>
-                                <div class="media">
-                                    <a href="#">
-                                        <img class="rounded d-block mr-4" src="tenis.jpg" alt="">
-                                    </a>
 
-                                    <div class="media-body">
-                                        <!--FECHA DEL PEDIDO-->
-                                        <a href="#">
-                                            <span class="float-right text-info">FECHA DE ENTREGA
-                                            <i class="icofont-check-circled text-success">    
-                                            </i>
-                                            </span>
-                                        </a>
-                                        <!--NOMBRE DEL ARTICULO-->
-                                        <h6 class="mb-2">
-                                            <a href="#"></a>
-                                            <a href="#" class="text-black">
-                                            <?php
-                                                $sql = "SELECT modelo, marca FROM modelo, articulo, marca WHERE articulo.ID_Modelo = modelo.ID_Modelo 
-                                                AND articulo.ID_Marca = marca.ID_Marca AND articulo.ID_Articulo = 2";
-                                                $stmt = sqlsrv_query($conn, $sql);
-                                                $row = sqlsrv_fetch_array($stmt); //Obtiene los datos de la bd
-                                                echo $row['modelo'];
-                                                echo(" - ");
-                                                echo $row['marca'];
-                                            ?> 
-                                            </a>
-                                        </h6>
-                                        <!--DIRECCION DEL ENVIO-->
-                                        <p class="text-gray mb-1"><i class="icofont-location-arrow"></i>
-                                            <?php
-                                                $sql = "SELECT Calle, NoExterior, NoInterior FROM info_cliente WHERE ID_Usuario = 1";
-                                                $stmt = sqlsrv_query($conn, $sql);
-                                                $row=sqlsrv_fetch_array($stmt); //Obtiene el domicilio de la bd
-                                                echo $row['Calle'];
-                                                echo(" #");
-                                                echo $row['NoExterior'];
-                                                echo(" - Int #");
-                                                echo $row['NoInterior'];
-                                            ?> 
-                                        </p>
-                                        <!--ID ORDEN DESCRIPCIÓN-->
-                                        <p class="text-gray mb-3">
-                                        <i class="icofont-list"></i> 
-                                            <?php
-                                                $sql = "SELECT No_Orden FROM compra WHERE No_Orden = 2";
-                                                $stmt = sqlsrv_query($conn, $sql);
-                                                $row = sqlsrv_fetch_array($stmt); //Obtiene el numero de orden de la bd
-                                                echo("No. Orden: ");                                                
-                                                echo $row['No_Orden'];
-                                            ?>  
-                                        <i class="icofont-clock-time ml-2"></i>
-                                            <?php
-                                                $sql = "SELECT Fecha_Compra FROM compra WHERE No_Orden = 4";
-                                                $stmt = sqlsrv_query($conn, $sql);
-                                                sqlsrv_fetch($stmt);//Obtiene el dato de la bd
-                                                
-                                                // retrieve date as a DateTime object, then convert to string using PHP's date_format function
-                                                $date = sqlsrv_get_field($stmt, 0);
-                                                if ($date === false) {
-                                                die(print_r(sqlsrv_errors(), true));
-                                                }
-                                                $date_string = date_format($date, 'jS, F Y');
-                                                echo "$date_string\n";
 
-                                            ?> 
-                                        </p>
-                                        <p class="text-dark">DESCRIPCION
-                                        </p>
-                                        <hr>
-                                        <!--REORDENAR-->
-                                        <div class="float-right">
-                                            <a class="btn btn-sm btn-primary" href="carrito.php"><i class="icofont-refresh"></i> Comprar Nuevamente</a>
+                                    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                    $sql2 = "SELECT modelo.Modelo, marca.Marca, detalle_compra.Cantidad_Articulo, detalle_compra.Total_articulo FROM articulo INNER JOIN modelo ON modelo.ID_Modelo = articulo.ID_Modelo 
+                                    INNER JOIN marca ON marca.ID_Marca = articulo.ID_Marca INNER JOIN detalle_compra ON detalle_compra.ID_Articulo = articulo.ID_Articulo
+                                    WHERE detalle_compra.No_Orden = '$noorden'";
+                                    $stmt2 = sqlsrv_query($conn, $sql2);
+
+                                    while( $row2 = sqlsrv_fetch_array($stmt2)) 
+                                    {
+                                    ?>
+                                        <div class="bg-white card mb-4 order-list shadow-sm">
+                                            <div class="gold-members p-4">
+                                                <a href="#">
+                                                </a>
+                                                <div class="media">
+                                                    <a href="#">
+                                                        <img class="rounded d-block mr-4" src="tenis.jpg" alt="">
+                                                    </a>
+
+                                                    <div class="media-body">
+                                                        
+                                                        <!--NOMBRE DEL ARTICULO-->
+                                                        <h6 class="mb-2">
+                                                            <?php
+                                                                echo $row2[0];
+                                                                echo(" - ");
+                                                                echo $row2[1];
+                                                            ?> 
+                                                            </a>
+                                                        </h6>
+                                                        <!--DIRECCION DEL ENVIO-->
+                                                        <p class="text-gray mb-1"><i class="icofont-location-arrow"></i>
+                                                            <?php
+                                                                echo ($calle);
+                                                                echo(" Ext. #");
+                                                                echo $noexterior;
+                                                                echo(" - Int. #");
+                                                                echo $nointerior;
+                                                            ?> 
+                                                        </p>
+
+                                                        <p class="text-gray mb-1">
+                                                            <b>Fecha Compra:</b> <?php echo $fecha;?>
+                                                        </p>
+
+                                                        <!--REORDENAR-->
+                                                        <!-- <div class="float-right"> 
+                                                            <a class="btn btn-sm btn-primary" href="carrito.php"><i class="icofont-refresh"></i> Comprar Nuevamente</a>
+                                                        </div>-->
+                                                        <!--PRECIO TOTAL DE COMPRA-->
+                                                        
+                                                    </div>
+
+                                                    <p><b>Total de Articulo:</b> $<?php echo $row2[3];?></p><br>
+                                                    
+                                                </div>
+                                                <p><b>Cantidad:</b> <?php echo $row2[2];?></p>
+
+                                            </div>
                                         </div>
-                                        <!--PRECIO TOTAL DE COMPRA-->
-                                        <p class="mb-0 text-black text-primary pt-2"><span class="text-black font-weight-bold"> Total de Compra:</span> 
-                                            <?php
-                                                $sql = "SELECT Precio_Total FROM compra WHERE No_Orden = 2";
-                                                $stmt = sqlsrv_query($conn, $sql);
-                                                $row=sqlsrv_fetch_array($stmt); //Obtiene el precio total de la bd
-                                                echo("$");                                                                                            
-                                                echo $row['Precio_Total'];
-                                            ?> 
-                                            </p>
-                                    </div>
+
+                                    <?php
+                                    }
+                                    ?>
+                                     <p class="mb-0 text-black text-primary pt-5"><span class="text-black font-weight-bold"> ESTATUS:</span> 
+                                        <?php                                                                                            
+                                            echo $estatus;
+                                        ?> 
+                                    </p>
+                                    <p class="mb-0 text-black text-primary pt-5"><span class="text-black font-weight-bold"> TOTAL DE COMPRA:</span> 
+                                        <?php                                                                                            
+                                            echo "$$total";
+                                        ?> 
+                                    </p>
+                                    <form action="Backend/CancelarDevolver.php" method="POST">
+                                        <input type="hidden" name="noOrden" value="<?php echo $noorden;?>">
+                                        <input type="submit" style="background-color:#1C2331; margin-left:-3px" value="Cancelar pedido" >
+                                        <input type="submit" style="background-color:#1C2331; "value="Devolver  producto">
+                                    </form>
+
                                 </div>
-
                             </div>
-                        </div>
+                        </div><br><br>
+                            <?php
+                                }
+                            ?>
 
-                        <?php
-                            }
-                        ?>  
-</section>                      
-</div>
+                   
+    </section>                      
 </body>
 </html>
