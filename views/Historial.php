@@ -60,12 +60,9 @@
 
     <!-- Valida el usuario del que se muestra el historial  -->
     <?php
-    
-    $sql = "SELECT ID_Usuario FROM usuario WHERE ID_Usuario = 1"; //Aquí se debe de condiciionar por el ID del usuario
-    $stmt = sqlsrv_query($conn, $sql);
-    $row=sqlsrv_fetch_array($stmt); //Obtiene el ID del usuariode la bd
-    //echo $row['ID_Usuario'];
-    
+        $sql = "SELECT ID_Usuario FROM usuario WHERE ID_Usuario = 1"; //Aquí se debe de condicionar por el ID del usuario
+        $stmt = sqlsrv_query($conn, $sql);
+        $row=sqlsrv_fetch_array($stmt); //Obtiene el ID del usuariode la bd
     ?>
     
 
@@ -79,15 +76,22 @@
 
                         <!-- Recorre los artículos del historial  -->
                         <?php
-                            $sql = "SELECT * FROM compra WHERE ID_Usuario = 1";
+                            $sql = "SELECT No_Orden FROM compra WHERE ID_Usuario = 1";
                             $stmt = sqlsrv_query($conn, $sql);
                             //$row = sqlsrv_fetch_array($stmt); //Obtiene el numero de orden de la bd
-                            
-                            //$var = (int)$row['ID_Detalle']; //Casteo
 
-                            while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_NUMERIC)) 
+                            while($row = sqlsrv_fetch_array($stmt)) 
                             {
-                                ?>
+
+                                $orden = $row['No_Orden'];
+                                $sql2 = "SELECT * FROM detalle_compra WHERE No_Orden = '$orden'";
+                                $stmt2 = sqlsrv_query($conn, $sql2);
+                                
+                                while($row2 = sqlsrv_fetch_array($stmt2)){
+
+                                
+                                
+                        ?>
 
                             
 
@@ -113,27 +117,27 @@
                                             <a href="#"></a>
                                             <a href="#" class="text-black">
                                             <?php
-                                                $sql = "SELECT modelo, marca FROM modelo, articulo, marca WHERE articulo.ID_Modelo = modelo.ID_Modelo 
-                                                AND articulo.ID_Marca = marca.ID_Marca AND articulo.ID_Articulo = 2";
-                                                $stmt = sqlsrv_query($conn, $sql);
-                                                $row = sqlsrv_fetch_array($stmt); //Obtiene los datos de la bd
-                                                echo $row['modelo'];
+                                                //$sql = "SELECT modelo, marca FROM modelo, articulo, marca WHERE articulo.ID_Modelo = modelo.ID_Modelo 
+                                                //AND articulo.ID_Marca = marca.ID_Marca AND articulo.ID_Articulo = 2";
+                                                //$stmt = sqlsrv_query($conn, $sql);
+                                                //$row = sqlsrv_fetch_array($stmt); //Obtiene los datos de la bd
+                                                echo $row2['modelo'];
                                                 echo(" - ");
-                                                echo $row['marca'];
+                                                echo $row2['marca'];
                                             ?> 
                                             </a>
                                         </h6>
                                         <!--DIRECCION DEL ENVIO-->
                                         <p class="text-gray mb-1"><i class="icofont-location-arrow"></i>
                                             <?php
-                                                $sql = "SELECT Calle, NoExterior, NoInterior FROM info_cliente WHERE ID_Usuario = 1";
+                                                /*$sql = "SELECT Calle, NoExterior, NoInterior FROM info_cliente WHERE ID_Usuario = 1";
                                                 $stmt = sqlsrv_query($conn, $sql);
-                                                $row=sqlsrv_fetch_array($stmt); //Obtiene el domicilio de la bd
-                                                echo $row['Calle'];
+                                                $row=sqlsrv_fetch_array($stmt); //Obtiene el domicilio de la bd*/
+                                                echo $row2['Calle'];
                                                 echo(" #");
-                                                echo $row['NoExterior'];
+                                                echo $row2['NoExterior'];
                                                 echo(" - Int #");
-                                                echo $row['NoInterior'];
+                                                echo $row2['NoInterior'];
                                             ?> 
                                         </p>
                                         <!--ID ORDEN DESCRIPCIÓN-->
@@ -186,6 +190,7 @@
                         </div>
 
                         <?php
+                                }
                             }
                         ?>  
 </section>                      
