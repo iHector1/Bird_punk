@@ -26,12 +26,24 @@
             <img src="Imagenes/BearPay.png" alt="" class="rounded  ml-3">
         </div>
 
-
+        <?php
+            session_start();
+            $varsesion = $_SESSION['usuario']; //Nombre de usuario
+            if($varsesion == null || $varsesion == ''){
+            echo'<script type="text/javascript">
+                alert("Sesion cerrada.");
+                window.location.href = "Index.php";
+                </script>';
+            }
+        ?>
         <!-- Login Form -->
-        <form method="POST" action="./Index.php">
-        <input type="text" id="user" class="fadeIn second" name="user" placeholder="Usuario" required>
-        <input type="password" id="password" class="fadeIn third" name="password" placeholder="Contraseña" required>
-        <input type="submit" class="fadeIn fourth" value="Iniciar Sesión">
+        <form method="POST" action="Backend/loginBearPay.php">
+            <input type="text" id="user" class="fadeIn second" name="usuario" placeholder="Usuario" required>
+            <input type="password" id="password" class="fadeIn third" name="contraseña" placeholder="Contraseña" required>
+
+            <!-- <input type="hidden" value="<?php echo $total;?>" name="precioTotal"> -->
+
+            <input type="submit" class="fadeIn fourth" value="Iniciar Sesión">
         </form>
 
 

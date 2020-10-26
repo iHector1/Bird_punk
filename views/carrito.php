@@ -169,13 +169,13 @@ if($varsesion == null || $varsesion == ''){
 
 <?PHP
 
-function Limpiar() {
+    function Limpiar() {
 
-    Include 'Backend/BCarrito/LimpiarCarrito.php';
+        Include 'Backend/BCarrito/LimpiarCarrito.php';
 
-    $URL="carrito.php";
-    echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
-}
+        $URL="carrito.php";
+        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+    }
 ?>
 
 <?PHP

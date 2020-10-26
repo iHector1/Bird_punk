@@ -90,8 +90,7 @@
                 $IDArticulo = $_POST['ID_Articulo'];
                 $pagina = $_POST['Genero'];
                 $imagen = $_POST['imagen'];
-                
-            
+              
                 $sql2 = "SELECT Stock FROM articulo";
             ?>
                 <div class="galeria">
@@ -102,7 +101,15 @@
                 </div>
             </div>
         </div>
-
+        <?php 
+            $sql = "SELECT Stock FROM articulo WHERE ID_Articulo = '$IDArticulo'";
+            $stmt = sqlsrv_query($conn, $sql);
+                
+            while($row = sqlsrv_fetch_array($stmt))
+            {
+                $stock = $row[0];
+            } 
+        ?>
             
         <!-- Columna izquierda -->
         <div id="second">
@@ -112,11 +119,11 @@
             <br><br>
             <h5>Talla</5>
             <br>
-            <h4 class=><?php echo ($talla)?></h4>
+            <h4 class=><?php echo ($talla);?> MX</h4>
             
             <form name="form-cant" action="carrito.php" method="POST">
                 <h5>Cantidad</h5> 
-                    <input type="number" name="cantidad" min="1" required>
+                    <input type="number" name="cantidad" min="1" max="<?php echo $stock;?>"required>
                     <br><br>   
                     <input type="hidden" name="ID_Articulo" value="<?php echo $IDArticulo;?>">
                     <input type="submit" value="Añadir al carrito">
@@ -126,34 +133,8 @@
              <!-- Verificar stock -->
              <!-- Verificar stock -->
             <?php 
-                $sql = "SELECT Stock FROM articulo WHERE ID_Articulo = '".$IDArticulo."'";
-                $stmt = sqlsrv_query($conn, $sql);
-                $row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC); //Obtiene el valor de stock de la bd
-                $cantidad = $_POST['cantidad']; //Obtiene el valor de la página web
-                $var = (int)$row['Stock']; //Casteo
-                echo "Stock: ";
-                echo $row['Stock'];
-                $pagina = (int)$pagina;
-                
-
-                while($cantidad == 0){
-                    echo (" ");
-                }
-                if($cantidad < $var || $cantidad == $var){ 
-                ?>
-                    <!-- Referencia para añadir al carrito -->
-                    
-                <?php
-                }
-                else
-                {                      
-                    
-                    echo "<script>alert('No hay suficiente stock');</script>";
-                    echo '<script type="text/javascript">
-                    window.location = "Index.php"
-                    </script>';
-                    
-                }
+                echo "<b>Stock:</b> ";
+                echo $stock; 
             ?>         
         </div>  
     </div>

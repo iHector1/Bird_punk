@@ -1,18 +1,18 @@
 <?php
-session_start();
-error_reporting(0);
-$varsesion = $_SESSION['usuario'];
-$varsesion2 = $_SESSION['IDusuario'];
-$varsesion4 = $_SESSION['IDtipousuario'];
-?>
-<?php
-if($varsesion == null || $varsesion == ''){
-    echo'<script type="text/javascript">
-        alert("Sesion cerrada.");
-        window.location.href = "Index.php";
-        </script>';
-        
-}
+    session_start();
+    error_reporting(0);
+    $varsesion = $_SESSION['usuario'];
+    $varsesion2 = $_SESSION['IDusuario'];
+    $varsesion4 = $_SESSION['IDtipousuario'];
+    ?>
+    <?php
+    if($varsesion == null || $varsesion == ''){
+        echo'<script type="text/javascript">
+            alert("Sesion cerrada.");
+            window.location.href = "Index.php";
+            </script>';
+            
+    }
 ?>
 <html>
 
@@ -35,10 +35,10 @@ if($varsesion == null || $varsesion == ''){
                    
                     
                     <li class="nav-item ">
-                        <a class="nav-link border-right" href="verProductosBoys.php">HOMBRES</a>
+                        <a class="nav-link border-right" href="verProductoBoys.php">HOMBRES</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="verProductosGirls.php">MUJERES</a>
+                        <a class="nav-link" href="verProductoGirls.php">MUJERES</a>
                     </li>
                     <li class="nav-item">
                     <?php
@@ -71,23 +71,36 @@ if($varsesion == null || $varsesion == ''){
         <div class="navbar navbar-expand-md navbar-light"> </div>
 
     </section>
+
+    <?php
+        include 'conexion.php';
+        include 'Backend/infoUsuario.php';
+
+    ?>
+
     <div>
         <div class="padre">
             <div align="center"><img src="Imagenes/pp_user.png" width="100px" height="100px" alt="profile picture"></div>
             <br>
             <div class="contenedorEdi">
+            <?php
+            while($row =sqlsrv_fetch_array($infoUsuario))
+            {
+            ?>
                 <div class="izq">
-                    <p>Nombre Ejemplo</p>
-                    <p>correoejemlpo@gmail.com</p>
-                    <p>Dirección</p>
-                    <p>Calle</p>
-                    <p>Numero ext</p>
-                    <p>Numero int</p>
-                    <p>Estado</p>
+                    <p><b>Nombre:</b> <?php echo $row[1]." ".$row[2]." ".$row[3];?></p>
+                    <p><b>Correo:</b> <?php echo $row[4];?></p>
+                    <p><b>Calle:</b> <?php echo $row[9];?></p>
+                    <p><b>Numero exterior:</b> <?php echo $row[10];?></p>
+                    <p><b>Numero interior:</b> <?php echo $row[11];?></p>
+                    <p><b>Estado:</b> <?php echo $row[8];?></p>
                 </div>
+            <?php
+            }
+            ?>
                 <div class="der">
                     <img src="Imagenes/punk_bird.png" width="100px" height="100px" alt="bird_punk_logo">
-                    <div class="buttonEd"><button type="button" class="btn btn-light">EDITAR</button></div>
+                    <div class="buttonEd"><button type="button" class="btn btn-light"><a href="modificarInfo.php">EDITAR</a></button></div>
                 </div> 
             </div>
         </div> 
