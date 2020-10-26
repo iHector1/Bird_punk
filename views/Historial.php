@@ -72,7 +72,7 @@
         <div class="navbar navbar-expand-md navbar-light"> </div>
     </section>
       
-           
+
 
     <!--- SECCIÓN DE HISTORIAL DE COMPRAS -->
     <section class="fadeInDown">
@@ -197,6 +197,9 @@
                             </div>
                         </div><br><br>
                             <?php
+
+                                    $mestatus = "UPDATE compra SET ID_Estatus = '2' WHERE compra.No_Orden = '$noorden' AND compra.ID_Estatus = '1'";
+                                    $mEstatus=sqlsrv_query($conn,$mestatus);
                                 }
                             ?>
 

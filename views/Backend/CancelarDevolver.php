@@ -115,7 +115,7 @@
                 SET Monto = $precioBP 
                 WHERE Nombre_Usuario = '$nombre'"; 
 
-        $EqueryBP= sqlsrv_query($cone, $UpdateBP);
+        $EqueryBP= sqlsrv_query($connBP, $UpdateBP);
 
         if ($EqueryBP === false){
             echo "Error";
