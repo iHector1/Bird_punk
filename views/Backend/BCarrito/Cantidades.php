@@ -8,8 +8,8 @@
 
     $total=0; //Total de articulos en el carrito
     while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
-    echo $row['Cantidad_Articulo']."<br />";
-    $total = $total + $row['Cantidad_Articulo'];
+    //echo $row['Cantidad_Articulo']."<br />";
+        $total = $total + $row['Cantidad_Articulo'];
     }
 
     /*Actualiza la cantidad total de articulos en el carrito*/

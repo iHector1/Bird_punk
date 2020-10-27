@@ -19,10 +19,12 @@ if($varsesion == null || $varsesion == ''){
 <?php
     $id_U = $_SESSION['IDusuario']; //ID de Usuario
     $id_c = $_SESSION['IDcarrito']; //ID del carrito
+
     include 'conexion.php';
     include 'Backend/BCarrito/agregarCarrito.php';
     include 'Backend/BCarrito/Cantidades.php';
     include 'Backend/BCarrito/totalArticulo.php';
+    include 'Backend/BCarrito/totalCarrito.php';
     include 'Backend/BCarrito/mostrarCarrito.php';
 ?>
 
