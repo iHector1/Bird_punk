@@ -5,6 +5,7 @@
     $varsesion2 = $_SESSION['IDusuario'];
     $varsesion3 = $_SESSION['IDcarrito'];
     $varsesion4 = $_SESSION['IDtipousuario'];
+    
 ?>
 
 <!DOCTYPE html>

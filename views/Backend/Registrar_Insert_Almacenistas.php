@@ -1,6 +1,6 @@
 <?php
 
-include ("conexion.php");
+include ("../conexion.php");
 
          
 
@@ -32,7 +32,7 @@ if(preg_match($ValdiarCorreo, $correo) == false){
 if(preg_match($SeguridadContra, $contra)== false){
     echo'<script type="text/javascript">
         alert("Debe contener \n 8 caracteres de longitud \n 2 letras mayusculas \n 1 carácter especial (!@#$&*) \n 2 numeros \n 3 letras en minuscula.");
-        window.location.href = "RegistroAlmacenista.php";
+        window.location.href = "../RegistroAlmacenista.php";
         </script>';
         sqlsrv_close($conn);
 }
@@ -73,12 +73,12 @@ sqlsrv_close($conn);
 if ($stmt && $stmt3){
     echo'<script type="text/javascript">
         alert("Almacenista registrado correctamente.");
-        window.location.href = "IndexAdministrador.php";
+        window.location.href = "../IndexAdministrador.php";
         </script>';
 }else{
     echo'<script type="text/javascript">
         alert("Error al insertar almacenista.");
-        window.location.href = "RegistroAlmacenista.php";
+        window.location.href = "../RegistroAlmacenista.php";
         </script>';
 }
 

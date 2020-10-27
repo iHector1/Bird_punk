@@ -4,14 +4,13 @@
     $varsesion = $_SESSION['usuario'];
     $varsesion2 = $_SESSION['IDusuario'];
     $varsesion3 = $_SESSION['IDcarrito'];
-?>
-<?php
-if($varsesion == null || $varsesion == ''){
-    echo'<script type="text/javascript">
-        alert("Sesion cerrada.");
-        window.location.href = "Index.php";
-        </script>';
-}
+
+    if($varsesion == null || $varsesion == ''){
+        echo'<script type="text/javascript">
+            alert("Sesion cerrada.");
+            window.location.href = "Index.php";
+            </script>';
+    }
 ?>
 
 <!DOCTYPE html>
@@ -36,17 +35,7 @@ if($varsesion == null || $varsesion == ''){
 <!-- Codigo PHP para Conexion -->
 
 <?php
-    include 'conexion.php';
-    //$serverName = "ALVAROCD-PC";            //Aqui solo se tiene que cambiar por el nombre del servidor que va a alojar la BD
-    //$connectionInfo = array( "Database"=>"birdpunk");
-    //$conn = sqlsrv_connect( $serverName, $connectionInfo);
-// if ($conn == TRUE) {
-//     echo("Conexion exitosa");
-//     echo("<br>"); 
-// }
-// else{
-//     echo("Error en la conexion");
-// }
+    include 'Backend/ProductoBoys.php';
 ?>
 
 
@@ -90,8 +79,7 @@ if($varsesion == null || $varsesion == ''){
     <!-------articulo------->
     <!-- Codigo PHP para obtener los datos de la base de datos -->
 <?php
-$query = "SELECT modelo.Modelo, marca.Marca, articulo.Precio, talla.Talla, articulo.ID_Articulo, articulo.Imagen FROM articulo INNER JOIN modelo ON articulo.ID_Modelo=modelo.ID_Modelo INNER JOIN marca ON articulo.ID_Marca=marca.ID_Marca INNER JOIN talla ON articulo.ID_Talla=talla.ID_Talla WHERE Genero='M' OR Genero='U'";
-$res = sqlsrv_query($conn, $query);
+
 while ($row = sqlsrv_fetch_array($res)) {
 ?>
 

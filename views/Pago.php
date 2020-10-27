@@ -33,6 +33,8 @@
         include 'Backend/pagoCarrito.php';
         
     ?>
+
+    
 </head>
 <body>
     <section id="Nav-bar">

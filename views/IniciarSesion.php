@@ -63,10 +63,10 @@ if(!($varsesion == null || $varsesion == '')){
         </div>
 
         <!-- Login Form -->
-        <form method="POST" action="./OpLogin.php">
-        <input type="text" id="user" class="fadeIn second" name="user" placeholder="Correo electronico" required>
-        <input type="password" id="password" class="fadeIn third" name="password" placeholder="Contraseña" required>
-        <input type="submit" class="fadeIn fourth" value="Iniciar Sesión">
+        <form method="POST" action="Backend/OpLogin.php">
+            <input type="text" id="user" class="fadeIn second" name="user" placeholder="Correo electronico" required>
+            <input type="password" id="password" class="fadeIn third" name="password" placeholder="Contraseña" required>
+            <input type="submit" class="fadeIn fourth" value="Iniciar Sesión">
         </form>
 
 

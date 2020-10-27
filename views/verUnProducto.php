@@ -1,25 +1,21 @@
 <?php
-    
     error_reporting(0);
     $varsesion = $_SESSION['usuario'];
     $varsesion2 = $_SESSION['IDusuario'];
     $varsesion3 = $_SESSION['IDcarrito'];
-?>
-<?php
+
 /*if($varsesion == null || $varsesion == ''){
     echo'<script type="text/javascript">
         alert("Sesion cerrada.");
         window.location.href = "Index.php";
         </script>';
 }*/
+
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
-
-<?php
-    include ("conexion.php");
-?>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -90,8 +86,7 @@
                 $IDArticulo = $_POST['ID_Articulo'];
                 $pagina = $_POST['Genero'];
                 $imagen = $_POST['imagen'];
-              
-                $sql2 = "SELECT Stock FROM articulo";
+                include 'Backend/ProductoEspecifico.php';
             ?>
                 <div class="galeria">
                    <!--Almacenar la imagen en la bd -->
@@ -101,15 +96,6 @@
                 </div>
             </div>
         </div>
-        <?php 
-            $sql = "SELECT Stock FROM articulo WHERE ID_Articulo = '$IDArticulo'";
-            $stmt = sqlsrv_query($conn, $sql);
-                
-            while($row = sqlsrv_fetch_array($stmt))
-            {
-                $stock = $row[0];
-            } 
-        ?>
             
         <!-- Columna izquierda -->
         <div id="second">
@@ -128,15 +114,8 @@
                     <input type="hidden" name="ID_Articulo" value="<?php echo $IDArticulo;?>">
                     <input type="submit" value="Añadir al carrito">
             </form>
-
-
-             <!-- Verificar stock -->
-             <!-- Verificar stock -->
-            <?php 
-                echo "<b>Stock:</b> ";
-                echo $stock; 
-            ?>         
-        </div>  
+            <?php echo "<b>Stock:</b> ";echo $stock; ?>     
+            </div>  
     </div>
 </div> 
 
