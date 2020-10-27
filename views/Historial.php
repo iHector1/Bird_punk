@@ -92,16 +92,13 @@
                                 }
 
 
-                                $sql = "SELECT compra.No_Orden, compra.Fecha_Compra, compra.Precio_Total, estatus.Estatus FROM compra INNER JOIN estatus ON compra.ID_Estatus = estatus.ID_Estatus WHERE ID_Usuario = '$IDusuario'";
+                                $sql = "SELECT compra.No_Orden, compra.Fecha_Compra, compra.Precio_Total, estatus.Estatus FROM compra INNER JOIN estatus ON compra.ID_Estatus = estatus.ID_Estatus WHERE ID_Usuario = '$IDusuario' ORDER BY compra.Fecha_Compra DESC";
                                 $stmt = sqlsrv_query($conn, $sql);
 
                                 while($row = sqlsrv_fetch_array($stmt)) 
                                 {
                                     $noorden = $row[0];
-                                    
                                     $f = $row[1];
-                                    
-
                                     $total = $row[2]; 
                                     $estatus = $row[3];
                                 ?>
