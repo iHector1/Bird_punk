@@ -34,7 +34,12 @@
 
 
 <?php
-    include 'Backend/ProductoGirls.php';
+    //include 'http://25.61.144.153/distribuidos/Bird_punk/views/Backend/ProductoGirls.php';
+    $control = $_GET['control'];
+    if($control != 1)
+    {
+        header("Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/ProductoGirls.php");
+    }
 ?>
 
 
@@ -79,30 +84,34 @@
     <!-------articulo------->
     <!-- Codigo PHP para obtener los datos de la base de datos -->
 <?php
-
-while ($row = sqlsrv_fetch_array($res)) {
+$vare=unserialize($_GET['datos']);
+/*echo ('<pre>');
+    print_r($vare);
+    echo('</pre>');
+*/foreach($vare as $row) {
 ?>
 
 <div class="articulos">
     <div class="articulo" >
         <div>
-        <a href="verUnProducto.php"> <img src="Imagenes/<?php echo $row[5];?>" class="uno" method = "POST"> </a>
+        <a href="verUnProducto.php"> <img src="http://25.61.144.153/distribuidos/Bird_punk/views/Imagenes/<?php echo $row['imagen'];?>" class="uno" method = "POST"> </a>
         </div>
         <div class="desc">
         <form action="verUnProducto.php" method="POST">
+        <h5><b>Nombre:</b> <?php echo $row['modelo']?></h5>
+            <input type="hidden" name="modelo" value="<?php echo $row['modelo'];?>">
 
-            <h5><b>Nombre:</b> <?php echo $row[0];?></h5>
-            <input type="hidden" name="modelo" value="<?php echo $row[0];?>">
-            <h5><b>Marca:</b> <?php echo $row[1]?></h5>
-            <input type="hidden" name="marca" value="<?php echo $row[1];?>">
-            <h5><b>Precio:</b> <?php echo $row[2]?></h5>
-            <input type="hidden" name="precio" value="<?php echo $row[2];?>">
-            <h5><b>Talla:</b> <?php echo $row[3]?></h5>
-            <input type="hidden" name="talla" value="<?php echo $row[3];?>">
+            <h5><b>Marca:</b> <?php echo $row['marca']?></h5>
+            <input type="hidden" name="marca" value="<?php echo $row['marca'];?>">
 
-            <input type="hidden" name="imagen" value="<?php echo $row[5];?>">
+            <h5><b>Precio:</b> <?php echo $row['precio']?></h5>
+            <input type="hidden" name="precio" value="<?php echo $row['precio'];?>">
 
-            <input type="hidden" name="ID_Articulo" value="<?php echo $row[4];?>">
+            <h5><b>Talla:</b> <?php echo $row['talla']?></h5>
+            <input type="hidden" name="talla" value="<?php echo $row['talla'];?>">
+            <input type="hidden" name="imagen" value="<?php echo $row['imagen'];?>">
+            <input type="hidden" name="Stock" value="<?php echo $row['stock'];?>">
+            <input type="hidden" name="ID_Articulo" value="<?php echo $row['id'];?>">
             <input type="hidden" name="Genero" value="2">
 
             <input  type="submit" value="Ver Producto">

@@ -83,7 +83,7 @@
             while($row = sqlsrv_fetch_array($Almacenistas))
             {              
         ?>
-            <form method="POST" action="./Backend/eliminarAlmacenistaBE.php">
+            <form method="POST" action="http://25.61.144.153/distribuidos/Bird_punk/views/Backend/eliminarAlmacenistaBE.php">
                 <tr>
                     <td>
                         <p><?php echo $row[1]." ".$row[2]." ".$row[3];?><br> Calle: <?php echo $row[8]; ?>,<br> No.Exterior: <?php echo $row[9];?><br>No.Interior: <?php echo $row[10];?> <br>Colonia: <?php echo $row[11]; ?> <br>CP: <?php echo $row[12];?><br> Correo: <?php echo $row[4]; ?> <br> </p>

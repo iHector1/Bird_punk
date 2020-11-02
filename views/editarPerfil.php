@@ -74,8 +74,8 @@
     </section>
 
     <?php
-        include 'conexion.php';
-        include 'Backend/infoUsuario.php';
+        include 'http://25.61.144.153/distribuidos/Bird_punk/views/conexion.php';
+        include 'http://25.61.144.153/distribuidos/Bird_punk/views/Backend/infoUsuario.php';
 
     ?>
 

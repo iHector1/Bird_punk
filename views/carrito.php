@@ -19,13 +19,33 @@ if($varsesion == null || $varsesion == ''){
 <?php
     $id_U = $_SESSION['IDusuario']; //ID de Usuario
     $id_c = $_SESSION['IDcarrito']; //ID del carrito
-
-    include 'conexion.php';
-    include 'Backend/BCarrito/agregarCarrito.php';
-    include 'Backend/BCarrito/Cantidades.php';
-    include 'Backend/BCarrito/totalArticulo.php';
-    include 'Backend/BCarrito/totalCarrito.php';
-    include 'Backend/BCarrito/mostrarCarrito.php';
+    $stock=$_POST['cantidad'];
+    $idArtculo=$_POST['ID_Articulo'];
+    $control = $_GET['control'];
+    $control2 = $_GET['control2'];
+if($control == 0)
+{
+    header ('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/BCarrito/agregarCarrito.php?id='.$idArtculo."&cantidad=$stock&carrito=$id_c");    
+}
+if($control == 2){
+header ('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/BCarrito/Cantidades.php?id='.$id_c);
+}
+if($control == 3){
+     header ('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/BCarrito/totalArticulo.php?id='.$id_c);
+}
+if($control == 4){
+    header ('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/BCarrito/totalCarrito.php?id='.$id_c);}
+$totalplay=$_GET['total'];
+if($control == 5){
+       header ('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/BCarrito/mostrarCarrito.php?id='.$id_c."&total=$totalplay"); 
+    }
+    $totalplay=$_GET['total'];
+    $carrito = unserialize($_GET['carrito']);
+    /*var_dump($stock,$idArtculo,$id_c,$id_U);
+    echo ("<pre>");
+    print_r($carrito);
+    echo ("</pre>");*/
+    //
 ?>
 
 
@@ -103,35 +123,35 @@ if($varsesion == null || $varsesion == ''){
                             <div class=" mb-4 order-list shadow-sm">
                                 <div class=" p-4">
                                     <?php 
-                                        while($fila = sqlsrv_fetch_array($res)){
+                                        foreach($carrito as $fila){
                                     ?>
                                             <div class="navbar navbar-expand-md navbar-light"> </div>
                                             <a href="#"></a>
                                             
                                             <div class="media">
                                                 <a href="#"> 
-                                                    <img class="rounded d-block mr-4" src=Imagenes/<?php echo $fila['Imagen'];?> alt=""> 
+                                                    <img class="rounded d-block mr-4" src=http://25.61.144.153/distribuidos/Bird_punk/views/Imagenes/<?php echo $fila['imagen'];?> alt=""> 
                                                 </a>
                                                 
                                                 <div class="media-body">
                                                     <!--Precio del producto-->
                                                     <a>
-                                                        <span class="float-right text-info">$<?php echo $fila['Total_articulo'];?> MNX</span>
+                                                        <span class="float-right text-info">$<?php echo $fila['total'];?> MNX</span>
                                                     </a>
 
                                                     <!--Precio del articulo-->
                                                     <h6 class="mb-2">
                                                         <a href="#"></a>
                                                         <a href="#" class="text-black">
-                                                        <?php echo $fila['Modelo'];?>
+                                                        <?php echo $fila['modelo'];?>
                                                         </a>
                                                     </h6>
                                                     <!--DIRECCION DEL ENVIO-->
                                                     <p class="text-white mb-1"> 
-                                                        Talla: <?php echo $fila['Talla'];?>
+                                                        Talla: <?php echo $fila['talla'];?>
                                                     </p>
                                                     <!--Datos del producto-->
-                                                    <p class="text-white mb-3">Cantidad : <?php echo $fila['Cantidad_Articulo'];?> | <a href="Eliminar.php?idProducto=<?php echo $fila['ID_Articulo'];?>" class="btn btn-outline-light icofont-trash text-danger" >Eliminar</a></p>
+                                                    <p class="text-white mb-3">Cantidad : <?php echo $fila['cantidad'];?> | <a href="Eliminar.php?idProducto=<?php echo $fila['id'];?>" class="btn btn-outline-light icofont-trash text-danger" >Eliminar</a></p>
                                                     </p>
                                                     
                                                 </div>
@@ -148,14 +168,11 @@ if($varsesion == null || $varsesion == ''){
                                             </form>
                                         </div>
                                         <!-- Limpiar carrito -->
-                                        <form method="post">
-                                                <input  class="btn btn-primary" type="submit" name="limpiar" id="limpiar" value="Limpiar carrito" style="outline:none;margin-top:90px;margin-left:425px;position:absolute;border:none;font-size:25px;text-align:left;"/><br/>
-                                            </form>
+                                               <br/>
                                          <!-- Limpiar carrito -->
                                         <hr>
                                         <div class="text-right">
-                                    <p class="mb-0 text-white pt-2"><span class="font-weight-bold"> Total de Compra: $</span><?PHP echo $total;?>
-                                    <?php sqlsrv_close($conn); ?>
+                                    <p class="mb-0 text-white pt-2"><span class="font-weight-bold"> Total de Compra: $</span><?PHP echo $totalplay;?>
                                     </p>
                                 </div>
                             </div>
@@ -168,22 +185,4 @@ if($varsesion == null || $varsesion == ''){
 
     </div>
 </body>
-
-<?PHP
-
-    function Limpiar() {
-
-        Include 'Backend/BCarrito/LimpiarCarrito.php';
-
-        $URL="carrito.php";
-        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
-    }
-?>
-
-<?PHP
-if(array_key_exists('limpiar',$_POST)){
-    Limpiar();
- }
- ?>
-
 </html>

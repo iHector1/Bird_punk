@@ -1,8 +1,17 @@
 <?php
-    session_start();
     error_reporting(0);
+    $usuario=$_GET['usuario'];
+    $idu=$_GET['idu'];
+    $idt=$_GET['idt'];
+    session_start();
+    
+    $_SESSION['usuario'] = $usuario;
+    $_SESSION['IDusuario'] = $idu;
+    $_SESSION['IDcarrito'] = $idc;
+    $_SESSION['IDtipousuario'] = $idt;
     $varsesion = $_SESSION['usuario'];
     $varsesion2 = $_SESSION['IDusuario'];
+    $varsesion3 = $_SESSION['IDcarrito'];
     $varsesion4 = $_SESSION['IDtipousuario'];
     ?>
     <?php
@@ -71,7 +80,7 @@
                     ?> 
                     <?php
                         if(!($varsesion == null || $varsesion == '')){
-                            echo " <a href='Logout.php' class='navbar-button'> Cerrar Sesion</a>";
+                            echo " <a href='http://25.61.144.153/distribuidos/Bird_punk/views/Backend/logout.php' class='navbar-button'> Cerrar Sesion</a>";
                         }
                     ?> 
                       

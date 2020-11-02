@@ -47,7 +47,7 @@ if($varsesion == null || $varsesion == ''){
                 <ul class="navbar-nav mx-auto">
                     <?php
                         if(!($varsesion == null || $varsesion == '')){
-                            echo " <a href='Logout.php' class='navbar-button'> Cerrar Sesion</a>";
+                            echo " <a href='http://25.61.144.153/distribuidos/Bird_punk/views/Backend/Logout.php' class='navbar-button'> Cerrar Sesion</a>";
                         }
                     ?>
                 </ul>

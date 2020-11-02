@@ -12,8 +12,8 @@
             </script>';
     }
 
-    include 'conexion.php';
-    include 'Backend/mostrarArticulosEditar.php';
+    include 'http://25.61.144.153/distribuidos/Bird_punk/views/conexion.php';
+    include 'http://25.61.144.153/distribuidos/Bird_punk/views/Backend/mostrarArticulosEditar.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -76,7 +76,7 @@
                 <h2 class="col-11 m-3 mb-5 ">Datos del producto</h2>
                         <div class="col-5 ml-4">
                     <!-- Obtención de datos de producto existente -->
-                    <form method="POST" action="Backend/modificarArticulo.php">
+                    <form method="POST" action="http://25.61.144.153/distribuidos/Bird_punk/views/Backend/modificarArticulo.php">
                         <!-- NombreProducto | No se puede editar -->
                         <input class="m-2 form-control float-right" type="number" id="name" name="name" placeholder="<?php echo $row[1];?>" disabled></input>
 
@@ -99,7 +99,7 @@
                         <input class="m-2 btn btn-dark btn-outline-light float-right" style="height:50px;"type="submit" value="Actualizar producto">                    
                     </form>  
 
-                    <form method="POST" action="Backend/eliminarArticulo.php">
+                    <form method="POST" action="http://25.61.144.153/distribuidos/Bird_punk/views/Backend/eliminarArticulo.php">
                         <input class="m-2 btn btn-dark btn-outline-light float-left" style="height:50px;"type="submit" value="Eliminar producto">
 
                         <input type="hidden" name="ID_Articulo" value="<?php echo $row[0];?>">

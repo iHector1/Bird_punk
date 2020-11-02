@@ -28,9 +28,9 @@
         $id_U = $_SESSION['IDusuario']; //ID de Usuario
         $id_c = $_SESSION['IDcarrito']; //ID del carrito
         include 'conexion.php';
-        include 'Backend/BCarrito/mostrarCarrito.php';
-        include 'Backend/BCarrito/totalCarrito.php';
-        include 'Backend/pagoCarrito.php';
+        include 'http://25.61.144.153/distribuidos/Bird_punk/views/Backend/BCarrito/mostrarCarrito.php';
+        include 'http://25.61.144.153/distribuidos/Bird_punk/views/Backend/BCarrito/totalCarrito.php';
+        include 'http://25.61.144.153/distribuidos/Bird_punk/views/Backend/pagoCarrito.php';
         
     ?>
 

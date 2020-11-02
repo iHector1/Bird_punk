@@ -16,7 +16,7 @@
             
     }
 
-    //include 'Backend/modificarInformacion.php';
+    include 'http://25.61.144.153/distribuidos/Bird_punk/views/Backend/modificarInformacion.php';
 
 ?>
 

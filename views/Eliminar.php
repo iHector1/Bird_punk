@@ -18,9 +18,11 @@ error_reporting(0);
 <html lang="en">
 <?php
     // $ID_Usuario = 2;
-    include 'conexion.php';
+   // include 'http://25.61.144.153/distribuidos/Bird_punk/views/conexion.php';
     $id_c = $_SESSION['IDcarrito'] ;
-    include 'Backend/BCarrito/funcionesEliminar.php' ;
+    $id_p=$_GET['idProducto'];    
+    $control = $_GET['control'];
+    header ('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/BCarrito/funcionesEliminar.php?id='.$id_p.'&idc='.$id_c);
 ?>
 
 
@@ -118,8 +120,6 @@ error_reporting(0);
                                             
                                         </div>
                                     </div>
-
-                                    <?php sqlsrv_close($conn); ?>
                                     <div>
                                             <a class="btn btn-primary" href="Carrito.php" style="outline:none;margin-top:60px;position:absolute;border:none;font-size:25px;text-align:left;" type="submit">Carrito</a>
                                     </div>
