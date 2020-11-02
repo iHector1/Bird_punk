@@ -1,4 +1,7 @@
 <?php
+    include '../../conexion.php';
+    $id_c = $_GET['id'];
+
     $sql = "SELECT Cantidad_Articulo FROM articulo_carrito WHERE  ID_Carrito = $id_c";
     $stmt = sqlsrv_query( $conn, $sql);
     
@@ -20,4 +23,6 @@
     if( $stmt === false) {
         die( print_r( sqlsrv_errors(), true) );
     }
+
+    header("Location: http://localhost/Bird_punk/views/carrito.php?control=3");
 ?>

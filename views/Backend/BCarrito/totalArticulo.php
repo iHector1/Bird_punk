@@ -1,4 +1,8 @@
 <?php
+    include '../../conexion.php';
+    $id_c = $_GET['id'];
+
+
     $sql = "SELECT articulo_carrito.ID_Articulo, Precio, Cantidad_Articulo FROM articulo 
     INNER JOIN articulo_carrito ON articulo_carrito.ID_Articulo = articulo.ID_Articulo WHERE ID_Carrito = $id_c";
     $stmt = sqlsrv_query($conn, $sql);
@@ -22,4 +26,5 @@
         }
     }
 
+    header("Location: http://localhost/Bird_punk/views/carrito.php?control=4");
 ?>

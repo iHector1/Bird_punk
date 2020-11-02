@@ -162,6 +162,6 @@
 
 
     echo '<script type="text/javascript">
-                  window.location = "../Historial.php"
+                  window.location = " http://localhost/Bird_punk/views/Historial.php"
                   </script>';
 ?>

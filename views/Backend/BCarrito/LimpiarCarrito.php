@@ -1,15 +1,15 @@
 <?php
-    include 'conexion.php';
+    include '../../conexion.php';
 
-    $id_U = $_SESSION['IDusuario'];
-    $id_C = $_SESSION['IDcarrito']; 
+    $id_U = $_GET['ids'];
+    $id_C = $_GET['idc']; 
  
-    $sql = "DELETE FROM articulo_carrito WHERE ID_Carrito = ?";
-    $params = array($id_C);
+    echo $id_C;
+    echo $id_U;
 
-    $stmt = sqlsrv_query( $conn, $sql, $params);
-    if( $stmt === false ) {
-        die( print_r( sqlsrv_errors(), true));
-    }
+    $sql = "DELETE FROM articulo_carrito WHERE ID_Carrito = '$id_C'";
+    $queryDelete=sqlsrv_query($conn,$sql);
     sqlsrv_close($conn);
+    
+    header("Location: http://localhost/Bird_punk/views/carrito.php");
 ?>

@@ -19,7 +19,7 @@
         if($row['Nombre_s'] == NULL) {
             echo'<script type="text/javascript">
             alert("Usuario o Contraseña incorrectos.");
-            window.location.href = "IniciarSesion.php";
+            window.location.href = "http://localhost:8081/views/IniciarSesion.php";
             </script>';
         }else{
             if($row['ID_Tipo_Usuario'] == '1'){
@@ -39,21 +39,36 @@
             $_SESSION['IDusuario'] = $row['ID_Usuario'];
             $_SESSION['IDcarrito'] = $row2['ID_Carrito'];
             $_SESSION['IDtipousuario'] = $row['ID_Tipo_Usuario'];
-            header("Location:../Index.php");
+
+            $usuario = $_SESSION['usuario'];
+            $idu = $_SESSION['IDusuario'];
+            $idc = $_SESSION['IDcarrito'];
+            $idt = $_SESSION['IDtipousuario'];
+            header("Location: http://localhost/Bird_punk/views/Index.php?usuario=".$usuario."&idu=$idu&idc=$idc&idt=$idt");
         }
         if($row['ID_Tipo_Usuario'] == '2'){
             session_start();
             $_SESSION['usuario'] = $row['Nombre_s'];
             $_SESSION['IDusuario'] = $row['ID_Usuario'];
             $_SESSION['IDtipousuario'] = $row['ID_Tipo_Usuario'];
-            header("Location:../IndexAlmacenista.php");
+
+            $usuario = $_SESSION['usuario'];
+            $idu = $_SESSION['IDusuario'];
+            $idt = $_SESSION['IDtipousuario'];
+
+            header("Location:http://localhost/Bird_punk/views/IndexAlmacenista.php?usuario=".$usuario."&idu=$idu&idt=$idt");
         }
         if($row['ID_Tipo_Usuario'] == '3'){
             session_start();
             $_SESSION['usuario'] = $row['Nombre_s'];
             $_SESSION['IDusuario'] = $row['ID_Usuario'];
             $_SESSION['IDtipousuario'] = $row['ID_Tipo_Usuario'];
-            header("Location:../IndexAdministrador.php");
+
+            $usuario = $_SESSION['usuario'];
+            $idu = $_SESSION['IDusuario'];
+            $idt = $_SESSION['IDtipousuario'];
+
+            header("Location:http://localhost/Bird_punk/views/IndexAdministrador.php?usuario=".$usuario."&idu=$idu=&idt=$idt");
         }
     }else{
         die( print_r( sqlsrv_errors(), true) );

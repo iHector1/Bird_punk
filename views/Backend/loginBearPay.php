@@ -7,7 +7,7 @@
     if($varsesion == null || $varsesion == ''){
     echo'<script type="text/javascript">
         alert("Sesion cerrada.");
-        window.location.href = "Index.php";
+        window.location.href = " http://localhost/Bird_punk/views/Index.php";
         </script>';
     } 
 
@@ -29,7 +29,7 @@
         if($row['Nombre_Usuario'] == NULL) {
             echo'<script type="text/javascript">
             alert("Usuario o Contraseña incorrectos.");
-            window.location.href = "../BearPay_Login.php";
+            window.location.href = " http://localhost/Bird_punk/views/BearPay_Login.php";
             </script>';
         }else{
             
@@ -136,14 +136,14 @@
           
         echo'<script type="text/javascript">
             alert("Compra realizada exitosamente.");
-            window.location.href = "../Index.php";
+            window.location.href = " http://localhost/Bird_punk/views/Index.php";
             </script>';
             
     }
     else{
         echo'<script type="text/javascript">
             alert("No hay suficiente saldo en su cuenta.\nFavor de verificarlo.");
-            window.location.href = "../BearPay_Login.php";
+            window.location.href = " http://localhost/Bird_punk/views/BearPay_Login.php";
             </script>';
     }
 

@@ -40,7 +40,7 @@
         move_uploaded_file($_FILES['browse']['tmp_name'], '../Imagenes/'.$nombreIMG.'.jpg');
         echo '<script type="text/javascript">
                   alert("Articulo añadido correctamente.")
-                  window.location = "../AnadirProducto.php"
+                  window.location = " http://localhost/Bird_punk/views/AnadirProducto.php"
                   </script>';
         
     }
@@ -49,7 +49,7 @@
         die( print_r( sqlsrv_errors(), true));
         echo '<script type="text/javascript">
                 alert("Articulo no añadido.")
-                  window.location = "../AnadirProducto.php"
+                  window.location = " http://localhost/Bird_punk/views/AnadirProducto.php"
                   </script>';
     } 
 

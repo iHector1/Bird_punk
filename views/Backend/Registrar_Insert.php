@@ -22,7 +22,7 @@
     if(preg_match($ValdiarCorreo, $correo) == false){
         echo'<script type="text/javascript">
             alert("Verifique su correo electronico");
-            window.location.href = "../Registro.php";
+            window.location.href = " http://localhost/Bird_punk/views/Registro.php";
             </script>';
             sqlsrv_close($conn);
     }
@@ -31,7 +31,7 @@
     if(preg_match($SeguridadContra, $contra)== false){
         echo'<script type="text/javascript">
             alert("Debe contener \n 8 caracteres de longitud \n 2 letras mayusculas \n 1 carácter especial (!@#$&*) \n 2 numeros \n 3 letras en minuscula.");
-            window.location.href = "../Registro.php";
+            window.location.href = " http://localhost/Bird_punk/views/Registro.php";
             </script>';
             sqlsrv_close($conn);
     }
@@ -75,12 +75,12 @@
     if ($stmt && $stmt3 && $stmt4){
         echo'<script type="text/javascript">
             alert("Usuario registrado correctamente.");
-            window.location.href = "../Index.php";
+            window.location.href = " http://localhost/Bird_punk/views/Index.php";
             </script>';
     }else{
         echo'<script type="text/javascript">
             alert("Error al insertar usuario.");
-            window.location.href = "../Registro.php";
+            window.location.href = " http://localhost/Bird_punk/views/Registro.php";
             </script>';
     }
 

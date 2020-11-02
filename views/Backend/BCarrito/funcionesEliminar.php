@@ -1,6 +1,8 @@
 <?php
-    $IDProducto = $_GET['idProducto'];
-    
+    include '../../conexion.php';
+
+    $IDProducto = $_GET['id'];
+    $id_c = $_GET['idc'];
 
     $sql = "SELECT Total_articulo FROM articulo_carrito WHERE articulo_carrito.ID_Articulo = '".$IDProducto."' AND articulo_carrito.ID_Carrito = '".$id_c."'";
     $stmt=sqlsrv_query($conn,$sql);
@@ -15,4 +17,6 @@
     $res1=sqlsrv_query($conn,$sql);
 
     $fila = sqlsrv_fetch_array($res1);
+
+    header("Location: http://localhost/Bird_punk/views/carrito.php");
 ?>
