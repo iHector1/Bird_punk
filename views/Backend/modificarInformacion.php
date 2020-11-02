@@ -22,7 +22,7 @@
     $modificarDomicilio=sqlsrv_query($conn,$sql2);
 
     echo'<script type="text/javascript">
-    window.location.href = "../editarPerfil.php";
+    window.location.href = " http://localhost/Bird_punk/views/editarPerfil.php";
     </script>';
 
 ?>

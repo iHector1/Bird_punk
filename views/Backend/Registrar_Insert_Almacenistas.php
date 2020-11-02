@@ -73,12 +73,12 @@ sqlsrv_close($conn);
 if ($stmt && $stmt3){
     echo'<script type="text/javascript">
         alert("Almacenista registrado correctamente.");
-        window.location.href = "../IndexAdministrador.php";
+        window.location.href = " http://localhost/Bird_punk/views/IndexAdministrador.php";
         </script>';
 }else{
     echo'<script type="text/javascript">
         alert("Error al insertar almacenista.");
-        window.location.href = "../RegistroAlmacenista.php";
+        window.location.href = " http://localhost/Bird_punk/views/RegistroAlmacenista.php";
         </script>';
 }
 

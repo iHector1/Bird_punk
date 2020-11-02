@@ -6,7 +6,7 @@
 
     $queryDelete=sqlsrv_query($conn,$sql);
     echo '<script type="text/javascript">
-                  window.location = "../agregarAlmacenista.php"
+                  window.location = " http://localhost/Bird_punk/views/agregarAlmacenista.php"
                   </script>';
                   
 ?>

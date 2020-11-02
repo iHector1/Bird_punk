@@ -11,7 +11,7 @@
 
     echo'<script type="text/javascript">
     alert("Articulo eliminado exitosamente.");
-    window.location.href = "../EditarProducto.php";
+    window.location.href = " http://localhost/Bird_punk/views/EditarProducto.php";
     </script>';
 
     sqlsrv_close($conn);

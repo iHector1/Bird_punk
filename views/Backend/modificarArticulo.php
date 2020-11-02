@@ -16,7 +16,7 @@
 
     echo'<script type="text/javascript">
     alert("Articulo actualizado exitosamente.");
-    window.location.href = "../EditarProducto.php";
+    window.location.href = " http://localhost/Bird_punk/views/EditarProducto.php";
     </script>';
 
     sqlsrv_close($conn);
