@@ -2,19 +2,10 @@
     include '../conexionBearPay.php';
     include '../conexion.php';
     session_start();
-
-    $varsesion = $_SESSION['usuario']; //Nombre de usuario
-    if($varsesion == null || $varsesion == ''){
-    echo'<script type="text/javascript">
-        alert("Sesion cerrada.");
-        window.location.href = " http://localhost/Bird_punk/views/Index.php";
-        </script>';
-    } 
-
     $user = $_POST['usuario'];
     $contraseña = $_POST['contraseña'];
-    $total = $_SESSION['total'];
-    $IDCarrito = $_SESSION['IDcarrito']; 
+    $total = $_GET['total'];
+    $IDCarrito = $_GET['idc']; 
 
     echo "Usuario: $user<br>";
     echo "Contraseña: $contraseña<br>";
@@ -136,7 +127,7 @@
           
         echo'<script type="text/javascript">
             alert("Compra realizada exitosamente.");
-            window.location.href = " http://localhost/Bird_punk/views/Index.php";
+            window.location.href = " http://localhost/Bird_punk/views/carrito.php";
             </script>';
             
     }

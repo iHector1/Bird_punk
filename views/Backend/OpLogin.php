@@ -68,7 +68,7 @@
             $idu = $_SESSION['IDusuario'];
             $idt = $_SESSION['IDtipousuario'];
 
-            header("Location:http://localhost/Bird_punk/views/IndexAdministrador.php?usuario=".$usuario."&idu=$idu=&idt=$idt");
+            header("Location:http://localhost/Bird_punk/views/IndexAdministrador.php?usuario=".$usuario."&idu=$idu&idt=$idt");
         }
     }else{
         die( print_r( sqlsrv_errors(), true) );
