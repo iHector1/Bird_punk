@@ -162,7 +162,7 @@ if($control == 5){
                                     
                                         
                                         <div>
-                                            <form action="Pago.php">
+                                            <form action="Pago.php?control=0">
                                                 <input class="btn btn-primary" type="submit" value="PAGAR" 
                                                 style="outline:none;margin-top:90px;position:absolute;border:none;font-size:25px;text-align:left;">
                                             </form>

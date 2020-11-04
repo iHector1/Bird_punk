@@ -5,7 +5,6 @@
     $varsesion3 = $_SESSION['IDcarrito'];
     $IDArticulo = $_POST['ID_Articulo'];
 
-    echo '';
 /*if($varsesion == null || $varsesion == ''){
     echo'<script type="text/javascript">
         alert("Sesion cerrada.");
@@ -94,7 +93,7 @@
                    <!--Almacenar la imagen en la bd -->
                     <input type="radio" name="navegacion" id="_1" checked>
                     
-                    <img src="Imagenes/<?php echo $imagen;?>" width="500" height="300"/> <!--Ejemplo-->
+                    <img src="http://25.61.144.153/distribuidos/Bird_punk/views/Imagenes/<?php echo $imagen;?>" width="500" height="300"/> <!--Ejemplo-->
                 </div>
             </div>
         </div>

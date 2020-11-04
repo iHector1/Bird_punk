@@ -104,7 +104,7 @@ error_reporting(0);
                                        
                                     <div class="media">
                                         <a href="#"> 
-                                            <img class="border border-danger rounded-lg" src=Imagenes/<?php echo $fila['Imagen'];?> width="600" height="300" alt=""> 
+                                            <img class="border border-danger rounded-lg" src=http://25.61.144.153/distribuidos/Bird_punk/views/Imagenes/<?php echo $fila['Imagen'];?> width="600" height="300" alt=""> 
                                         </a>
                                         
                                         <div class="media-body">
