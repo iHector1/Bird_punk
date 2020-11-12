@@ -184,7 +184,7 @@
                                             echo "$$total";
                                         ?> 
                                     </p>
-                                    <form action="Backend/CancelarDevolver.php" method="POST">
+                                    <form action="http://25.61.144.153/distribuidos/Bird_punk/views/Backend/CancelarDevolver.php" method="POST">
                                         <input type="hidden" name="noOrden" value="<?php echo $noorden;?>">
                                         <input type="submit" style="background-color:#1C2331; margin-left:-3px" value="Cancelar pedido" >
                                         <input type="submit" style="background-color:#1C2331; "value="Devolver  producto">

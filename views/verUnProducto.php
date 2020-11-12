@@ -3,6 +3,7 @@
     $varsesion = $_SESSION['usuario'];
     $varsesion2 = $_SESSION['IDusuario'];
     $varsesion3 = $_SESSION['IDcarrito'];
+    $IDArticulo = $_POST['ID_Articulo'];
 
 /*if($varsesion == null || $varsesion == ''){
     echo'<script type="text/javascript">
@@ -83,16 +84,16 @@
                 $marca = $_POST['marca'];
                 $precio = $_POST['precio'];
                 $talla = $_POST['talla'];
-                $IDArticulo = $_POST['ID_Articulo'];
                 $pagina = $_POST['Genero'];
                 $imagen = $_POST['imagen'];
-                include 'Backend/ProductoEspecifico.php';
+                include 'http://25.61.144.153/distribuidos/Bird_punk/views/Backend/ProductoEspecifico.php';
+                $stock=$_POST['Stock'];
             ?>
                 <div class="galeria">
                    <!--Almacenar la imagen en la bd -->
                     <input type="radio" name="navegacion" id="_1" checked>
                     
-                    <img src="Imagenes/<?php echo $imagen;?>" width="500" height="300"/> <!--Ejemplo-->
+                    <img src="http://25.61.144.153/distribuidos/Bird_punk/views/Imagenes/<?php echo $imagen;?>" width="500" height="300"/> <!--Ejemplo-->
                 </div>
             </div>
         </div>
@@ -107,7 +108,7 @@
             <br>
             <h4 class=><?php echo ($talla);?> MX</h4>
             
-            <form name="form-cant" action="carrito.php" method="POST">
+            <form name="form-cant" action="carrito.php?control=0" method="POST">
                 <h5>Cantidad</h5> 
                     <input type="number" name="cantidad" min="1" max="<?php echo $stock;?>"required>
                     <br><br>   

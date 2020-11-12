@@ -11,9 +11,12 @@
             window.location.href = "Index.php";
             </script>';
     }
-
-    include 'conexion.php';
-    include 'Backend/mostrarArticulosEditar.php';
+    $control=$_GET['control'];
+    if($control!=1){    
+       header('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/mostrarArticulosEditar.php') ; 
+    }
+    $datos=unserialize($_GET['articulos']);
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,39 +73,39 @@
             </div>
                         
             <?php
-            while($row = sqlsrv_fetch_array($articulos)){
+            foreach($datos as $row){
             ?>
             <div class="row mt-3 p-2 rectangle">
                 <h2 class="col-11 m-3 mb-5 ">Datos del producto</h2>
                         <div class="col-5 ml-4">
                     <!-- Obtención de datos de producto existente -->
-                    <form method="POST" action="Backend/modificarArticulo.php">
+                    <form method="POST" action="http://25.61.144.153/distribuidos/Bird_punk/views/Backend/modificarArticulo.php">
                         <!-- NombreProducto | No se puede editar -->
-                        <input class="m-2 form-control float-right" type="number" id="name" name="name" placeholder="<?php echo $row[1];?>" disabled></input>
+                        <input class="m-2 form-control float-right" type="number" id="name" name="name" placeholder="<?php echo $row['imagen'];?>" disabled></input>
 
                         <!-- NombreProducto | No se puede editar -->
-                        <input class="m-2 form-control float-right" type="number" id="precio" name="precio" placeholder="Precio actual:<?php echo $row[2];?>" required></input>
+                        <input class="m-2 form-control float-right" type="number" id="precio" name="precio" placeholder="Precio actual:<?php echo $row['precio'];?>" required></input>
                         <!-- PrecioProducto | Se puede editar -->
-                        <input class="m-2 form-control float-right" type="number" id="stock" name="stock" placeholder="Stock actual: <?php echo $row[3];?>" required></input>
+                        <input class="m-2 form-control float-right" type="number" id="stock" name="stock" placeholder="Stock actual: <?php echo $row['stock'];?>" required></input>
                         <!-- Submit -->
                         
 
-                        <input type="hidden" name="ID_Articulo" value="<?php echo $row[0];?>">
+                        <input type="hidden" name="ID_Articulo" value="<?php echo $row['id'];?>">
 
                         </div>
                         <div class="col-3">
                                 <!-- Imagen | No se puede editar -->
-                                <img class="img mt-2 ml-5" src="Imagenes/<?php echo $row[4];?>" alt="">
+                                <img class="img mt-2 ml-5" src="http://25.61.144.153/distribuidos/Bird_punk/views/Imagenes/<?php echo $row['imagen'];?>" alt="">
                         </div>
 
 
                         <input class="m-2 btn btn-dark btn-outline-light float-right" style="height:50px;"type="submit" value="Actualizar producto">                    
                     </form>  
 
-                    <form method="POST" action="Backend/eliminarArticulo.php">
+                    <form method="POST" action="http://25.61.144.153/distribuidos/Bird_punk/views/Backend/eliminarArticulo.php">
                         <input class="m-2 btn btn-dark btn-outline-light float-left" style="height:50px;"type="submit" value="Eliminar producto">
 
-                        <input type="hidden" name="ID_Articulo" value="<?php echo $row[0];?>">
+                        <input type="hidden" name="ID_Articulo" value="<?php echo $row['id'];?>">
                     </form>
 
                        

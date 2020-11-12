@@ -13,7 +13,12 @@
             </script>';
             
     }
-    
+    $control=$_GET['control'];
+    $id=$_GET['id'];
+   if($control!=1){    
+        header('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/infoUsuarioA.php?id='.$id); 
+    }
+    $datos=unserialize($_GET['datos']);
 ?>
 <html>
 
@@ -73,11 +78,6 @@
 
     </section>
 
-    <?php
-        include 'conexion.php';
-        include 'Backend/infoUsuario.php';
-
-    ?>
 
     <div>
         <div class="padre">
@@ -85,23 +85,22 @@
             <br>
             <div class="contenedorEdi">
             <?php
-            while($row =sqlsrv_fetch_array($infoUsuario))
+            foreach($datos as $row)
             {
             ?>
                 <div class="izq">
-                    <p><b>Nombre:</b> <?php echo $row[1]." ".$row[2]." ".$row[3];?></p>
-                    <p><b>Correo:</b> <?php echo $row[4];?></p>
-                    <p><b>Calle:</b> <?php echo $row[9];?></p>
-                    <p><b>Numero exterior:</b> <?php echo $row[10];?></p>
-                    <p><b>Numero interior:</b> <?php echo $row[11];?></p>
-                    <p><b>Estado:</b> <?php echo $row[8];?></p>
+                    <p><b>Nombre:</b> <?php echo $row['nombre']." ".$row['paterno']." ".$row['materno'];?></p>
+                    <p><b>Correo:</b> <?php echo $row['correo'];?></p>
+                    <p><b>Calle:</b> <?php echo $row['calle'];?></p>
+                    <p><b>Numero exterior:</b> <?php echo $row['exterior'];?></p>
+                    <p><b>CP:</b> <?php echo $row['cp'];?></p>
                 </div>
             <?php
             }
             ?>
                 <div class="der">
                     <img src="Imagenes/punk_bird.png" width="100px" height="100px" alt="bird_punk_logo">
-                    <div class="buttonEd"><button type="button" class="btn btn-light"><a href="modificarInfo.php">EDITAR</a></button></div>
+                    <div class="buttonEd"><button type="button" class="btn btn-light"><a href="modificarInfo.php?id=<?php echo $id;?>&control=0s">EDITAR</a></button></div>
                 </div> 
             </div>
         </div> 

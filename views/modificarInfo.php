@@ -15,8 +15,8 @@
             </script>';
             
     }
-
-    //include 'Backend/modificarInformacion.php';
+    $id=$_GET['id'];    
+     //   header('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/modificarInformacion.php?id='.$id); 
 
 ?>
 
@@ -78,11 +78,12 @@
         </div>
 
         <!-- Login Form -->
-        <form method="POST" action="Backend/modificarInformacion.php">
+        <form method="POST" action="http://25.61.144.153/distribuidos/Bird_punk/views/Backend/modificarInformacion.php">
             <div class="contenedorIzq">
             <div class="titulo">
                 <h3> INFORMACION USUARIO</h3>
             </div> 
+            <input type="hidden" id="id" class="fadeIn second" name="id" placeholder="Nombre(s)" value=<?php echo $id?>>
                 <input type="text" id="name" class="fadeIn second" name="nombre" placeholder="Nombre(s)" required>
                 <input type="text" id="lastName1" class="fadeIn second" name="apePaterno" placeholder="Apellido Paterno" required>
                 <input type="text" id="lastName2" class="fadeIn second" name="apeMaterno" placeholder="Apellido Materno" required>

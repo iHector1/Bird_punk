@@ -9,6 +9,13 @@
             window.location.href = "Index.php";
             </script>';
     }
+    $control = $_GET['control'];
+    if($control != 1)
+    {
+        header("Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/buscarAlmacenista.php");
+    }
+    $datos=unserialize($_GET['datos']);
+
 ?>
 
 <html>
@@ -80,19 +87,20 @@
             include 'conexion.php';
             include 'Backend/buscarAlmacenista.php';
             //include 'Backend/eliminarAlmacenista.php';
-            while($row = sqlsrv_fetch_array($Almacenistas))
-            {              
+           // while($row = sqlsrv_fetch_array($Almacenistas))
+            foreach($datos as $row)
+           {              
         ?>
-            <form method="POST" action="./Backend/eliminarAlmacenistaBE.php">
+            <form method="POST" action="http://25.61.144.153/distribuidos/Bird_punk/views/Backend/eliminarAlmacenistaBE.php">
                 <tr>
                     <td>
-                        <p><?php echo $row[1]." ".$row[2]." ".$row[3];?><br> Calle: <?php echo $row[8]; ?>,<br> No.Exterior: <?php echo $row[9];?><br>No.Interior: <?php echo $row[10];?> <br>Colonia: <?php echo $row[11]; ?> <br>CP: <?php echo $row[12];?><br> Correo: <?php echo $row[4]; ?> <br> </p>
+                        <p><?php echo $row['nombre']." ".$row['paterno']." ".$row['materno'];?><br> Calle: <?php echo $row['calle']; ?>,<br> No.Exterior: <?php echo $row['exterior'];?><br>CP: <?php echo $row['cp'];?><br> Correo: <?php echo $row['correo']; ?> <br> </p>
                     </td>
                     <td>
                         <button type="submit" onClick="return confirm('¿Desea eliminar este almacenista?');" class="btn btn-default btn-circle"><b>X</b></button>
                     </td>
                 </tr>
-                <input type="hidden" name="idalmacenista" value="<?php echo $row[0];?>">
+                <input type="hidden" name="idalmacenista" value="<?php echo $row['id'];?>">
             </form>
         <?php
             }
