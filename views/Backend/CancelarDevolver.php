@@ -13,6 +13,7 @@
     include '../conexionBearPay.php';
 
     $NumOrden = $_POST['noOrden'];
+    $idu = $_POST['idu'];
 
     //Querys correspondientes a la primera Base de datos (BirdPunk)
     //$NumOrden = 6;          //Cambiar una vez que lo obtengan los demas
@@ -55,14 +56,13 @@
     $precioBP = 0;
 
     //Query correspondiente para encontrar al usuario que realizo esta compra
-    
-    $SelectBP = "SELECT Monto
-                 FROM Usuario
-                 WHERE Nombre_Usuario  = '$nombre'";
+    echo $nombre;
+    $SelectBP = "SELECT Monto FROM Usuario WHERE Nombre_Usuario  = '$nombre'";
 
     $query= sqlsrv_query($connBP, $SelectBP);
 
-    if ($query === false){
+    if ($query === false)
+    {
         echo "Error";
         die(print_r(sqlsrv_errors(), true));
     }
@@ -72,10 +72,12 @@
          die( print_r( sqlsrv_errors(), true));
     }
     
-    
     //Verificar que el estado sea enviado
-    if ($estatus == 'Enviado'){
-        $MontoA = sqlsrv_get_field( $query, 0);
+    if ($estatus == 'Enviado')
+    {
+        echo "ENTRA A ENVIADO CANCELAR";
+        $MontoA = sqlsrv_get_field($query,0);
+        echo "MONTO A: $MontoA";
         $precioBP = $MontoA + $precioT;
         $estatusBP = 3;
         //UPDETEAR A LA BD DEL BANCO LA CANTIDAD DEL PEDIDO CANCELADO O DEVUELTO
@@ -106,7 +108,8 @@
         </script>
         <?php
     }
-    else if ($estatus == 'Entregado'){
+    else if ($estatus == 'Entregado')
+    {
         $MontoA = sqlsrv_get_field( $query, 0);
         $precioBP = $MontoA + $precioT;
         $estatusBP = 4;
@@ -138,21 +141,24 @@
         </script>
         <?php
     }
-    else if ($estatus == 'Cancelado'){
+    else if ($estatus == 'Cancelado')
+    {
         ?>
         <script type="text/javascript">
             alert("No es posible realizar esta operacion ya que tu pedido se encuentra con el status de cancelado");
         </script>
         <?php
     }
-    else if ($estatus == 'Devolucion'){
+    else if ($estatus == 'Devolucion')
+    {
         ?>
         <script type="text/javascript">
             alert("No es posible realizar esta operacion ya que tu pedido se encuentra con el status de devuelto");
         </script>
         <?php
     }
-    else {
+    else 
+    {
         ?>
         <script type="text/javascript">
             alert("El status de su pedido es desconocido por lo tanto no puede realizar la accion que selecciono");
@@ -160,8 +166,10 @@
         <?php
     }
 
+    echo "MontoA: $MontoA";
+    echo "PRecio T: $precioT";
+    echo "PRECIO BP: $precioBP";
 
-    echo '<script type="text/javascript">
-                  window.location = " http://localhost/Bird_punk/views/Historial.php"
-                  </script>';
+
+    header("Location:http://localhost/Bird_punk/views/Historial.php?control=0&idu=".$idu);
 ?>
