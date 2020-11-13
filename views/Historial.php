@@ -1,19 +1,31 @@
 <?php
-    include 'conexion.php';
     session_start();
-    error_reporting(0);
+        error_reporting(0);
     $varsesion = $_SESSION['usuario'];
     $IDusuario = $_SESSION['IDusuario'];
     $varsesion4 = $_SESSION['IDtipousuario'];
+
+   
     ?>
     <?php
-    if($varsesion == null || $varsesion == ''){
-        echo'<script type="text/javascript">
-            alert("Sesion cerrada.");
-            window.location.href = "Index.php";
-            </script>';
-            
-    }
+    $idu=$_GET['idu'];
+    $control=$_GET['control'];
+    if($control!=1){
+        header('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/historialProductos2.php?idu='.$idu);  
+        die();
+      }
+    $arreglo = unserialize($_POST['arreglo']);
+    $arreglo1 = unserialize($_POST['arreglo1']);
+    $arreglo2 = unserialize($_POST['arreglo2']);
+/*     echo"<pre>";
+      print_r($arreglo);
+    echo "</pre>";
+    echo"<pre>";
+    print_r($arreglo1);
+  echo "</pre>";
+  echo"<pre>";
+  print_r($arreglo2);
+echo "</pre>";*/
 ?>
 
 
@@ -81,26 +93,19 @@
 
                             <!-- Recorre los artículos del historial  -->
                             <?php
-                                $domicilio = "SELECT Calle, NoExterior, NoInterior FROM info_cliente WHERE ID_Usuario = '$IDusuario'";
-                                $stmtD = sqlsrv_query($conn, $domicilio);
-
-                                while($r = sqlsrv_fetch_array($stmtD))
+                                foreach($arreglo as $r )
                                 {
-                                    $calle = $r[0];
-                                    $noexterior = $r[1];
-                                    $nointerior = $r[2];
+                                    $calle = $r["calle"];
+                                    $noexterior = $r["exterior"];
+                                    $nointerior = $r["interior"];
                                 }
 
-
-                                $sql = "SELECT compra.No_Orden, compra.Fecha_Compra, compra.Precio_Total, estatus.Estatus FROM compra INNER JOIN estatus ON compra.ID_Estatus = estatus.ID_Estatus WHERE ID_Usuario = '$IDusuario' ORDER BY compra.Fecha_Compra DESC";
-                                $stmt = sqlsrv_query($conn, $sql);
-
-                                while($row = sqlsrv_fetch_array($stmt)) 
+                                foreach($arreglo1 as $row ) 
                                 {
-                                    $noorden = $row[0];
-                                    $fecha = $row[1]->format('Y-m-d');
-                                    $total = $row[2]; 
-                                    $estatus = $row[3];
+                                    $noorden = $row["orden"];
+                                    //$fecha = $row[1]->format('Y-m-d');
+                                    $total = $row["total"]; 
+                                    $estatus = $row["estatus"];
                                 ?>
 
                                 <div class="osahan-account-page-right shadow-sm bg-white p-4 h-100">
@@ -109,16 +114,11 @@
                                 <div class="tab-pane  fade  active show" id="orders" role="tabpanel" aria-labelledby="orders-tab">
                                 <?php
 
-
-
-                                    //////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                    $sql2 = "SELECT modelo.Modelo, marca.Marca, detalle_compra.Cantidad_Articulo, detalle_compra.Total_articulo FROM articulo INNER JOIN modelo ON modelo.ID_Modelo = articulo.ID_Modelo 
-                                    INNER JOIN marca ON marca.ID_Marca = articulo.ID_Marca INNER JOIN detalle_compra ON detalle_compra.ID_Articulo = articulo.ID_Articulo
-                                    WHERE detalle_compra.No_Orden = '$noorden'";
-                                    $stmt2 = sqlsrv_query($conn, $sql2);
-
-                                    while( $row2 = sqlsrv_fetch_array($stmt2)) 
+                                    foreach($arreglo2 as  $row2 ) 
                                     {
+                                        if($noorden==$row2["orden"]){
+                                            
+                                        
                                     ?>
                                         <div class="bg-white card mb-4 order-list shadow-sm">
                                             <div class="gold-members p-4">
@@ -134,9 +134,9 @@
                                                         <!--NOMBRE DEL ARTICULO-->
                                                         <h6 class="mb-2">
                                                             <?php
-                                                                echo $row2[0];
+                                                                echo $row2["modelo"];
                                                                 echo(" - ");
-                                                                echo $row2[1];
+                                                                echo $row2["marca"];
                                                             ?> 
                                                             </a>
                                                         </h6>
@@ -163,16 +163,17 @@
                                                         
                                                     </div>
 
-                                                    <p><b>Total de Articulo:</b> $<?php echo $row2[3];?></p><br>
+                                                    <p><b>Total de Articulo:</b> $<?php echo $row2["totalarticulo"];?></p><br>
                                                     
                                                 </div>
-                                                <p><b>Cantidad:</b> <?php echo $row2[2];?></p>
+                                                <p><b>Cantidad:</b> <?php echo $row2["cantidad"];?></p>
 
                                             </div>
                                         </div>
 
                                     <?php
                                     }
+                                }
                                     ?>
                                      <p class="mb-0 text-black text-primary pt-5"><span class="text-black font-weight-bold"> ESTATUS:</span> 
                                         <?php                                                                                            
@@ -185,6 +186,7 @@
                                         ?> 
                                     </p>
                                     <form action="http://25.61.144.153/distribuidos/Bird_punk/views/Backend/CancelarDevolver.php" method="POST">
+                                        <input type="hidden" value="<?php echo $idu;?>"  name="idu">
                                         <input type="hidden" name="noOrden" value="<?php echo $noorden;?>">
                                         <input type="submit" style="background-color:#1C2331; margin-left:-3px" value="Cancelar pedido" >
                                         <input type="submit" style="background-color:#1C2331; "value="Devolver  producto">
@@ -194,9 +196,6 @@
                             </div>
                         </div><br><br>
                             <?php
-
-                                    $mestatus = "UPDATE compra SET ID_Estatus = '2' WHERE compra.No_Orden = '$noorden' AND compra.ID_Estatus = '1'";
-                                    $mEstatus=sqlsrv_query($conn,$mestatus);
                                 }
                             ?>
 

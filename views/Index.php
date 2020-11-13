@@ -57,7 +57,7 @@
                     <li class="nav-item">
                         <?php
                             if(!($varsesion == null || $varsesion == '')){
-                            echo "<a class='nav-link' href='Historial.php'>HISTORIAL</a>";
+                            echo "<a class='nav-link' href='Historial.php?idu=$idu&control=0&control1=1&control2=1'>HISTORIAL</a>";
                             }
                         ?>
                     </li>
