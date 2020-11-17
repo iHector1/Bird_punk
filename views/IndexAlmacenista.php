@@ -65,7 +65,7 @@
                     <li class="nav-item" style="white-space: nowrap;">
                     <?php
                     if(!($varsesion == null || $varsesion == '')){
-                        echo "<a href='editarPerfil.php'><h4 style='padding-left:100px;' class='nav-link'>Bienvenid@: ";  echo$_SESSION['usuario']; echo" </h4></a>";
+                        echo "<a href='editarPerfil.php?id=$idu'><h4 style='padding-left:100px;' class='nav-link'>Bienvenid@: ";  echo$_SESSION['usuario']; echo" </h4></a>";
                     }
                     ?>
                     </li>
