@@ -70,5 +70,5 @@ if ($stmt && $stmt3){
         window.location.href = " http://localhost/Bird_punk/views/agregarAlmacenista.php";
         </script>';
 }
-header("Location: http://25.61.144.153/distribuidos/Bird_punk/views/BackendP/BEPRegistrar_Insert_Alamcenistas.php?control=1");
+header("Location: http://25.61.144.153/distribuidos/Bird_punk/views/BackendP/BEPRegistrar_Insert_Almacenistas.php?control=1");
 ?>

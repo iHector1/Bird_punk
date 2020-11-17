@@ -1,7 +1,4 @@
 <?php
-    include '../conexion.php';
-    session_start();
-    error_reporting(0);
     
     $idUsuario = $_POST['id'];
     $nombre = $_POST['nombre'];
@@ -15,19 +12,34 @@
     $estado = $_POST['estado'];
     $cp = $_POST['cp'];
 
-    echo $nombre;
-    echo $apePaterno;
-    echo $apeMaterno;
-    echo $idUsuario;
+    $control = $_GET['control'];
+    $idu = $_GET['idu'];
 
-    $sql = "UPDATE usuario SET Nombre_S = '$nombre', Apellido_Paterno = '$apePaterno', Apellido_Materno = '$apeMaterno', Contrasena = '$contraseña' WHERE usuario.ID_Usuario = '$idUsuario'";
-    $modificarUsuario=sqlsrv_query($conn,$sql);
+    if($control != 1)
+    {
+        ?>
+            <form id="myForm" action="http://25.61.144.153/distribuidos/Bird_punk/views/BackendP/BEPmodificarInformacion.php" method="post">
+                <input type="hidden" name="id" value="<?php echo $idUsuario;?>" />
+                <input type="hidden" name="nombre" value="<?php echo $nombre;?>" />
+                <input type="hidden" name="apePaterno" value="<?php echo $apePaterno;?>" />
+                <input type="hidden" name="apeMaterno" value="<?php echo $apeMaterno;?>" />
+                <input type="hidden" name="contraseña" value="<?php echo $contraseña;?>" />
+                <input type="hidden" name="calle" value="<?php echo $calle;?>" />
+                <input type="hidden" name="noexterior" value="<?php echo $noexterior;?>" />
+                <input type="hidden" name="nointerior" value="<?php echo $nointerior;?>" />
+                <input type="hidden" name="colonia" value="<?php echo $colonia;?>" />
+                <input type="hidden" name="estado" value="<?php echo $estado;?>" />
+                <input type="hidden" name="cp" value="<?php echo $cp;?>" />
+            </form>
 
-    $sql2 = "UPDATE info_cliente SET Estado = '$estado', Calle = '$calle', NoExterior = '$noexterior', NoInterior = '$nointerior', Colonia = '$colonia', CP = '$cp' WHERE info_cliente.ID_Usuario = '$idUsuario'";
-    $modificarDomicilio=sqlsrv_query($conn,$sql2);
+            <script type="text/javascript">
+                document.getElementById("myForm").submit();
+            </script> 
+        <?php
 
-    
-    header("Location: http://localhost/Bird_punk/views/editarPerfil.php?&id=".$idUsuario."&control=0");
-    
+    }else
+    {
+        header("Location: http://localhost/Bird_punk/views/editarPerfil.php?id=".$idu."&control=0");
+    }
 
 ?>

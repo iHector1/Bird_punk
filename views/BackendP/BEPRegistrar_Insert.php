@@ -1,4 +1,6 @@
 <?php
+    error_reporting(0);
+
     $nombre = $_POST['name'];
     $appaterno = $_POST['lastName1'];
     $apmaterno = $_POST['lastName2'];
@@ -17,7 +19,7 @@
     if($control != 1)
     {
         ?>
-            <form id="myForm" action="http://25.61.144.153/distribuidos/Bird_punk/views/BackendP/BEPRegistrar_Insert.php" method="post">
+            <form id="myForm" action="http://25.61.144.153/distribuidos/Bird_punk/views/ServerBD/BDRegistrar_Insert.php" method="post">
                 <input type="hidden" name="name" value="<?php echo $nombre;?>" />
                 <input type="hidden" name="lastName1" value="<?php echo $appaterno;?>" />
                 <input type="hidden" name="lastName2" value="<?php echo $apmaterno;?>" />
