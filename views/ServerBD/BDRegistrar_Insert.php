@@ -1,7 +1,7 @@
 <?php
 
     include ("../conexion.php");
-        
+    error_reporting(0);
 
     $nombre = $_POST['name'];
     $appaterno = $_POST['lastName1'];
