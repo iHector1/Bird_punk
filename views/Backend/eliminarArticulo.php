@@ -10,4 +10,4 @@
         header("Location: http://localhost/Bird_punk/views/EditarProducto.php");
     }
 
-?>
+?> 

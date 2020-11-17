@@ -84,8 +84,6 @@
     <div class="contenedorAlmacenista">
         <table>
         <?php
-            include 'conexion.php';
-            include 'Backend/buscarAlmacenista.php';
             //include 'Backend/eliminarAlmacenista.php';
            // while($row = sqlsrv_fetch_array($Almacenistas))
             foreach($datos as $row)
