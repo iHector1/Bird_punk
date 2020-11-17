@@ -1,5 +1,4 @@
 <?php
-    
     $control = $_GET['control'];
     $arreglo = $_GET['datos'];
     

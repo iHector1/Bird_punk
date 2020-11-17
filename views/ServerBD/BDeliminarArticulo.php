@@ -1,8 +1,6 @@
 <?php
     include '../conexion.php';
-    session_start();
-
-    $IDarticulo = $_GET['ID_Articulo'];
+    $ID_Articulo = $_GET['id'];
 
 
     $sql = "DELETE FROM articulo WHERE ID_Articulo= '$ID_Articulo'";
