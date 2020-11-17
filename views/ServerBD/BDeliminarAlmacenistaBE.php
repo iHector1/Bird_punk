@@ -1,6 +1,6 @@
 <?php
     include '../conexion.php';
-    $id = $_POST['idalmacenista'];
+    $id = $_GET['idalmacenista'];
 
     $sql = "DELETE FROM usuario WHERE ID_Usuario= '".$id."'";
 
