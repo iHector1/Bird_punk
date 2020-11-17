@@ -1,6 +1,7 @@
 <?php
     include '../conexion.php';
 
+
     $ID_Usuario = $_GET['id'];
     
     $sql = "SELECT * FROM usuario WHERE usuario.ID_Usuario = '".$ID_Usuario."';";
