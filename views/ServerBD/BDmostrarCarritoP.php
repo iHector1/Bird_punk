@@ -1,6 +1,6 @@
 <?php
     include '../../conexion.php';
-    $id_c = $_GET['id'];
+    $id_c = $_GET['idCar'];
     $total = $_GET['total'];
 
 
@@ -28,5 +28,6 @@
     $arreglo = serialize($arreglo);
     $arreglo = urlencode($arreglo);
 
-    header("Location: http://25.61.144.153/distribuidos/Bird_punk/views/BackendP/BEPProductoBoys.php?carrito=".$arreglo."&control=1&total=$total");
+    echo $total;
+    header("Location: http://25.61.144.153/distribuidos/Bird_punk/views/BackendP/BEPmostrarCarritoP.php?carrito=".$arreglo."&control=1&total=$total");
 ?>

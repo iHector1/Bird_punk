@@ -1,15 +1,15 @@
 <?php
-    include '../../conexion.php';
-
     $id_U = $_GET['ids'];
     $id_C = $_GET['idc']; 
- 
-    echo $id_C;
-    echo $id_U;
+    $control = $_GET['control'];
 
-    $sql = "DELETE FROM articulo_carrito WHERE ID_Carrito = '$id_C'";
-    $queryDelete=sqlsrv_query($conn,$sql);
-    sqlsrv_close($conn);
-    
-    header("Location: http://localhost/Bird_punk/views/carrito.php");
+    if($control != 1)
+    {
+        header("Location: http://25.61.144.153/distribuidos/Bird_punk/views/BackendP/BEPPLimpiarCarrito.php?ids=".$id_U."&idc=$id_C");
+    }else
+    {
+        header("Location: http://localhost/Bird_punk/views/carrito.php");
+    }
+   
+   
 ?>
