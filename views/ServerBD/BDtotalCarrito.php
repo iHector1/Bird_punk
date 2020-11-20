@@ -1,7 +1,7 @@
 <?PHP 
-    include '../../conexion.php';
+    include '../conexion.php';
     $id_c = $_GET['id'];
-
+    $idu = $_GET['idu'];
     $total=0;
     $sql = "SELECT Total_articulo FROM articulo_carrito WHERE ID_Carrito = $id_c";
     //$params = array($id_c);
@@ -23,6 +23,6 @@
         die( print_r( sqlsrv_errors(), true) );
     }
 
-    header("Location: http://25.61.144.153/distribuidos/Bird_punk/views/BackendP/BEPtotalCarrito.php?control=1&total=$total");
+    header("Location: http://25.61.144.153/distribuidos/Bird_punk/views/BackendP/BEPtotalCarrito.php?control=1&total=$total&id=$id_c&idu=$idu");
 
 ?>

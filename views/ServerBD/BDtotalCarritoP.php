@@ -1,6 +1,7 @@
 <?PHP 
-    include '../../conexion.php';
+    include '../conexion.php';
     $id_c = $_GET['idCar'];
+    $idu = $_GET['idu'];
 
     $total=0;
     $sql = "SELECT Total_articulo FROM articulo_carrito WHERE ID_Carrito = $id_c";
@@ -24,6 +25,6 @@
     }
 
    
-    header("Location: http://25.61.144.153/distribuidos/Bird_punk/views/BackendP/BEPtotalCarritoP.php?control=1&total=$total");
+    header("Location: http://25.61.144.153/distribuidos/Bird_punk/views/BackendP/BEPtotalCarritoP.php?control=1&total=$total&idu=$idu&idCar=$id_c");
 
 ?>

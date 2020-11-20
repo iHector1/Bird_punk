@@ -33,6 +33,7 @@
     $total=$_GET['total'];
     $carrito = $_GET['carrito'];
     $arreglo=unserialize($_GET['arreglo']);
+    
     if ($control == 0) {
         header('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/BCarrito/totalCarritoP.php?idCar='.$id_c);
     }

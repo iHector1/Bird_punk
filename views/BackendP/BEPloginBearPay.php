@@ -8,7 +8,7 @@
 
     if($control != 1)
     {
-        header("Location: http://25.61.144.153/distribuidos/Bird_punk/views/ServerBD/BDloginBearPay.php?usuario=".$usuario."&contraseña=$contraseña&total=$total&idc=$IDCarrito");
+        header("Location: http://25.61.144.153/distribuidos/Bird_punk/views/ServerBD/BDloginBearPay.php?usuario=".$user."&contraseña=$contraseña&total=$total&idc=$IDCarrito");
     }else
     {
         header("Location: http://25.61.144.153/distribuidos/Bird_punk/views/Backend/loginBearPay.php?control=1&error=".$error);

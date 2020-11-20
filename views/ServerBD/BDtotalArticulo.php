@@ -1,6 +1,7 @@
 <?php
-    include '../../conexion.php';
+    include '../conexion.php';
     $id_c = $_GET['id'];
+    $idu = $_GET['idu'];
 
 
     $sql = "SELECT articulo_carrito.ID_Articulo, Precio, Cantidad_Articulo FROM articulo 
@@ -26,5 +27,5 @@
         }
     }
 
-    header("Location: http://25.61.144.153/distribuidos/Bird_punk/views/BackendP/BEPtotalArticulo.php?control=1");
+    header("Location: http://25.61.144.153/distribuidos/Bird_punk/views/BackendP/BEPtotalArticulo.php?control=1&id=".$id_c."&idu=$idu");
 ?>

@@ -19,24 +19,24 @@ if($varsesion == null || $varsesion == ''){
 <?php
     $id_U = $_SESSION['IDusuario']; //ID de Usuario
     $id_c = $_SESSION['IDcarrito']; //ID del carrito
-    $stock=$_POST['cantidad'];
+    $stock = $_POST['cantidad'];
     $idArtculo=$_POST['ID_Articulo'];
     $control = $_GET['control'];
     $control2 = $_GET['control2'];
-if($control == 0)
-{
-    header ('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/BCarrito/agregarCarrito.php?id='.$idArtculo."&cantidad=$stock&carrito=$id_c");    
-}
-if($control == 2){
-header ('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/BCarrito/Cantidades.php?id='.$id_c);
-}
-if($control == 3){
-     header ('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/BCarrito/totalArticulo.php?id='.$id_c);
-}
-if($control == 4){
-    header ('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/BCarrito/totalCarrito.php?id='.$id_c);}
-$totalplay=$_GET['total'];
-if($control == 5){
+    if($control == 0)
+    {
+        header ('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/BCarrito/agregarCarrito.php?id='.$idArtculo."&cantidad=$stock&carrito=$id_c");    
+    }
+    if($control == 2){
+    header ('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/BCarrito/Cantidades.php?id='.$id_c);
+    }
+    if($control == 3){
+        header ('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/BCarrito/totalArticulo.php?id='.$id_c);
+    }
+    if($control == 4){
+        header ('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/BCarrito/totalCarrito.php?id='.$id_c);}
+    $totalplay=$_GET['total'];
+    if($control == 5){
        header ('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/BCarrito/mostrarCarrito.php?id='.$id_c."&total=$totalplay"); 
     }
     $totalplay=$_GET['total'];
