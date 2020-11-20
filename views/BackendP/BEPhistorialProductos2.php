@@ -8,11 +8,11 @@
 
     if($control != 1)
     {
-        header("Location: http://25.61.144.153/distribuidos/Bird_punk/views/ServerBD/BDProductoBoys.php?idu=".$IDusuario);
+        header("Location: http://25.61.144.153/distribuidos/Bird_punk/views/ServerBD/BDhistorialProductos2.php?idu=".$IDusuario);
     }else
     {
         ?>
-        <form id="myForm" action="http://25.61.144.153/distribuidos/Bird_punk/views/BackendP/historialProductos2.php?control=1&idu=<?php echo $IDusuario;?>" method="post">
+        <form id="myForm" action="http://25.61.144.153/distribuidos/Bird_punk/views/Backend/historialProductos2.php?control=1&idu=<?php echo $IDusuario;?>" method="post">
             <input type="hidden" name="arreglo" value="<?php echo htmlentities(serialize($arreglo));?>" />
             <input type="hidden" name="arreglo1" value="<?php echo htmlentities(serialize($arreglo1));?>" />
             <input type="hidden" name="arreglo2" value="<?php echo htmlentities(serialize($arreglo2));?>" />

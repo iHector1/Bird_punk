@@ -1,8 +1,8 @@
 <?php
-    include '../../conexion.php';
+    include '../conexion.php';
     $id_c = $_GET['id'];
     $total = $_GET['total'];
-
+    $idu = $_GET['idu'];
 
     $bandera = 1;
     $sql = "SELECT articulo_carrito.ID_Articulo, Talla, Imagen, Total_articulo, Cantidad_Articulo, Modelo FROM carrito 
@@ -28,5 +28,5 @@
     $arreglo = serialize($arreglo);
     $arreglo = urlencode($arreglo);
 
-    header("Location: http://25.61.144.153/distribuidos/Bird_punk/views/BackendP/BEPProductoBoys.php?carrito=".$arreglo."&control=1&total=$total");
+    header("Location: http://25.61.144.153/distribuidos/Bird_punk/views/BackendP/BEPmostrarCarrito.php?carrito=".$arreglo."&control=1&total=$total&id=$id_c&idu=$idu");
 ?>

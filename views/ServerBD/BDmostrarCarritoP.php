@@ -1,7 +1,8 @@
 <?php
-    include '../../conexion.php';
+    include '../conexion.php';
     $id_c = $_GET['idCar'];
     $total = $_GET['total'];
+    $idu = $_GET['idu'];
 
 
     $bandera = 1;
@@ -29,5 +30,5 @@
     $arreglo = urlencode($arreglo);
 
     echo $total;
-    header("Location: http://25.61.144.153/distribuidos/Bird_punk/views/BackendP/BEPmostrarCarritoP.php?carrito=".$arreglo."&control=1&total=$total");
+    header("Location: http://25.61.144.153/distribuidos/Bird_punk/views/BackendP/BEPmostrarCarritoP.php?carrito=".$arreglo."&control=1&total=$total&idu=$idu&idCar=$id_c");
 ?>
