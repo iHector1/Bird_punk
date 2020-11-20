@@ -4,7 +4,7 @@
     $varsesion2 = $_SESSION['IDusuario'];
     $varsesion3 = $_SESSION['IDcarrito'];
     $IDArticulo = $_POST['ID_Articulo'];
-
+    $idu=$_POST['idu'];
 /*if($varsesion == null || $varsesion == ''){
     echo'<script type="text/javascript">
         alert("Sesion cerrada.");
@@ -108,7 +108,7 @@
             <br>
             <h4 class=><?php echo ($talla);?> MX</h4>
             
-            <form name="form-cant" action="carrito.php?control=0" method="POST">
+            <form name="form-cant" action="carrito.php?control=0&idu=<?php echo $idu;?>" method="POST">
                 <h5>Cantidad</h5> 
                     <input type="number" name="cantidad" min="1" max="<?php echo $stock;?>"required>
                     <br><br>   

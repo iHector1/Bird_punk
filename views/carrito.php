@@ -17,34 +17,37 @@ if($varsesion == null || $varsesion == ''){
 <!DOCTYPE html>
 <html lang="en">
 <?php
-    $id_U = $_SESSION['IDusuario']; //ID de Usuario
-    $id_c = $_SESSION['IDcarrito']; //ID del carrito
+    $id_c = $_GET['idc']; //ID del carrito
     $stock=$_POST['cantidad'];
+    $id_u=$_GET['idu'];
     $idArtculo=$_POST['ID_Articulo'];
     $control = $_GET['control'];
-    $control2 = $_GET['control2'];
+    $control2 = $_GET['control2']; 
+    echo ($id_u);
+echo ($id_c); 
 if($control == 0)
 {
-    header ('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/BCarrito/agregarCarrito.php?id='.$idArtculo."&cantidad=$stock&carrito=$id_c");    
+    header ('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/BCarrito/agregarCarrito.php?id='.$idArtculo."&cantidad=$stock&idu=$id_u");    
 }
+ 
 if($control == 2){
-header ('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/BCarrito/Cantidades.php?id='.$id_c);
+header ('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/BCarrito/Cantidades.php?id='.$id_c.'&idu='.$id_u);
 }
 if($control == 3){
-     header ('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/BCarrito/totalArticulo.php?id='.$id_c);
+     header ('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/BCarrito/totalArticulo.php?id='.$id_c.'&idu='.$id_u);
 }
 if($control == 4){
-    header ('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/BCarrito/totalCarrito.php?id='.$id_c);}
+    header ('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/BCarrito/totalCarrito.php?id='.$id_c.'&idu='.$id_u);}
 $totalplay=$_GET['total'];
 if($control == 5){
-       header ('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/BCarrito/mostrarCarrito.php?id='.$id_c."&total=$totalplay"); 
+       header ('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/BCarrito/mostrarCarrito.php?id='.$id_c.'&total='.$totalplay.'&idu='.$id_u); 
     }
     $totalplay=$_GET['total'];
     $carrito = unserialize($_GET['carrito']);
     /*var_dump($stock,$idArtculo,$id_c,$id_U);
-    echo ("<pre>");
+    echo ("<pr>");
     print_r($carrito);
-    echo ("</pre>");*/
+    echo ("</>");*/
     //
 ?>
 
@@ -151,7 +154,7 @@ if($control == 5){
                                                         Talla: <?php echo $fila['talla'];?>
                                                     </p>
                                                     <!--Datos del producto-->
-                                                    <p class="text-white mb-3">Cantidad : <?php echo $fila['cantidad'];?> | <a href="Eliminar.php?idProducto=<?php echo $fila['id'];?>" class="btn btn-outline-light icofont-trash text-danger" >Eliminar</a></p>
+                                                    <p class="text-white mb-3">Cantidad : <?php echo $fila['cantidad'];?> | <a href="http://25.61.144.153/distribuidos/Bird_punk/views/Backend/BCarrito/funcionesEliminar.php?id=<?php echo $fila['id'];?>&idc=<?php echo $id_c;?>&idu=<?php echo $id_u;?>" class="btn btn-outline-light icofont-trash text-danger" >Eliminar</a></p>
                                                     </p>
                                                     
                                                 </div>
@@ -162,10 +165,7 @@ if($control == 5){
                                     
                                         
                                         <div>
-                                            <form action="Pago.php?control=0">
-                                                <input class="btn btn-primary" type="submit" value="PAGAR" 
-                                                style="outline:none;margin-top:90px;position:absolute;border:none;font-size:25px;text-align:left;">
-                                            </form>
+                                            <button class="btn btn-primary"  style="outline:none;margin-top:90px;position:absolute;border:none;font-size:25px;text-align:left;"type="submit"><a href="Pago.php?control=0&idu=<?php echo $id_u;?>&idc=<?php echo $id_c;?>">PAGAR</a></button>
                                         </div>
                                         <!-- Limpiar carrito -->
                                                <br/>
