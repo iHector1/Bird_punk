@@ -5,7 +5,7 @@
 
     if($control != 1)
     {
-        header("Location: http://25.61.144.153/distribuidos/Bird_punk/views/BackendP/BEPinfoUsuario.php?id=".$ID_Usuario);
+        header("Location: http://25.90.201.164/distribuidos/Bird_punk/views/BackendP/BEPinfoUsuario.php?id=".$ID_Usuario);
     }else
     {
         header("Location: http://localhost/Bird_punk/views/editarPerfil.php?datos=".$arreglo."&control=1&id=$ID_Usuario");
