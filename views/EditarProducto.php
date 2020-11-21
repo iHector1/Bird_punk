@@ -13,7 +13,7 @@
     }
     $control=$_GET['control'];
     if($control!=1){    
-       header('Location:http://25.9.128.190/distribuidos/Bird_punk/views/Backend/mostrarArticulosEditar.php') ; 
+       header('Location:http://25.0.98.15/distribuidos/Bird_punk/views/Backend/mostrarArticulosEditar.php') ; 
     }
     $datos=unserialize($_GET['articulos']);
     
@@ -79,7 +79,7 @@
                 <h2 class="col-11 m-3 mb-5 ">Datos del producto</h2>
                         <div class="col-5 ml-4">
                     <!-- Obtención de datos de producto existente -->
-                    <form method="POST" action="http://25.9.128.190/distribuidos/Bird_punk/views/Backend/modificarArticulo.php">
+                    <form method="POST" action="http://25.0.98.15/distribuidos/Bird_punk/views/Backend/modificarArticulo.php">
                         <!-- NombreProducto | No se puede editar -->
                         <input class="m-2 form-control float-right" type="number" id="name" name="name" placeholder="<?php echo $row['imagen'];?>" disabled></input>
 
@@ -95,14 +95,14 @@
                         </div>
                         <div class="col-3">
                                 <!-- Imagen | No se puede editar -->
-                                <img class="img mt-2 ml-5" src="http://25.9.128.190/distribuidos/Bird_punk/views/Imagenes/<?php echo $row['imagen'];?>" alt="">
+                                <img class="img mt-2 ml-5" src="http://25.0.98.15/distribuidos/Bird_punk/views/Imagenes/<?php echo $row['imagen'];?>" alt="">
                         </div>
 
 
                         <input class="m-2 btn btn-dark btn-outline-light float-right" style="height:50px;"type="submit" value="Actualizar producto">                    
                     </form>  
 
-                    <form method="POST" action="http://25.9.128.190/distribuidos/Bird_punk/views/Backend/eliminarArticulo.php">
+                    <form method="POST" action="http://25.0.98.15/distribuidos/Bird_punk/views/Backend/eliminarArticulo.php">
                         <input class="m-2 btn btn-dark btn-outline-light float-left" style="height:50px;"type="submit" value="Eliminar producto">
 
                         <input type="hidden" name="ID_Articulo" value="<?php echo $row['id'];?>">

@@ -63,7 +63,7 @@ if(!($varsesion == null || $varsesion == '')){
         </div>
 
         <!-- Login Form -->
-        <form method="POST" action="http://25.9.128.190/distribuidos/Bird_punk/views/Backend/OpLogin.php">
+        <form method="POST" action="http://25.61.144.153/distribuidos/Bird_punk/views/Backend/OpLogin.php">
             <input type="text" id="user" class="fadeIn second" name="user" placeholder="Correo electronico" required>
             <input type="password" id="password" class="fadeIn third" name="password" placeholder="Contraseña" required>
             <input type="submit" class="fadeIn fourth" value="Iniciar Sesión">

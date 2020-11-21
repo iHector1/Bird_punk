@@ -12,7 +12,7 @@
     $control = $_GET['control'];
     if($control != 1)
     {
-        header("Location:http://25.9.128.190/distribuidos/Bird_punk/views/Backend/buscarAlmacenista.php");
+        header("Location:http://25.90.114.110/distribuidos/Bird_punk/views/Backend/buscarAlmacenista.php");
     }
     $datos=unserialize($_GET['datos']);
 
@@ -89,7 +89,7 @@
             foreach($datos as $row)
            {              
         ?>
-            <form method="POST" action="http://25.9.128.190/distribuidos/Bird_punk/views/Backend/eliminarAlmacenistaBE.php">
+            <form method="POST" action="http://25.90.114.110/distribuidos/Bird_punk/views/Backend/eliminarAlmacenistaBE.php">
                 <tr>
                     <td>
                         <p><?php echo $row['nombre']." ".$row['paterno']." ".$row['materno'];?><br> Calle: <?php echo $row['calle']; ?>,<br> No.Exterior: <?php echo $row['exterior'];?><br>CP: <?php echo $row['cp'];?><br> Correo: <?php echo $row['correo']; ?> <br> </p>

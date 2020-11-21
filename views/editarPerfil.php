@@ -16,7 +16,7 @@
     $control=$_GET['control'];
     $id=$_GET['id'];
    if($control!=1){    
-        header('Location:http://25.9.128.190/distribuidos/Bird_punk/views/Backend/infoUsuario.php?id='.$id); 
+        header('Location:http://25.68.231.36/distribuidos/Bird_punk/views/Backend/infoUsuario.php?id='.$id); 
     }
     $datos=unserialize($_GET['datos']);
 ?>
