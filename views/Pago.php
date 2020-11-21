@@ -37,14 +37,14 @@
     $arreglo=unserialize($_GET['arreglo']);
     $carrito2=unserialize($_GET['carrito2']);
     if ($control == 0) {
-        header('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/BCarrito/totalCarritoP.php?idCar='.$id_c.'&idu='.$id_u);
+        header('Location:http://25.9.128.190/distribuidos/Bird_punk/views/Backend/BCarrito/totalCarritoP.php?idCar='.$id_c.'&idu='.$id_u);
     }
     if ($control == 1) {
-        header('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/BCarrito/mostrarCarritoP.php?idCar='.$id_c.'&total='.$total.'&idu='.$id_u);
+        header('Location:http://25.9.128.190/distribuidos/Bird_punk/views/Backend/BCarrito/mostrarCarritoP.php?idCar='.$id_c.'&total='.$total.'&idu='.$id_u);
         
     }
     if ($control == 2) {
-        header('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/pagoCarritoP.php?id='.$id_U.'&idCar='.$c.'&total='.$total.'&idu='.$id_u.'&idc='.$id_c);
+        header('Location:http://25.9.128.190/distribuidos/Bird_punk/views/Backend/pagoCarritoP.php?id='.$id_U.'&idCar='.$c.'&total='.$total.'&idu='.$id_u.'&idc='.$id_c);
     }/**/
    // $carrito = unserialize($_GET['carrito']);
     echo "<pre>";
@@ -158,7 +158,7 @@
 
                 <div class="media">
                     <a href="#">
-                        <img class="rounded d-block mr-4" style="width:200px; height:160px;" src=http://25.61.144.153/distribuidos/Bird_punk/views/Imagenes/<?php echo $fila['imagen']; ?> alt="">
+                        <img class="rounded d-block mr-4" style="width:200px; height:160px;" src=http://25.9.128.190/distribuidos/Bird_punk/views/Imagenes/<?php echo $fila['imagen']; ?> alt="">
                     </a>
 
                     <div class="media-body">

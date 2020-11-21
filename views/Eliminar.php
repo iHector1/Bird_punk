@@ -18,11 +18,11 @@ error_reporting(0);
 <html lang="en">
 <?php
     // $ID_Usuario = 2;
-   // include 'http://25.61.144.153/distribuidos/Bird_punk/views/conexion.php';
+   // include 'http://25.9.128.190/distribuidos/Bird_punk/views/conexion.php';
     $id_c = $_SESSION['IDcarrito'] ;
     $id_p=$_GET['idProducto'];    
     $control = $_GET['control'];
-    header ('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/BCarrito/funcionesEliminar.php?id='.$id_p.'&idc='.$id_c);
+    header ('Location:http://25.9.128.190/distribuidos/Bird_punk/views/Backend/BCarrito/funcionesEliminar.php?id='.$id_p.'&idc='.$id_c);
 ?>
 
 
@@ -104,7 +104,7 @@ error_reporting(0);
                                        
                                     <div class="media">
                                         <a href="#"> 
-                                            <img class="border border-danger rounded-lg" src=http://25.61.144.153/distribuidos/Bird_punk/views/Imagenes/<?php echo $fila['Imagen'];?> width="600" height="300" alt=""> 
+                                            <img class="border border-danger rounded-lg" src=http://25.9.128.190/distribuidos/Bird_punk/views/Imagenes/<?php echo $fila['Imagen'];?> width="600" height="300" alt=""> 
                                         </a>
                                         
                                         <div class="media-body">

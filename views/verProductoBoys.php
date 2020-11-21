@@ -35,11 +35,11 @@
 <!-- Codigo PHP para Conexion -->
 
 <?php
-//    include 'http://25.61.144.153/distribuidos/Bird_punk/views/Backend/ProductoBoys.php';
+//    include 'http://25.9.128.190/distribuidos/Bird_punk/views/Backend/ProductoBoys.php';
 $control = $_GET['control'];
 if($control != 1)
 {
-    header("Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/ProductoBoys.php?idu=$idu");
+    header("Location:http://25.9.128.190/distribuidos/Bird_punk/views/Backend/ProductoBoys.php?idu=$idu");
 }?>
 
 
@@ -96,7 +96,7 @@ if($control != 1)
 <div class="articulos">
     <div class="articulo" >
         <div>
-        <a href="verUnProducto.php"> <img src="http://25.61.144.153/distribuidos/Bird_punk/views/Imagenes/<?php echo $row['imagen'];?>" class="uno" method = "POST"> </a>
+        <a href="verUnProducto.php"> <img src="http://25.9.128.190/distribuidos/Bird_punk/views/Imagenes/<?php echo $row['imagen'];?>" class="uno" method = "POST"> </a>
         </div>
         <div class="desc">
         <form action="verUnProducto.php" method="POST">

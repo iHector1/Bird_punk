@@ -16,7 +16,7 @@
             
     }
     $id=$_GET['id'];    
-     //   header('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/modificarInformacion.php?id='.$id); 
+     //   header('Location:http://25.9.128.190/distribuidos/Bird_punk/views/Backend/modificarInformacion.php?id='.$id); 
 
 ?>
 
@@ -78,7 +78,7 @@
         </div>
 
         <!-- Login Form -->
-        <form method="POST" action="http://25.61.144.153/distribuidos/Bird_punk/views/Backend/modificarInformacion.php">
+        <form method="POST" action="http://25.9.128.190/distribuidos/Bird_punk/views/Backend/modificarInformacion.php">
             <div class="contenedorIzq">
             <div class="titulo">
                 <h3> INFORMACION USUARIO</h3>

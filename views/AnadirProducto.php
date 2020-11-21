@@ -47,7 +47,7 @@ if($varsesion == null || $varsesion == ''){
                 <ul class="navbar-nav mx-auto">
                     <?php
                         if(!($varsesion == null || $varsesion == '')){
-                            echo " <a href='http://25.61.144.153/distribuidos/Bird_punk/views/Backend/Logout.php' class='navbar-button'> Cerrar Sesion</a>";
+                            echo " <a href='http://25.9.128.190/distribuidos/Bird_punk/views/Backend/Logout.php' class='navbar-button'> Cerrar Sesion</a>";
                         }
                     ?>
                 </ul>
@@ -65,7 +65,7 @@ if($varsesion == null || $varsesion == ''){
             <div class="row mt-3 p-2 rectangle">
                 <h2 class="col-11 m-3 mb-5 ">Datos del producto</h2>
                 <div class="col-5 ml-4">
-                    <form method="POST" action="http://25.61.144.153/distribuidos/Bird_punk/views/Backend/agregarArticulo.php" enctype="multipart/form-data">
+                    <form method="POST" action="http://25.9.128.190/distribuidos/Bird_punk/views/Backend/agregarArticulo.php" enctype="multipart/form-data">
                         <!-- Nombre -->
                         <input class="m-2 form-control float-right" type="text" id="name" name="nombre" placeholder="Nombre" required>
                        
