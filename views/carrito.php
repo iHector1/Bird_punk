@@ -27,20 +27,20 @@ if($varsesion == null || $varsesion == ''){
 echo ($id_c); 
 if($control == 0)
 {
-    header ('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/BCarrito/agregarCarrito.php?id='.$idArtculo."&cantidad=$stock&idu=$id_u");    
+    header ('Location:http://25.9.128.190/distribuidos/Bird_punk/views/Backend/BCarrito/agregarCarrito.php?id='.$idArtculo."&cantidad=$stock&idu=$id_u");    
 }
  
 if($control == 2){
-header ('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/BCarrito/Cantidades.php?id='.$id_c.'&idu='.$id_u);
+header ('Location:http://25.9.128.190/distribuidos/Bird_punk/views/Backend/BCarrito/Cantidades.php?id='.$id_c.'&idu='.$id_u);
 }
 if($control == 3){
-     header ('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/BCarrito/totalArticulo.php?id='.$id_c.'&idu='.$id_u);
+     header ('Location:http://25.9.128.190/distribuidos/Bird_punk/views/Backend/BCarrito/totalArticulo.php?id='.$id_c.'&idu='.$id_u);
 }
 if($control == 4){
-    header ('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/BCarrito/totalCarrito.php?id='.$id_c.'&idu='.$id_u);}
+    header ('Location:http://25.9.128.190/distribuidos/Bird_punk/views/Backend/BCarrito/totalCarrito.php?id='.$id_c.'&idu='.$id_u);}
 $totalplay=$_GET['total'];
 if($control == 5){
-       header ('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/BCarrito/mostrarCarrito.php?id='.$id_c.'&total='.$totalplay.'&idu='.$id_u); 
+       header ('Location:http://25.9.128.190/distribuidos/Bird_punk/views/Backend/BCarrito/mostrarCarrito.php?id='.$id_c.'&total='.$totalplay.'&idu='.$id_u); 
     }
     $totalplay=$_GET['total'];
     $carrito = unserialize($_GET['carrito']);
@@ -133,7 +133,7 @@ if($control == 5){
                                             
                                             <div class="media">
                                                 <a href="#"> 
-                                                    <img class="rounded d-block mr-4" src=http://25.61.144.153/distribuidos/Bird_punk/views/Imagenes/<?php echo $fila['imagen'];?> alt=""> 
+                                                    <img class="rounded d-block mr-4" src=http://25.9.128.190/distribuidos/Bird_punk/views/Imagenes/<?php echo $fila['imagen'];?> alt=""> 
                                                 </a>
                                                 
                                                 <div class="media-body">
@@ -154,7 +154,7 @@ if($control == 5){
                                                         Talla: <?php echo $fila['talla'];?>
                                                     </p>
                                                     <!--Datos del producto-->
-                                                    <p class="text-white mb-3">Cantidad : <?php echo $fila['cantidad'];?> | <a href="http://25.61.144.153/distribuidos/Bird_punk/views/Backend/BCarrito/funcionesEliminar.php?id=<?php echo $fila['id'];?>&idc=<?php echo $id_c;?>&idu=<?php echo $id_u;?>" class="btn btn-outline-light icofont-trash text-danger" >Eliminar</a></p>
+                                                    <p class="text-white mb-3">Cantidad : <?php echo $fila['cantidad'];?> | <a href="http://25.9.128.190/distribuidos/Bird_punk/views/Backend/BCarrito/funcionesEliminar.php?id=<?php echo $fila['id'];?>&idc=<?php echo $id_c;?>&idu=<?php echo $id_u;?>" class="btn btn-outline-light icofont-trash text-danger" >Eliminar</a></p>
                                                     </p>
                                                     
                                                 </div>

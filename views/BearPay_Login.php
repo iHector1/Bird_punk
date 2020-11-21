@@ -39,7 +39,7 @@
             $carrito=$_GET['idc'];
         ?>
         <!-- Login Form -->
-        <form method="POST" action="http://25.61.144.153/distribuidos/Bird_punk/views/Backend/loginBearPay.php?total=<?php echo $total; ?>&idc=<?php echo $carrito; ?>">
+        <form method="POST" action="http://25.9.128.190/distribuidos/Bird_punk/views/Backend/loginBearPay.php?total=<?php echo $total; ?>&idc=<?php echo $carrito; ?>">
             <input type="text" id="user" class="fadeIn second" name="usuario" placeholder="Usuario" required>
             <input type="password" id="password" class="fadeIn third" name="contraseña" placeholder="Contraseña" required>
 

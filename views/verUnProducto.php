@@ -86,14 +86,14 @@
                 $talla = $_POST['talla'];
                 $pagina = $_POST['Genero'];
                 $imagen = $_POST['imagen'];
-                include 'http://25.61.144.153/distribuidos/Bird_punk/views/Backend/ProductoEspecifico.php';
+                include 'http://25.9.128.190/distribuidos/Bird_punk/views/Backend/ProductoEspecifico.php';
                 $stock=$_POST['Stock'];
             ?>
                 <div class="galeria">
                    <!--Almacenar la imagen en la bd -->
                     <input type="radio" name="navegacion" id="_1" checked>
                     
-                    <img src="http://25.61.144.153/distribuidos/Bird_punk/views/Imagenes/<?php echo $imagen;?>" width="500" height="300"/> <!--Ejemplo-->
+                    <img src="http://25.9.128.190/distribuidos/Bird_punk/views/Imagenes/<?php echo $imagen;?>" width="500" height="300"/> <!--Ejemplo-->
                 </div>
             </div>
         </div>

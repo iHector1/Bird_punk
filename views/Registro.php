@@ -55,7 +55,7 @@
         </div>
 
         <!-- Login Form -->
-        <form method="POST" action="http://25.61.144.153/distribuidos/Bird_punk/views/Backend/Registrar_Insert.php">
+        <form method="POST" action="http://25.9.128.190/distribuidos/Bird_punk/views/Backend/Registrar_Insert.php">
                 <div class="contenedorIzq">
                     <input type="text" id="name" class="fadeIn second" name="name" placeholder="Nombre(s)" required>
                     <input type="text" id="lastName1" class="fadeIn second" name="lastName1" placeholder="Apellido Paterno" required>

@@ -11,7 +11,7 @@
     $idu=$_GET['idu'];
     $control=$_GET['control'];
     if($control!=1){
-        header('Location:http://25.61.144.153/distribuidos/Bird_punk/views/Backend/historialProductos2.php?idu='.$idu);  
+        header('Location:http://25.9.128.190/distribuidos/Bird_punk/views/Backend/historialProductos2.php?idu='.$idu);  
         die();
       }
     $arreglo = unserialize($_POST['arreglo']);
@@ -185,7 +185,7 @@ echo "</pre>";*/
                                             echo "$$total";
                                         ?> 
                                     </p>
-                                    <form action="http://25.61.144.153/distribuidos/Bird_punk/views/Backend/CancelarDevolver.php" method="POST">
+                                    <form action="http://25.9.128.190/distribuidos/Bird_punk/views/Backend/CancelarDevolver.php" method="POST">
                                         <input type="hidden" value="<?php echo $idu;?>"  name="idu">
                                         <input type="hidden" name="noOrden" value="<?php echo $noorden;?>">
                                         <input type="submit" style="background-color:#1C2331; margin-left:-3px" value="Cancelar pedido" >
