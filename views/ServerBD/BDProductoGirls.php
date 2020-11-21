@@ -21,5 +21,5 @@
     $arreglo = serialize($arreglo);
     $arreglo = urlencode($arreglo);
 
-    header("Location: http://25.61.144.153/distribuidos/Bird_punk/views/BackendP/BEPProductoGirls.php?datos=".$arreglo."&control=1&idu=$id");
+    header("Location: http://25.90.201.164/distribuidos/Bird_punk/views/BackendP/BEPProductoGirls.php?datos=".$arreglo."&control=1&idu=$id");
 ?>

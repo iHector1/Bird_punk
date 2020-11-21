@@ -20,7 +20,7 @@
     $modificarDomicilio=sqlsrv_query($conn,$sql2);
 
     
-    header("Location: http://25.61.144.153/distribuidos/Bird_punk/views/BackendP/BEPmodificarInformacion.php?&idu=".$idUsuario."&control=1");
+    header("Location: http://25.90.201.164/distribuidos/Bird_punk/views/BackendP/BEPmodificarInformacion.php?&idu=".$idUsuario."&control=1");
     
 
 ?>

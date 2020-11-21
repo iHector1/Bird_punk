@@ -161,5 +161,5 @@
     echo "PRECIO BP: $precioBP";
 
 
-    header("Location:http://25.61.144.153/distribuidos/Bird_punk/views/BackendP/BEPCancelarDevolver.php?control=1&idu=".$idu);
+    header("Location:http://25.90.201.164/distribuidos/Bird_punk/views/BackendP/BEPCancelarDevolver.php?control=1&idu=".$idu);
 ?>

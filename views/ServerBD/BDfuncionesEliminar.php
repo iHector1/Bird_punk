@@ -19,5 +19,5 @@
 
     $fila = sqlsrv_fetch_array($res1);
 
-    header("Location: http://25.61.144.153/distribuidos/Bird_punk/views/BackendP/BEPfuncionesEliminar.php?&control=1&idc=".$id_c."&idu=$idu");
+    header("Location: http://25.90.201.164/distribuidos/Bird_punk/views/BackendP/BEPfuncionesEliminar.php?&control=1&idc=".$id_c."&idu=$idu");
 ?>

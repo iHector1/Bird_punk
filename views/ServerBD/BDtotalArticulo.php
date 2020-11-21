@@ -27,5 +27,5 @@
         }
     }
 
-    header("Location: http://25.61.144.153/distribuidos/Bird_punk/views/BackendP/BEPtotalArticulo.php?control=1&id=".$id_c."&idu=$idu");
+    header("Location: http://25.90.201.164/distribuidos/Bird_punk/views/BackendP/BEPtotalArticulo.php?control=1&id=".$id_c."&idu=$idu");
 ?>

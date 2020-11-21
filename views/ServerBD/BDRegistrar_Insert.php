@@ -19,7 +19,7 @@
     $ValdiarCorreo = "/^(([^<>()\[\]\\.,;:\s@”]+(\.[^<>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/";
 
     if(preg_match($ValdiarCorreo, $correo) == false){
-        header("Location: http://25.61.144.153/distribuidos/Bird_punk/views/BackendP/BEPRegistrar_Insert.php?error=1&control=1");
+        header("Location: http://25.90.201.164/distribuidos/Bird_punk/views/BackendP/BEPRegistrar_Insert.php?error=1&control=1");
         sqlsrv_close($conn);
     }
 
@@ -61,14 +61,14 @@
             alert("Usuario registrado correctamente.");
             window.location.href = " http://localhost/Bird_punk/views/Index.php";
             </script>';*/
-        header("Location: http://25.61.144.153/distribuidos/Bird_punk/views/BackendP/BEPRegistrar_Insert.php?error=0&control=1");
+        header("Location: http://25.90.201.164/distribuidos/Bird_punk/views/BackendP/BEPRegistrar_Insert.php?error=0&control=1");
 
     }else{
         /*echo'<script type="text/javascript">
             alert("Error al insertar usuario.");
             window.location.href = " http://localhost/Bird_punk/views/Registro.php";
             </script>';*/
-        header("Location: http://25.61.144.153/distribuidos/Bird_punk/views/BackendP/BEPRegistrar_Insert.php?error=2&control=1");
+        header("Location: http://25.90.201.164/distribuidos/Bird_punk/views/BackendP/BEPRegistrar_Insert.php?error=2&control=1");
     }
 
 ?>

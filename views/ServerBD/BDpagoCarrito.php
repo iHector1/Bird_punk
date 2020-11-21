@@ -30,5 +30,5 @@
 
     echo $total;
 
-    header("Location: http://25.61.144.153/distribuidos/Bird_punk/views/BackendP/BEPpagoCarritoP.php?arreglo=".$arreglo."&control=1&total=$total&carrito2=$carrito&idu=$idu&idc=$idc");
+    header("Location: http://25.90.201.164/distribuidos/Bird_punk/views/BackendP/BEPpagoCarritoP.php?arreglo=".$arreglo."&control=1&total=$total&carrito2=$carrito&idu=$idu&idc=$idc");
 ?>
