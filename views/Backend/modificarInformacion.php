@@ -18,7 +18,7 @@
     if($control != 1)
     {
         ?>
-            <form id="myForm" action="http://25.61.144.153/distribuidos/Bird_punk/views/BackendP/BEPmodificarInformacion.php" method="post">
+            <form id="myForm" action="http://25.90.201.164/distribuidos/Bird_punk/views/BackendP/BEPmodificarInformacion.php" method="post">
                 <input type="hidden" name="id" value="<?php echo $idUsuario;?>" />
                 <input type="hidden" name="nombre" value="<?php echo $nombre;?>" />
                 <input type="hidden" name="apePaterno" value="<?php echo $apePaterno;?>" />

@@ -8,7 +8,7 @@
     $stock = $_POST['stock'];
     $control=$_GET['control'];
     if($control!=1){
-        header("Location: http://25.61.144.153/distribuidos/Bird_punk/views/BackendP/BEPagregarArticulo.php?marca=".$id_marca."&talla=".$id_talla."&genero=".$genero."&precio=".$precio."&nombre=".$nombremodelo."&stock=".$stock."&control=3");
+        header("Location: http://25.90.201.164/distribuidos/Bird_punk/views/BackendP/BEPagregarArticulo.php?marca=".$id_marca."&talla=".$id_talla."&genero=".$genero."&precio=".$precio."&nombre=".$nombremodelo."&stock=".$stock."&control=3");
     }else{
         header("Location:http://localhost/Bird_punk/views/AnadirProducto.php");
     }
