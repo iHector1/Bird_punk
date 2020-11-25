@@ -34,11 +34,11 @@
 
 
 <?php
-    //include 'http://25.9.128.190/distribuidos/Bird_punk/views/Backend/ProductoGirls.php';
+    //include 'http://25.68.231.36/distribuidos/Bird_punk/views/Backend/ProductoGirls.php';
     $control = $_GET['control'];
     if($control != 1)
     {
-        header("Location:http://25.9.128.190/distribuidos/Bird_punk/views/Backend/ProductoGirls.php");
+        header("Location:http://25.68.231.36/distribuidos/Bird_punk/views/Backend/ProductoGirls.php");
     }
 ?>
 
@@ -94,7 +94,7 @@ $vare=unserialize($_GET['datos']);
 <div class="articulos">
     <div class="articulo" >
         <div>
-        <a href="verUnProducto.php"> <img src="http://25.9.128.190/distribuidos/Bird_punk/views/Imagenes/<?php echo $row['imagen'];?>" class="uno" method = "POST"> </a>
+        <a href="verUnProducto.php"> <img src="http://25.68.231.36/distribuidos/Bird_punk/views/Imagenes/<?php echo $row['imagen'];?>" class="uno" method = "POST"> </a>
         </div>
         <div class="desc">
         <form action="verUnProducto.php" method="POST">
