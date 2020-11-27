@@ -46,11 +46,17 @@
                     <li class="nav-item">
                         <a class="nav-link" href="verProductoGirls.php">MUJERES</a>
                     </li>
-        
+                    <li class="nav-item">
+                    <?php
+                    if(!($varsesion == null || $varsesion == '')){
+                        echo "<a href='editarPerfil.php'><h4 style='padding-left:100px;' class='nav-link'>Bienvenid@:  </h4></a>";
+                    }
+                    ?>
+                    </li>
                 </ul>
             </div>
             <div class="navbar w-100 order-2  mx-auto">
-                <a href="Index.php?idu=<?php echo $id;?>"><img src="imagenes/logo.PNG" width="60%" style="margin-left:150px;"></a>
+                <a href="IndexAlamcenista.php?idu=<?php echo $id;?>"><img src="imagenes/logo.PNG" width="60%" style="margin-left:150px;"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
                     <i class="fa fa-bars" aria-hidden="true"></i>
                 </button>
