@@ -1,5 +1,5 @@
 <?php
-    include '../conexion.php';
+
     $IDusuario = $_GET['idu'];
     $control = $_GET['control'];
     $arreglo = unserialize($_POST['arreglo']);
