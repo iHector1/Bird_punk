@@ -1,5 +1,5 @@
 <?php
-    include '../../conexion.php';
+    
 
     $articulo = $_GET['id'];
     $cantidad = $_GET['cantidad'];

@@ -1,6 +1,6 @@
 <?php
 
-    include ("../conexion.php");
+    
 
     $user = $_POST['user'];
     $password = $_POST['password'];

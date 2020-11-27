@@ -18,20 +18,14 @@
             </div>
             <nav class="navbar border-bottom navbar-expand-md navbar-light">
                 <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-                    <ul class="navbar-nav mx-auto">
-                        <li class="nav-item ">
-                            <a class="nav-link border-right" href="#">HOMBRES</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">MUJERES</a>
-                        </li>
-                    </ul>
-                </div>
+                    
+                
                 <div class="navbar w-100 order-2  mx-auto">
                     <a href="Index.php"><img src="imagenes/logo.PNG" width="60%" style="margin-left:150px;"></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
                         <i class="fa fa-bars" aria-hidden="true"></i>
                     </button>
+                </div>
                 </div>
                 <!--User/Carrito-->
                 <div class="navbar w-100 order-3 ">
