@@ -1,9 +1,10 @@
 <?php
     session_start();
     error_reporting(0);
-    $varsesion = $_SESSION['usuario'];
-    $varsesion2 = $_SESSION['IDusuario'];
-    $varsesion4 = $_SESSION['IDtipousuario'];
+    $usuario = $_GET['usuario'];
+    $idu = $_GET['idu'];
+    $idc=$_GET['idc'];
+    $idt = $_GET['idt'];
     ?>
     <?php
     if($varsesion == null || $varsesion == ''){
@@ -14,11 +15,12 @@
             
     }
     $control=$_GET['control'];
-    $id=$_GET['id'];
+    $id=$idu;
    if($control!=1){    
         header('Location:http://25.68.231.36/distribuidos/Bird_punk/views/Backend/infoUsuario.php?id='.$id); 
     }
     $datos=unserialize($_GET['datos']);
+    
 ?>
 <html>
 
@@ -56,7 +58,7 @@
                 </ul>
             </div>
             <div class="navbar w-100 order-2  mx-auto">
-                <a href="IndexAlamcenista.php?idu=<?php echo $id;?>"><img src="imagenes/logo.PNG" width="60%" style="margin-left:150px;"></a>
+                <a href="Index.php <?php "?usuario=$usuario&idu=$idu&idc=$idc&idt=$idt"?> ><img src="imagenes/logo.PNG" width="60%" style="margin-left:150px;"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
                     <i class="fa fa-bars" aria-hidden="true"></i>
                 </button>
