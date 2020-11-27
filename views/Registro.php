@@ -15,15 +15,16 @@
 <body>
     <section id="Nav-bar">
             <div class="navbar border-bottom navbar-expand-md navbar-light navbar-fixed-top">
+            </div>
                 <nav class="navbar border-bottom navbar-expand-md navbar-light">
                     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-                        <div class="navbar w-100 order-2  mx-auto">
-                            <a href="Index.php"><img src="imagenes/logo.PNG" width="60%" style="margin-left:150px;"></a>
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
-                                <i class="fa fa-bars" aria-hidden="true"></i>
-                            </button>
-                         </div>
                     </div>
+                <div class="navbar w-100 order-2  mx-auto">
+                    <a href="Index.php"><img src="imagenes/logo.PNG" width="60%" style="margin-left:150px;"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
+                    </button>
+                </div>
                 <!--User/Carrito-->
                     <div class="navbar w-100 order-3 ">
                         <ul class="navbar-nav mx-auto">
