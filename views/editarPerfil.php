@@ -48,7 +48,13 @@
                     <li class="nav-item">
                         <a class="nav-link" href="verProductoGirls.php">MUJERES</a>
                     </li>
-        
+                    <li class="nav-item">
+                    <?php
+                    if(!($varsesion == null || $varsesion == '')){
+                        echo "<a href='editarPerfil.php'><h4 style='padding-left:100px;' class='nav-link'>Bienvenid@:  </h4></a>";
+                    }
+                    ?>
+                    </li>
                 </ul>
             </div>
             <div class="navbar w-100 order-2  mx-auto">
