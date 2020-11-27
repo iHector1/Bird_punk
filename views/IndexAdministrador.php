@@ -40,16 +40,6 @@
                     <i class="fa fa-bars" aria-hidden="true"></i>
                 </button>
             </div>
-            <!--User/Carrito-->
-            <div class="navbar w-100 order-3 ">
-                <ul class="navbar-nav mx-auto">
-                    <a href="IniciarSesion.php" class="navbar-button">
-                        <i class="fa fa-user-circle-o"></i>
-                    </a>
-                      
-                 
-                </ul>
-            </div>
         </nav>
         <div class="navbar navbar-expand-md navbar-light"> </div>
 
