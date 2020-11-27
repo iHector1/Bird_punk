@@ -10,10 +10,10 @@
     $_SESSION['IDusuario'] = $idu;
     $_SESSION['IDcarrito'] = $idc;
     $_SESSION['IDtipousuario'] = $idt;
-    $varsesion = $_SESSION['usuario'];
-    $varsesion2 = $_SESSION['IDusuario'];
-    $varsesion3 = $_SESSION['IDcarrito'];
-    $varsesion4 = $_SESSION['IDtipousuario'];
+    $varsesion = $_GET['idu'];
+    $varsesion2 = $_GET['idu'];
+    $varsesion3 = $_GET['idu'];
+    $varsesion4 = $_GET['idu'];
 ?>
 
 <!DOCTYPE html>
@@ -64,7 +64,7 @@
                     <li class="nav-item ">
                     <?php
                     if(!($varsesion == null || $varsesion == '')){
-                        echo "<a href='editarPerfil.php?id=$idu'><h4 style='padding-left:100px;' class='nav-link'>Bienvenid@: ";  echo$_SESSION['usuario']; echo" </h4></a>";
+                        echo "<a href='editarPerfil.php?id=$idu'><h4 style='padding-left:100px;' class='nav-link'>Bienvenid@  </h4></a>";
                     }
                     ?>
                     </li>
@@ -87,7 +87,7 @@
                     
                         <?php
                         if(!($varsesion == null || $varsesion == '')){
-                            echo "<a href='carrito.php' class='navbar-button'> <i href class='fa fa-shopping-cart'></i></a>";
+                            echo "<a href='carrito.php?id=0&idu=$idu&cantidad=0' class='navbar-button'> <i href class='fa fa-shopping-cart'></i></a>";
                         }else{
                             echo "<a href='Registro.php' class='navbar-button'> Registrarse</a>";
                         }

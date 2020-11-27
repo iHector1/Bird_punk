@@ -75,7 +75,7 @@
                 <ul class="navbar-nav mx-auto">
                     <?php
                         if($varsesion == null || $varsesion == ''){
-                            echo "<a href='IniciarSesion.php' class='navbar-button'><i class='fa fa-user-circle-o'></i></a>";
+                            echo "<a href='http://25.68.231.36/distribuidos/Bird_punk/views/Backend/logout.php' class='navbar-button'><i class='fa fa-user-circle-o'></i></a>";
                         }
                     ?> 
                     <?php

@@ -11,7 +11,7 @@
         window.location.href = "Index.php";
         </script>';
 }*/
-
+print_r()
 ?>
 
 
@@ -115,7 +115,7 @@
                     <input type="hidden" name="ID_Articulo" value="<?php echo $IDArticulo;?>">
                     <input type="submit" value="Añadir al carrito">
             </form>
-            <?php echo "<b>Stock:</b> ";echo $stock; ?>     
+            <?php echo "<b>Stock:</b> ";echo $stock; ?> 
             </div>  
     </div>
 </div> 
