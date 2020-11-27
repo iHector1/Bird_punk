@@ -73,11 +73,11 @@ echo "</pre>";*/
             <!--User/Carrito-->
             <div class="navbar w-100 order-3 ">
                 <ul class="navbar-nav mx-auto">
-                    <a href="IniciarSesion.php" class="navbar-button">
-                        <i class="fa fa-user-circle-o"></i>
-                    </a>
-                       <a href="carrito.php" class="navbar-button"> <i href class="fa fa-shopping-cart"></i></a>
-                 
+                <?php
+                        if(!($varsesion == null || $varsesion == '')){
+                            echo " <a href='http://25.68.231.36/distribuidos/Bird_punk/views/Backend/logout.php' class='navbar-button'> Cerrar Sesion</a>";
+                        }
+                    ?>
                 </ul>
             </div>
         </nav>
