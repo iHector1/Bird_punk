@@ -47,16 +47,6 @@
         header('Location:http://25.68.231.36/distribuidos/Bird_punk/views/Backend/pagoCarritoP.php?id='.$id_U.'&idCar='.$c.'&total='.$total.'&idu='.$id_u.'&idc='.$id_c);
     }/**/
    // $carrito = unserialize($_GET['carrito']);
-    echo "<pre>";
-    print_r($carrito);
-    echo "</pre>";
-    echo "<pre>";
-    print_r($carrito2);
-    echo "</pre>";
-    echo "<pre>";
-    print_r($arreglo);
-    echo "</pre>";
-
     ?>
 
 

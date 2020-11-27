@@ -87,7 +87,7 @@
                     
                         <?php
                         if(!($varsesion == null || $varsesion == '')){
-                            echo "<a href='carrito.php' class='navbar-button'> <i href class='fa fa-shopping-cart'></i></a>";
+                            echo "<a href='carrito.php?id=0&idu=$idu&cantidad=0' class='navbar-button'> <i href class='fa fa-shopping-cart'></i></a>";
                         }else{
                             echo "<a href='Registro.php' class='navbar-button'> Registrarse</a>";
                         }
