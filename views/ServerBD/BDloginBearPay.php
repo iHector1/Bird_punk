@@ -130,7 +130,7 @@
             alert("Compra realizada exitosamente.");
             </script>';
         //window.location.href = " http://localhost/Bird_punk/views/carrito.php";
-        header("Location: http://25.61.144.153/distribuidos/Bird_punk/views/BackendP/BEPloginBearPay.php?control=1&error=0");
+        header("Location: http://25.90.201.164/distribuidos/Bird_punk/views/BackendP/BEPloginBearPay.php?control=1&error=0");
             
     }
     else{
@@ -138,7 +138,7 @@
             alert("No hay suficiente saldo en su cuenta.\nFavor de verificarlo.");
             </script>';
         //window.location.href = " http://localhost/Bird_punk/views/BearPay_Login.php";
-        header("Location: http://25.61.144.153/distribuidos/Bird_punk/views/BackendP/BEPloginBearPay.php?control=1&error=2");
+        header("Location: http://25.90.201.164/distribuidos/Bird_punk/views/BackendP/BEPloginBearPay.php?control=1&error=2");
     }
 
 ?>
