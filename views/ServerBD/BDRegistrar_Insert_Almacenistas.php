@@ -8,13 +8,6 @@ $apmaterno = $_GET['lastName2'];
 $correo = $_GET['email'];
 $contra = $_GET['password']; 
 
-$calle = $_GET['address'];
-$exterior = $_GET['numberExt'];
-$interior = $_GET['numberInt'];
-$colonia = $_GET['suburb'];
-$postal = $_GET['cp'];
-$estado = $_GET['state'];
-
 $ValdiarCorreo = "/^(([^<>()\[\]\\.,;:\s@”]+(\.[^<>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/";
 
 if(preg_match($ValdiarCorreo, $correo) == false){
@@ -52,14 +45,14 @@ sqlsrv_free_stmt( $stmt2);
 echo "$idd";
 
 
-$params3 = array($idd, $calle, $exterior, $interior, $colonia,$postal, $estado);
+//$params3 = array($idd, $calle, $exterior, $interior, $colonia,$postal, $estado);
 
-$stmt3 = sqlsrv_query($conn, "INSERT INTO info_cliente (ID_Usuario, Calle, NoExterior, NoInterior, Colonia, CP, Estado) VALUES (?, ?, ?, ?, ?, ?, ?)", $params3);
+//$stmt3 = sqlsrv_query($conn, "INSERT INTO info_cliente (ID_Usuario, Calle, NoExterior, NoInterior, Colonia, CP, Estado) VALUES (?, ?, ?, ?, ?, ?, ?)", $params3);
 
-sqlsrv_free_stmt($stmt3); 
+//sqlsrv_free_stmt($stmt3); 
 sqlsrv_close($conn);  
 
-if ($stmt && $stmt3){
+if ($stmt){
     echo'<script type="text/javascript">
         alert("Almacenista registrado correctamente.");
         window.location.href = " http://localhost/Bird_punk/views/agregarAlmacenista.php";
