@@ -19,7 +19,7 @@
         if($row['Nombre_s'] == NULL) {
             echo'<script type="text/javascript">
             alert("Usuario o Contraseña incorrectos.");
-            window.location.href = "http://localhost:8081/views/IniciarSesion.php";
+            window.location.href = "http://localhost/views/IniciarSesion.php";
             </script>';
         }else{
             if($row['ID_Tipo_Usuario'] == '1'){
