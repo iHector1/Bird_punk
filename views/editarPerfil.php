@@ -4,10 +4,11 @@
     $usuario = $_GET['usuario'];
     $idu = $_GET['idu'];
     $idc=$_GET['idc'];
-    $idt = $_GET['idt'];
+    $idt = $_GET['idt'];    
+    $id=$_GET['id'];
     ?>
     <?php
-    if($varsesion == null || $varsesion == ''){
+    if($id == null || $id == ''){
         echo'<script type="text/javascript">
             alert("Sesion cerrada.");
             window.location.href = "Index.php";
@@ -58,7 +59,8 @@
                 </ul>
             </div>
             <div class="navbar w-100 order-2  mx-auto">
-                <a href="editarPerfilRedireccionar.php<?php "?usuario=$usuario&idu=$idu&idc=$idc&idt=$idt"?> ><img src="imagenes/logo.PNG" width="60%" style="margin-left:150px;"></a>
+                <a href="editarPerfilRedireccionar.php<?php  "?usuario=$usuario&idu=$idu&idc=$idc&idt=$idt"?> ><img src="imagenes/logo.PNG" width="60%" style="margin-left:150px;"></a>
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
                     <i class="fa fa-bars" aria-hidden="true"></i>
                 </button>
