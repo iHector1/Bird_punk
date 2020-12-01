@@ -29,12 +29,7 @@
         <?php
             session_start();
             $varsesion = $_SESSION['usuario']; //Nombre de usuario
-            if($varsesion == null || $varsesion == ''){
-            echo'<script type="text/javascript">
-                alert("Sesion cerrada.");
-                window.location.href = "Index.php";
-                </script>';
-            }
+            $idu=$_GET['idu'];
             $total=$_GET['total'];
             $carrito=$_GET['idc'];
         ?>

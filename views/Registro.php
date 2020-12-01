@@ -16,17 +16,9 @@
     <section id="Nav-bar">
             <div class="navbar border-bottom navbar-expand-md navbar-light navbar-fixed-top">
             </div>
-            <nav class="navbar border-bottom navbar-expand-md navbar-light">
-                <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-                    <ul class="navbar-nav mx-auto">
-                        <li class="nav-item ">
-                            <a class="nav-link border-right" href="#">HOMBRES</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">MUJERES</a>
-                        </li>
-                    </ul>
-                </div>
+                <nav class="navbar border-bottom navbar-expand-md navbar-light">
+                    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+                    </div>
                 <div class="navbar w-100 order-2  mx-auto">
                     <a href="Index.php"><img src="imagenes/logo.PNG" width="60%" style="margin-left:150px;"></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
@@ -34,16 +26,14 @@
                     </button>
                 </div>
                 <!--User/Carrito-->
-                <div class="navbar w-100 order-3 ">
-                    <ul class="navbar-nav mx-auto">
-                        <a href="IniciarSesion.php" class="navbar-button">
-                            <i class="fa fa-user-circle-o"></i>
-                        </a>
-                        
-                    
-                    </ul>
-                </div>
-            </nav>
+                    <div class="navbar w-100 order-3 ">
+                        <ul class="navbar-nav mx-auto">
+                            <a href="IniciarSesion.php" class="navbar-button">
+                                <i class="fa fa-user-circle-o"></i>
+                            </a>
+                        </ul>
+                    </div>
+                </nav>
             <div class="navbar navbar-expand-md navbar-light"> </div>
 
     </section>

@@ -5,12 +5,6 @@
     $varsesion2 = $_SESSION['IDusuario'];
     ?>
     <?php
-    if($varsesion == null || $varsesion == ''){
-        echo'<script type="text/javascript">
-            alert("Sesion cerrada.");
-            window.location.href = "Index.php";
-            </script>';
-    }
     $control=$_GET['control'];
     if($control!=1){    
        header('Location:http://25.0.98.15/distribuidos/Bird_punk/views/Backend/mostrarArticulosEditar.php') ; 
@@ -44,7 +38,7 @@
                 </ul>
             </div>
             <div class="navbar w-100 order-2  mx-auto">
-                <a href="IndexAlmacenista.php"><img src="imagenes/logo.PNG" width="60%" style="margin-left:150px;"></a>
+                <a href="IndexAlmacenista.php?idu="><img src="imagenes/logo.PNG" width="60%" style="margin-left:150px;"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
                     <i class="fa fa-bars" aria-hidden="true"></i>
                 </button>

@@ -1,24 +1,20 @@
 <?php
     session_start();
     error_reporting(0);
-    $varsesion = $_SESSION['usuario'];
-    $varsesion2 = $_SESSION['IDusuario'];
-    $varsesion4 = $_SESSION['IDtipousuario'];
+    $usuario = $_GET['usuario'];
+    $idu = $_GET['idu'];
+    $idc=$_GET['idc'];
+    $idt = $_GET['idt'];    
+    $id=$_GET['id'];
     ?>
     <?php
-    if($varsesion == null || $varsesion == ''){
-        echo'<script type="text/javascript">
-            alert("Sesion cerrada.");
-            window.location.href = "Index.php";
-            </script>';
-            
-    }
     $control=$_GET['control'];
-    $id=$_GET['id'];
+    $id=$idu;
    if($control!=1){    
-        header('Location:http://25.68.231.36/distribuidos/Bird_punk/views/Backend/infoUsuario.php?id='.$id); 
+        header("Location:http://25.68.231.36/distribuidos/Bird_punk/views/Backend/infoUsuario.php?id=".$id."&usuario=".$usuario."&idc".$idc."&idt=".$idt); 
     }
     $datos=unserialize($_GET['datos']);
+    
 ?>
 <html>
 
@@ -49,14 +45,15 @@
                     <li class="nav-item">
                     <?php
                     if(!($varsesion == null || $varsesion == '')){
-                        echo "<a href='editarPerfil.php'><h4 style='padding-left:100px;' class='nav-link'>Bienvenid@: ";  echo$_SESSION['usuario']; echo" </h4></a>";
+                        echo "<a href='editarPerfil.php'><h4 style='padding-left:100px;' class='nav-link'>Bienvenid@:  </h4></a>";
                     }
                     ?>
                     </li>
                 </ul>
             </div>
             <div class="navbar w-100 order-2  mx-auto">
-                <a href="Index.php"><img src="imagenes/logo.PNG" width="60%" style="margin-left:150px;"></a>
+                <a href="editarPerfilRedireccionar.php<?php  "?usuario=$usuario&idu=$idu&idc=$idc&idt=$idt"?> ><img src="imagenes/logo.PNG" width="60%" style="margin-left:150px;"></a>
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
                     <i class="fa fa-bars" aria-hidden="true"></i>
                 </button>
@@ -99,7 +96,7 @@
             }
             ?>
                 <div class="der">
-                    <img src="Imagenes/punk_bird.png" width="100px" height="100px" alt="bird_punk_logo">
+                   
                     <div class="buttonEd"><button type="button" class="btn btn-light"><a href="modificarInfo.php?id=<?php echo $id;?>&control=0s">EDITAR</a></button></div>
                 </div> 
             </div>

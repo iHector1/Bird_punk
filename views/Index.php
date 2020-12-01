@@ -10,10 +10,10 @@
     $_SESSION['IDusuario'] = $idu;
     $_SESSION['IDcarrito'] = $idc;
     $_SESSION['IDtipousuario'] = $idt;
-    $varsesion = $_SESSION['usuario'];
-    $varsesion2 = $_SESSION['IDusuario'];
-    $varsesion3 = $_SESSION['IDcarrito'];
-    $varsesion4 = $_SESSION['IDtipousuario'];
+    $varsesion = $_GET['idu'];
+    $varsesion2 = $_GET['idu'];
+    $varsesion3 = $_GET['idu'];
+    $varsesion4 = $_GET['idu'];
 ?>
 
 <!DOCTYPE html>
@@ -43,14 +43,14 @@
                     <li class="nav-item ">
                         <?php
                             if(!($varsesion == null || $varsesion == '')){
-                            echo "<a class='nav-link border-right' href='verProductoBoys.php?idu=$idu'>HOMBRES</a>";
+                            echo "<a class='nav-link border-right' href='verProductoBoys.php?idu=$idu&idc=$idc'>HOMBRES</a>";
                             }
                         ?>    
                     </li>
                     <li class="nav-item">
                         <?php
                             if(!($varsesion == null || $varsesion == '')){
-                            echo "<a class='nav-link border-right' href='verProductoGirls.php?idu=$idu'>MUJERES</a>";
+                            echo "<a class='nav-link border-right' href='verProductoGirls.php?idu=$idu&idc=$idc'>MUJERES</a>";
                             }
                         ?>
                     </li>
@@ -64,14 +64,14 @@
                     <li class="nav-item ">
                     <?php
                     if(!($varsesion == null || $varsesion == '')){
-                        echo "<a href='editarPerfil.php?id=$idu'><h4 style='padding-left:100px;' class='nav-link'>Bienvenid@: ";  echo$_SESSION['usuario']; echo" </h4></a>";
+                        echo "<a href='editarPerfil.php?usuario=$usuario&idu=$idu&idc=$idc&idt=$idt'><h4 style='padding-left:100px;' class='nav-link'>Bienvenid@: ";  echo$_SESSION['usuario']; echo" </h4></a>";
                     }
                     ?>
                     </li>
                 </ul>
             </div>
             <div class="navbar w-100 order-2  mx-auto">
-                <a href="Index.php"><img src="imagenes/logo.PNG" width="60%" style="margin-left:150px;"></a>
+                <a ><img src="imagenes/logo.PNG" width="60%" style="margin-left:150px;"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
                     <i class="fa fa-bars" aria-hidden="true"></i>
                 </button>

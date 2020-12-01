@@ -11,6 +11,7 @@
             </script>';
     }
     $idu=$_GET['idu'];
+    $idc=$_GET['idc'];
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +40,7 @@
 $control = $_GET['control'];
 if($control != 1)
 {
-    header("Location:http://25.68.231.36/distribuidos/Bird_punk/views/Backend/ProductoBoys.php?idu=$idu");
+    header("Location:http://25.68.231.36/distribuidos/Bird_punk/views/Backend/ProductoBoys.php?idu=$idu&idc=$idc");
 }?>
 
 
@@ -59,7 +60,7 @@ if($control != 1)
                 </ul>
             </div>
             <div class="navbar w-100 order-2  mx-auto">
-            <a href="Index.php"><img src="imagenes/logo.PNG" width="60%" style="margin-left:150px;"></a>
+            <a href="Index.php?idu=<?php echo $idu;?>&idc=<?php echo $idc;?>"><img src="imagenes/logo.PNG" width="60%" style="margin-left:150px;"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
                     <i class="fa fa-bars" aria-hidden="true"></i>
                 </button>

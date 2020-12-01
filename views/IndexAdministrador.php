@@ -14,14 +14,7 @@
     $varsesion3 = $_SESSION['IDcarrito'];
     $varsesion4 = $_SESSION['IDtipousuario'];
     ?>
-    <?php
-    if($varsesion == null || $varsesion == ''){
-        echo'<script type="text/javascript">
-            alert("Sesion cerrada.");
-            window.location.href = "Index.php";
-            </script>';
-    }
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,7 +50,7 @@
                     <li class="nav-item ">
                     <?php
                     if(!($varsesion == null || $varsesion == '')){
-                        echo "<a href='editarPerfil.php?id=$idu'><h4 style='padding-left:100px;' class='nav-link'>Bienvenid@: ";  echo$_SESSION['usuario']; echo" </h4></a>";
+                        echo "<a href='editarPerfil.php?id=$idu'><h4 style='padding-left:100px;' class='nav-link'>Bienvenid@ </h4></a>";
                     }
                     ?>
                     </li>
@@ -65,7 +58,7 @@
                 </ul>
             </div>
             <div class="navbar w-100 order-2  mx-auto">
-                <a href="IndexAdministrador.php"><img src="imagenes/logo.PNG" width="60%" style="margin-left:150px;"></a>
+                <a ><img src="imagenes/logo.PNG" width="60%" style="margin-left:150px;"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
                     <i class="fa fa-bars" aria-hidden="true"></i>
                 </button>
@@ -75,7 +68,7 @@
                 <ul class="navbar-nav mx-auto">
                     <?php
                         if($varsesion == null || $varsesion == ''){
-                            echo "<a href='IniciarSesion.php' class='navbar-button'><i class='fa fa-user-circle-o'></i></a>";
+                            echo "<a href='http://25.68.231.36/distribuidos/Bird_punk/views/Backend/logout.php' class='navbar-button'><i class='fa fa-user-circle-o'></i></a>";
                         }
                     ?> 
                     <?php

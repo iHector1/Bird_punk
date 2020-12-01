@@ -4,14 +4,6 @@ error_reporting(0);
 $varsesion = $_SESSION['usuario'];
 $varsesion2 = $_SESSION['IDusuario'];
 ?>
-<?php
-if(!($varsesion == null || $varsesion == '')){
-    echo'<script type="text/javascript">
-        alert("Ya se ha iniciado sesion.");
-        window.location.href = "Index.php";
-        </script>';
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
