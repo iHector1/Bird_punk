@@ -2,7 +2,7 @@
     $control = $_GET['control'];
     $arreglo = $_GET['datos'];
     $id = $_GET['idu'];
-    $idc = $_GET['idc'
+    $idc = $_GET['idc'];
     
     if($control != 1)
     {
