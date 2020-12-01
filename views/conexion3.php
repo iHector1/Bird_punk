@@ -4,8 +4,8 @@
     $conn = sqlsrv_connect($serverName, $connectionInfo);
 
     if($conn == false)
-        include 'conexion2.php';
+        echo "TODOS LOS SERVERS FALLARON";
     else
-    echo "Query en ServerBD 1";
-    
+    echo "Query en ServerBD 3";
+
 ?>
