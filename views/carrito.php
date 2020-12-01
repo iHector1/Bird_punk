@@ -5,14 +5,7 @@
     $varsesion2 = $_SESSION['IDusuario'];
     $varsesion3 = $_SESSION['IDcarrito'];
 ?>
-<?php
-if($varsesion == null || $varsesion == ''){
-    echo'<script type="text/javascript">
-        alert("Sesion cerrada.");
-        window.location.href = "Index.php";
-        </script>';
-}
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">

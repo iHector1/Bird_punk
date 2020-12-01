@@ -7,14 +7,6 @@
     $varsesion2 = $_SESSION['IDusuario'];
     $varsesion4 = $_SESSION['IDtipousuario'];
     
-    
-    if($varsesion == null || $varsesion == ''){
-        echo'<script type="text/javascript">
-            alert("Sesion cerrada.");
-            window.location.href = "Index.php";
-            </script>';
-            
-    }
     $id=$_GET['id'];    
      //   header('Location:http://25.68.231.36/distribuidos/Bird_punk/views/Backend/modificarInformacion.php?id='.$id); 
 

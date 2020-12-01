@@ -8,13 +8,6 @@
     $id=$_GET['id'];
     ?>
     <?php
-    if($id == null || $id == ''){
-        echo'<script type="text/javascript">
-            alert("Sesion cerrada.");
-            window.location.href = "Index.php";
-            </script>';
-            
-    }
     $control=$_GET['control'];
     $id=$idu;
    if($control!=1){    
