@@ -51,28 +51,28 @@
                     <li class="nav-item" style="white-space: nowrap;">
                         <?php
                         if(!($varsesion == null || $varsesion == '')){
-                            echo "<a class='nav-link border-right' href='AnadirProducto.php'>AGREGAR PRODUCTO</a>";
+                            echo "<a class='nav-link border-right' href='AnadirProducto.php?idu=$idu'>AGREGAR PRODUCTO</a>";
                         }
                         ?>  
                     </li>
                     <li class="nav-item" style="white-space: nowrap;">
                         <?php
                         if(!($varsesion == null || $varsesion == '')){
-                            echo "<a class='nav-link' href='EditarProducto.php'>EDITAR PRODUCTO</a>";
+                            echo "<a class='nav-link' href='EditarProducto.php?idu=$idu'>EDITAR PRODUCTO</a>";
                         }
                         ?>
                     </li>
                     <li class="nav-item" style="white-space: nowrap;">
                     <?php
                     if(!($varsesion == null || $varsesion == '')){
-                        echo "<a href='editarPerfil.php?id=$idu'><h4 style='padding-left:100px;' class='nav-link'>Bienvenid@: ";  echo$_SESSION['usuario']; echo" </h4></a>";
+                        echo "<a href='editarPerfil.php?id=$idu'><h4 style='padding-left:100px;' class='nav-link'>Bienvenid@</h4></a>";
                     }
                     ?>
                     </li>
                 </ul>
             </div>
             <div class="navbar w-100 order-2  mx-auto">
-                <a href="IndexAlmacenista.php"><img src="imagenes/logo.PNG" width="60%" style="margin-left:150px;"></a>
+                <a ><img src="imagenes/logo.PNG" width="60%" style="margin-left:150px;"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
                     <i class="fa fa-bars" aria-hidden="true"></i>
                 </button>

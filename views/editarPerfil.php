@@ -4,10 +4,11 @@
     $usuario = $_GET['usuario'];
     $idu = $_GET['idu'];
     $idc=$_GET['idc'];
-    $idt = $_GET['idt'];
+    $idt = $_GET['idt'];    
+    $id=$_GET['id'];
     ?>
     <?php
-    if($varsesion == null || $varsesion == ''){
+    if($id == null || $id == ''){
         echo'<script type="text/javascript">
             alert("Sesion cerrada.");
             window.location.href = "Index.php";
@@ -17,7 +18,7 @@
     $control=$_GET['control'];
     $id=$idu;
    if($control!=1){    
-        header('Location:http://25.68.231.36/distribuidos/Bird_punk/views/Backend/infoUsuario.php?id='.$id); 
+        header("Location:http://25.68.231.36/distribuidos/Bird_punk/views/Backend/infoUsuario.php?id=".$id"&usuario=".$usuario"&idc".$idc"&idt=".$idt); 
     }
     $datos=unserialize($_GET['datos']);
     
@@ -48,11 +49,18 @@
                     <li class="nav-item">
                         <a class="nav-link" href="verProductoGirls.php">MUJERES</a>
                     </li>
-        
+                    <li class="nav-item">
+                    <?php
+                    if(!($varsesion == null || $varsesion == '')){
+                        echo "<a href='editarPerfil.php'><h4 style='padding-left:100px;' class='nav-link'>Bienvenid@:  </h4></a>";
+                    }
+                    ?>
+                    </li>
                 </ul>
             </div>
             <div class="navbar w-100 order-2  mx-auto">
-                <a href="Index.php <?php "?usuario=$usuario&idu=$idu&idc=$idc&idt=$idt"?> ><img src="imagenes/logo.PNG" width="60%" style="margin-left:150px;"></a>
+                <a href="editarPerfilRedireccionar.php<?php  "?usuario=$usuario&idu=$idu&idc=$idc&idt=$idt"?> ><img src="imagenes/logo.PNG" width="60%" style="margin-left:150px;"></a>
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
                     <i class="fa fa-bars" aria-hidden="true"></i>
                 </button>
