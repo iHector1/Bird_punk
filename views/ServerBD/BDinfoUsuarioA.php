@@ -1,6 +1,6 @@
 <?php
-    include '../conexion.php';
 
+    include '../conexion.php';
 
     $ID_Usuario = $_GET['id'];
     

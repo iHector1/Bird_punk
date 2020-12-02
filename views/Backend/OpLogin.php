@@ -1,25 +1,20 @@
 <?php
-
-    
-
+    include '../conexion.php';
     $user = $_POST['user'];
     $password = $_POST['password'];
 
     echo $user;
     echo $password;
 
-
     $sql = "SELECT * FROM usuario WHERE Correo = '".$user."' AND Contrasena = '".$password."'";
     $stmt = sqlsrv_query($conn, $sql);
-
-    echo $stmt;
 
     if( $stmt ) {
         $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC);
         if($row['Nombre_s'] == NULL) {
             echo'<script type="text/javascript">
             alert("Usuario o Contraseña incorrectos.");
-            window.location.href = "http://localhost:8081/views/IniciarSesion.php";
+            window.location.href = "http://localhost/Bird_punk/views/IniciarSesion.php";
             </script>';
         }else{
             if($row['ID_Tipo_Usuario'] == '1'){
@@ -51,7 +46,6 @@
             $_SESSION['usuario'] = $row['Nombre_s'];
             $_SESSION['IDusuario'] = $row['ID_Usuario'];
             $_SESSION['IDtipousuario'] = $row['ID_Tipo_Usuario'];
-
             $usuario = $_SESSION['usuario'];
             $idu = $_SESSION['IDusuario'];
             $idt = $_SESSION['IDtipousuario'];
@@ -63,7 +57,6 @@
             $_SESSION['usuario'] = $row['Nombre_s'];
             $_SESSION['IDusuario'] = $row['ID_Usuario'];
             $_SESSION['IDtipousuario'] = $row['ID_Tipo_Usuario'];
-
             $usuario = $_SESSION['usuario'];
             $idu = $_SESSION['IDusuario'];
             $idt = $_SESSION['IDtipousuario'];

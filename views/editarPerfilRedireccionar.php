@@ -8,40 +8,16 @@ $idt = $_GET['idt'];
 
 
 ?>
-<?php
-    if($varsesion == null || $varsesion == ''){
-        echo'<script type="text/javascript">
-            alert("Sesion cerrada.");
-            window.location.href = "Index.php";
-            </script>';
-            
-    }
-    ?>
-    <?php
-    if($varsesion == null || $varsesion == ''){
-        echo'<script type="text/javascript">
-            alert("Sesion cerrada.");
-            window.location.href = "Index.php";
-            </script>';
-    }
-    ?>
 
     <?php
-    if($_SESSION['IDtipousuario'] == '1'){
-        echo'<script type="text/javascript">
-            window.location.href = "Index.php?usuario=&idu=17&idc=15&idt=1";
-            </script>';
-            header("Location: http://localhost/Bird_punk/views/index.php?usuario=$usuario&idu=$idc&idc=$idc&idt=$idt");
+    if($idt == '1'){
+            header("Location: http://localhost/Bird_punk/views/Index.php?usuario=$usuario&idu=$idu&idc=$idc&idt=$idt");
     }
-    if($_SESSION['IDtipousuario'] == '2'){
-        echo'<script type="text/javascript">
-            window.location.href = "IndexAlmacenista.php";
-            </script>';
+    if($idt == '2'){
+            header("Location: http://localhost/Bird_punk/views/IndexAlmacenista.php?idu=$idu&idt=$idt");
     }
-    if($_SESSION['IDtipousuario'] == '3'){
-        echo'<script type="text/javascript">
-            window.location.href = "IndexAdministrador.php";
-            </script>';
+    if($idt == '3'){
+            header("Location: http://localhost/Bird_punk/views/IndexAdministrador.php?idu=$idu&idt=$idt");
     }
 
 

@@ -139,7 +139,7 @@
     <div class="contenedor3">
         <h4>RESUMEN DE LA COMPRA</h4>
 
-        <div id="contenedorResumen">
+        <div >
             <?php
             foreach ($carrito2 as $fila) {
             ?>
@@ -180,7 +180,7 @@
             </div>
             <p style="font-size:20px;"><b>TOTAL:</b> $<?php echo $total; ?></p>
             <a class="btt2" href="carrito.php">Volver al carrito</a>
-            <form method="POST" action="BearPay_Login.php?total=<?php echo $total; ?>&idc=<?php echo $id_c; ?>">
+            <form method="POST" action="BearPay_Login.php?total=<?php echo $total; ?>&idc=<?php echo $id_c; ?>idu=">
                 <input type="submit" class="btt" value="Comprar ahora">
             </form>
 </body>
