@@ -27,18 +27,14 @@ $idt = $_GET['idt'];
     ?>
 
     <?php
-    if($_SESSION['IDtipousuario'] == '1'){
-            header("Location: http://localhost/Bird_punk/views/index.php?usuario=$usuario&idu=$idc&idc=$idc&idt=$idt");
+    if($idt == '1'){
+            header("Location: http://localhost/Bird_punk/views/index.php?usuario=$usuario&idu=$idu&idc=$idc&idt=$idt");
     }
-    if($_SESSION['IDtipousuario'] == '2'){
-        echo'<script type="text/javascript">
-            window.location.href = "IndexAlmacenista.php";
-            </script>';
+    if($idt == '2'){
+            header("Location: http://localhost/Bird_punk/views/indexAlmacenista.php?idu=$idu&idt=$idt");
     }
-    if($_SESSION['IDtipousuario'] == '3'){
-        echo'<script type="text/javascript">
-            window.location.href = "IndexAdministrador.php";
-            </script>';
+    if($idt == '3'){
+            header("Location: http://localhost/Bird_punk/views/indexAdministrador.php?idu=$idu&idt=$idt");
     }
 
 
