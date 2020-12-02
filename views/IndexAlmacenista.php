@@ -42,23 +42,20 @@
                     
                     <li class="nav-item" style="white-space: nowrap;">
                         <?php
-                        if(!($varsesion == null || $varsesion == '')){
                             echo "<a class='nav-link border-right' href='AnadirProducto.php?idu=$idu'>AGREGAR PRODUCTO</a>";
-                        }
                         ?>  
                     </li>
                     <li class="nav-item" style="white-space: nowrap;">
                         <?php
-                        if(!($varsesion == null || $varsesion == '')){
+
                             echo "<a class='nav-link' href='EditarProducto.php?idu=$idu'>EDITAR PRODUCTO</a>";
-                        }
+                        
                         ?>
                     </li>
                     <li class="nav-item" style="white-space: nowrap;">
                     <?php
-                    if(!($varsesion == null || $varsesion == '')){
-                        echo "<a href='editarPerfil.php?id=$idu'><h4 style='padding-left:100px;' class='nav-link'>Bienvenid@</h4></a>";
-                    }
+                        echo "<a href='editarPerfil.php?usuario=$usuario&idu=$idu&idc=$idc&idt=$idt'><h4 style='padding-left:100px;' class='nav-link'>Bienvenid@</h4></a>";
+                    
                     ?>
                     </li>
                 </ul>
@@ -74,9 +71,9 @@
                 <ul class="navbar-nav mx-auto">
                     
                     <?php
-                        if(!($varsesion == null || $varsesion == '')){
+                        
                             echo " <a href='http://25.68.231.36/distribuidos/Bird_punk/views/Backend/logout.php' class='navbar-button'> Cerrar Sesion</a>";
-                        }
+                        
                     ?>
                       
                  

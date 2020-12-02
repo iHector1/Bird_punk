@@ -42,16 +42,16 @@
                     
                     <li class="nav-item">
                         <?php
-                        if(!($varsesion == null || $varsesion == '')){
+                       
                             echo "<a class='nav-link ' href='agregarAlmacenista.php'>ALMACENISTAS</a>";
-                        }
+                        
                         ?>   
                     </li>
                     <li class="nav-item ">
                     <?php
-                    if(!($varsesion == null || $varsesion == '')){
-                        echo "<a href='editarPerfil.php?id=$idu'><h4 style='padding-left:100px;' class='nav-link'>Bienvenid@ </h4></a>";
-                    }
+                    
+                        echo "<a href='editarPerfil.php?usuario=$usuario&idu=$idu&idc=$idc&idt=$idt'><h4 style='padding-left:100px;' class='nav-link'>Bienvenid@ </h4></a>";
+                    
                     ?>
                     </li>
                     
@@ -67,14 +67,14 @@
             <div class="navbar w-100 order-3 ">
                 <ul class="navbar-nav mx-auto">
                     <?php
-                        if($varsesion == null || $varsesion == ''){
+                        
                             echo "<a href='http://25.68.231.36/distribuidos/Bird_punk/views/Backend/logout.php' class='navbar-button'><i class='fa fa-user-circle-o'></i></a>";
-                        }
+                        
                     ?> 
                     <?php
-                        if(!($varsesion == null || $varsesion == '')){
+                        
                             echo " <a href='http://25.68.231.36/distribuidos/Bird_punk/views/Backend/logout.php' class='navbar-button'> Cerrar Sesion</a>";
-                        }
+                        
                     ?> 
                       
                  
