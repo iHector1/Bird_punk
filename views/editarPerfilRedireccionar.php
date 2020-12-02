@@ -28,9 +28,6 @@ $idt = $_GET['idt'];
 
     <?php
     if($_SESSION['IDtipousuario'] == '1'){
-        echo'<script type="text/javascript">
-            window.location.href = "Index.php?usuario=&idu=17&idc=15&idt=1";
-            </script>';
             header("Location: http://localhost/Bird_punk/views/index.php?usuario=$usuario&idu=$idc&idc=$idc&idt=$idt");
     }
     if($_SESSION['IDtipousuario'] == '2'){
