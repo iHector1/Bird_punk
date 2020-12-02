@@ -2,6 +2,8 @@
     include '../conexion.php';
 
     $ID_Usuario = $_GET['id'];
+    $idc = $_GET['idc'];
+    $idt = $_GET['idt'];
     
     $sql = "SELECT * FROM usuario LEFT JOIN info_cliente ON usuario.ID_Usuario = info_cliente.ID_Usuario WHERE usuario.ID_Usuario = '".$ID_Usuario."';";
     $infoUsuario=sqlsrv_query($conn,$sql);
@@ -25,6 +27,6 @@
     $arreglo = urlencode($arreglo);
 
     print_r($arreglo);
-    header("Location: http://25.90.201.164/distribuidos/Bird_punk/views/BackendP/BEPinfoUsuario.php?datos=".$arreglo."&control=1&id=$ID_Usuario");
+    header("Location: http://25.90.201.164/distribuidos/Bird_punk/views/BackendP/BEPinfoUsuario.php?datos=".$arreglo."&control=1&id=$ID_Usuario&idc=$idc&idt=$idt");
 
 ?>
