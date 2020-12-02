@@ -28,7 +28,7 @@ $idt = $_GET['idt'];
 
     <?php
     if($_SESSION['IDtipousuario'] == '1'){
-            header("Location: http://localhost/Bird_punk/views/index.php?usuario=$usuario&idu=$idc&idc=$idc&idt=$idt");
+            header("Location: http://localhost/Bird_punk/views/index.php?usuario=$usuario&idu=$idu&idc=$idc&idt=$idt");
     }
     if($_SESSION['IDtipousuario'] == '2'){
         echo'<script type="text/javascript">
