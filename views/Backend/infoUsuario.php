@@ -11,7 +11,7 @@
         header("Location: http://25.90.201.164/distribuidos/Bird_punk/views/BackendP/BEPinfoUsuario.php?id=".$ID_Usuario);
     }else
     {
-        header("Location: http://localhost/Bird_punk/views/editarPerfil.php?datos=".$arreglo."&control=1&id=$ID_Usuario&usuario=.$usuario&idc.$idc&idt=.$idt");
+        header("Location: http://localhost/Bird_punk/views/editarPerfil.php?datos=".$arreglo."&control=1&id=$ID_Usuario&usuario=$usuario&idc=$idc&idt=$idt");
     }
     
 
