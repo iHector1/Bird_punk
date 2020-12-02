@@ -18,7 +18,7 @@
     $control=$_GET['control'];
     $id=$idu;
    if($control!=1){    
-        header("Location:http://25.68.231.36/distribuidos/Bird_punk/views/Backend/infoUsuario.php?id=".$id"&usuario=".$usuario"&idc".$idc"&idt=".$idt); 
+        header("Location:http://25.68.231.36/distribuidos/Bird_punk/views/Backend/infoUsuario.php?id=".$id."&usuario=".$usuario."&idc".$idc."&idt=".$idt.); 
     }
     $datos=unserialize($_GET['datos']);
     
@@ -59,7 +59,7 @@
                 </ul>
             </div>
             <div class="navbar w-100 order-2  mx-auto">
-                <a href="editarPerfilRedireccionar.php<?php  "?usuario=$usuario&idu=$idu&idc=$idc&idt=$idt"?> ><img src="imagenes/logo.PNG" width="60%" style="margin-left:150px;"></a>
+                <a href="editarPerfilRedireccionar.php?usuario=<?php echo $usuario;?>&idu=<?php echo $idu;?>&idc=<?php echo $idc;?>&idt=<?php echo $idt;?>"?> ><img src="imagenes/logo.PNG" width="60%" style="margin-left:150px;"></a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
                     <i class="fa fa-bars" aria-hidden="true"></i>
