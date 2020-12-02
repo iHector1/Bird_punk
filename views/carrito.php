@@ -5,14 +5,7 @@
     $varsesion2 = $_SESSION['IDusuario'];
     $varsesion3 = $_SESSION['IDcarrito'];
 ?>
-<?php
-if($varsesion == null || $varsesion == ''){
-    echo'<script type="text/javascript">
-        alert("Sesion cerrada.");
-        window.location.href = "Index.php";
-        </script>';
-}
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +30,8 @@ if($control == 3){
      header ('Location:http://25.68.231.36/distribuidos/Bird_punk/views/Backend/BCarrito/totalArticulo.php?id='.$id_c.'&idu='.$id_u);
 }
 if($control == 4){
-    header ('Location:http://25.68.231.36/distribuidos/Bird_punk/views/Backend/BCarrito/totalCarrito.php?id='.$id_c.'&idu='.$id_u);}
+    header ('Location:http://25.68.231.36/distribuidos/Bird_punk/views/Backend/BCarrito/totalCarrito.php?id='.$id_c.'&idu='.$id_u);
+}
 $totalplay=$_GET['total'];
 if($control == 5){
        header ('Location:http://25.68.231.36/distribuidos/Bird_punk/views/Backend/BCarrito/mostrarCarrito.php?id='.$id_c.'&total='.$totalplay.'&idu='.$id_u); 

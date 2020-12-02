@@ -11,7 +11,8 @@
     echo "Contraseña: $contraseña<br>";
     echo "Total: $total<br>";
     echo "Carrito: $IDCarrito<br>";
-    
+
+
     $login = "SELECT * FROM Usuario WHERE Nombre_Usuario = '".$user."' AND Contrasena = '".$contraseña."'";
     $stmt = sqlsrv_query($connBP, $login);
 
@@ -22,7 +23,7 @@
             alert("Usuario o Contraseña incorrectos.");
             </script>';
             //window.location.href = " http://localhost/Bird_punk/views/BearPay_Login.php";
-            header("Location: http://25.90.201.164/distribuidos/Bird_punk/views/BackendP/BEPloginBearPay.php?control=1&error=1");
+            header("Location: http://25.90.201.164/distribuidos/Bird_punk/views/BackendP/BEPloginBearPay.php?control=1&error=1&idc=$IDCarrito&total=$total&idu=$idUsuarioC");
         }else{
             
             echo "usuario encontrado";
@@ -130,7 +131,8 @@
             alert("Compra realizada exitosamente.");
             </script>';
         //window.location.href = " http://localhost/Bird_punk/views/carrito.php";
-        header("Location: http://25.90.201.164/distribuidos/Bird_punk/views/BackendP/BEPloginBearPay.php?control=1&error=0");
+        header("Location: http://25.90.201.164/distribuidos/Bird_punk/views/BackendP/BEPloginBearPay.php?control=1&error=0&idc=$IDCarrito&total=$total&idu=$idUsuarioC");
+       
             
     }
     else{
@@ -138,7 +140,7 @@
             alert("No hay suficiente saldo en su cuenta.\nFavor de verificarlo.");
             </script>';
         //window.location.href = " http://localhost/Bird_punk/views/BearPay_Login.php";
-        header("Location: http://25.90.201.164/distribuidos/Bird_punk/views/BackendP/BEPloginBearPay.php?control=1&error=2");
+        header("Location: http://25.90.201.164/distribuidos/Bird_punk/views/BackendP/BEPloginBearPay.php?control=1&error=2&idc=$IDCarrito&total=$total&idu=$idUsuarioC");
     }
 
 ?>

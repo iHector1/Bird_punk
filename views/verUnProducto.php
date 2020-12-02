@@ -11,7 +11,7 @@
         window.location.href = "Index.php";
         </script>';
 }*/
-print_r()
+echo $idu;
 ?>
 
 

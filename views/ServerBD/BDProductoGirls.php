@@ -2,6 +2,7 @@
     include '../conexion.php';
     $bandera = 1;
     $id = $_GET['idu'];
+    $idc = $_GET['idc'];
 
     $query = "SELECT modelo.Modelo, marca.Marca, articulo.Precio, talla.Talla, articulo.ID_Articulo, articulo.Imagen, articulo.Stock FROM articulo INNER JOIN modelo ON articulo.ID_Modelo=modelo.ID_Modelo INNER JOIN marca ON articulo.ID_Marca=marca.ID_Marca INNER JOIN talla ON articulo.ID_Talla=talla.ID_Talla WHERE Genero='F' OR Genero='U'";
     $res = sqlsrv_query($conn, $query);
@@ -21,5 +22,5 @@
     $arreglo = serialize($arreglo);
     $arreglo = urlencode($arreglo);
 
-    header("Location: http://25.90.201.164/distribuidos/Bird_punk/views/BackendP/BEPProductoGirls.php?datos=".$arreglo."&control=1&idu=$id");
+    header("Location: http://25.90.201.164/distribuidos/Bird_punk/views/BackendP/BEPProductoGirls.php?datos=".$arreglo."&control=1&idu=$id&idc=$idc");
 ?>

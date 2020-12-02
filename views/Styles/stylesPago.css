@@ -89,6 +89,8 @@ p{
   background-color: #1C2331;
   display: inline-block;
   margin-left: 100px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 #contenedorResumen
 {
@@ -97,8 +99,7 @@ p{
   height: 400px;
   background-color: #1C2331;
   display: inline-block;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  
 }
 
 .prueba{
@@ -176,7 +177,7 @@ a{
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  width: 70%;
+  width: 100%;
   margin-left: 5px;
   margin-top: 5px;
 }

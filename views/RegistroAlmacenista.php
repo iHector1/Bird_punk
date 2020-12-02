@@ -3,12 +3,6 @@
     error_reporting(0);
     $varsesion = $_SESSION['usuario'];
     $varsesion2 = $_SESSION['IDusuario'];
-    if($varsesion == null || $varsesion == ''){
-        echo'<script type="text/javascript">
-            alert("Sesion cerrada.");
-            window.location.href = "Index.php";
-            </script>';
-    }
 ?>
 <!DOCTYPE html>
 <html lang="en">

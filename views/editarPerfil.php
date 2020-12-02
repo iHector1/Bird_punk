@@ -8,13 +8,6 @@
     $id=$_GET['id'];
     ?>
     <?php
-    if($id == null || $id == ''){
-        echo'<script type="text/javascript">
-            alert("Sesion cerrada.");
-            window.location.href = "Index.php";
-            </script>';
-            
-    }
     $control=$_GET['control'];
     $id=$idu;
    if($control!=1){    
@@ -103,7 +96,7 @@
             }
             ?>
                 <div class="der">
-                    <img src="Imagenes/punk_bird.png" width="100px" height="100px" alt="bird_punk_logo">
+                   
                     <div class="buttonEd"><button type="button" class="btn btn-light"><a href="modificarInfo.php?id=<?php echo $id;?>&control=0s">EDITAR</a></button></div>
                 </div> 
             </div>

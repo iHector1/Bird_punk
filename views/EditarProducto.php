@@ -5,12 +5,6 @@
     $varsesion2 = $_SESSION['IDusuario'];
     ?>
     <?php
-    if($varsesion == null || $varsesion == ''){
-        echo'<script type="text/javascript">
-            alert("Sesion cerrada.");
-            window.location.href = "Index.php";
-            </script>';
-    }
     $control=$_GET['control'];
     if($control!=1){    
        header('Location:http://25.0.98.15/distribuidos/Bird_punk/views/Backend/mostrarArticulosEditar.php') ; 
