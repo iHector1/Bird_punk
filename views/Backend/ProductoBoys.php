@@ -10,7 +10,7 @@
     }else
     {
         header("Location: http://localhost/Bird_punk/views/verProductoBoys.php?datos=".$arreglo."&control=1&idu=".$id."&idc=".$idc);
-        
+        //echo $idc;
     }
 
 ?>
