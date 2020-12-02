@@ -6,6 +6,6 @@
     if($conn == false)
         include 'conexion2.php';
     else
-    echo "Query en ServerBD 1";
+        echo "Query en ServerBD 1";
     
 ?>

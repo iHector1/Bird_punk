@@ -11,7 +11,7 @@
     $control=$_GET['control'];
     $id=$idu;
    if($control!=1){    
-        header("Location:http://25.68.231.36/distribuidos/Bird_punk/views/Backend/infoUsuario.php?id=".$id."&usuario=".$usuario."&idc".$idc."&idt=".$idt.); 
+        header("Location:http://25.68.231.36/distribuidos/Bird_punk/views/Backend/infoUsuario.php?id=".$id."&usuario=".$usuario."&idc".$idc."&idt=".$idt); 
     }
     $datos=unserialize($_GET['datos']);
     
